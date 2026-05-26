@@ -84,6 +84,9 @@ Meanwhile, “productivity culture” promises that the right system will elimin
 | 2026-05-26 | **No account for MVP onboarding** is enough: skip / later / edit + `localStorage` ([onboarding-ux.md](onboarding-ux.md)); CLI + config for dogfood now. |
 | 2026-05-26 | **Curiosity > optimization** — calendar-heavy users look often to *understand*, not to win; product learns via questions + participation ([curiosity-reflection.md](curiosity-reflection.md)). |
 | 2026-05-26 | Follow-ups **only when ambiguous**; founder looks at **big blocks** (“what did I actually do?”) | Shapes v1.1 prompt triggers, not weekly quiz fatigue |
+| 2026-05-26 | **Dogfood week 17–23 May:** 52 events, 65.7h timed, **89% uncategorized** | Bug: personal calendar → uncategorized; fixed → ~44% social, ~28% job search |
+| 2026-05-26 | Week picker + dev-setup docs | MVP yes for date range; text-before-charts roadmap | [data-display.md](data-display.md), [dev-setup.md](dev-setup.md) |
+| 2026-05-26 | Labels chermi/dembooty/rob + 1–2 priorities model | Clarifying questions; hard nudges only job+DJ; balance signal | [priorities.md](priorities.md), config |
 
 *Add a row after each dogfood week or milestone.*
 
@@ -226,6 +229,7 @@ Chronological process journal for portfolio "how I built it." Stable decisions s
 | 2026-05-26 | Onboarding UX spec | Skip / later / edit; no login v1 | [onboarding-ux.md](onboarding-ux.md), [config/onboarding-questions.json](../config/onboarding-questions.json) |
 | 2026-05-26 | CLI scaffold (`pnpm analyze`) | Validate rules on real week before UI | [src/cli/analyze.mjs](../src/cli/analyze.mjs), `src/lib/*` |
 | 2026-05-26 | First analyze run | ~70% uncategorized → prioritize mapping | Terminal / CLI output (week 25–31 May 2026) |
+| 2026-05-26 | **Target dogfood week** set | **17–23 May 2026** (Sun–Sat) for spot-check vs Google | `pnpm analyze:dogfood`, `public/report.html` |
 | 2026-05-26 | Fixed `node-ical` install | Lockfile out of sync with package.json | `pnpm install`, updated `pnpm-lock.yaml` |
 | 2026-05-26 | Build log + findings backfill | Case study = living process doc | This file §4, §11, §12 |
 | 2026-05-26 | Curiosity & reflection pillar | Questions = product; reflection-powered; control via observing | [curiosity-reflection.md](curiosity-reflection.md) |

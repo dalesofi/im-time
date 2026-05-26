@@ -140,11 +140,10 @@
   },
   "keywordOverrides": [
     {
-      "keywords": [
-        "beach",
-        "park"
-      ],
-      "lifeAreaId": "pets"
+      "keywords": ["beach", "park"],
+      "lifeAreaId": "pets",
+      "alsoAreas": ["health"],
+      "note": "Outing with Lua — pet care + movement"
     },
     {
       "keywords": [
@@ -162,11 +161,86 @@
       "lifeAreaId": "laundry"
     },
     {
-      "keywords": [
-        "siesta",
-        "podcast"
-      ],
+      "keywords": ["siesta", "siest", "podcast"],
       "lifeAreaId": "day_rest"
+    },
+    {
+      "keywords": ["radio", "radio thing"],
+      "lifeAreaId": "passion_rbl",
+      "note": "Radio Life — RBL nonprofit (not leisure day-rest)"
+    },
+    {
+      "keywords": ["equipment", "equipos", "equipo"],
+      "lifeAreaId": "passion_rbl",
+      "note": "Radio equipment / station ops"
+    },
+    {
+      "keywords": ["isa enes", "isaenes"],
+      "lifeAreaId": "passion_rbl",
+      "alsoAreas": ["social_life"],
+      "note": "RBL errand + social"
+    },
+    {
+      "keywords": ["dog-mum", "dog mum", "dogmom", "lua", "paseo lua", "walk lua", "lua walk", "paseo con lua"],
+      "lifeAreaId": "pets",
+      "note": "Pet care — Lua (banana)"
+    },
+    {
+      "keywords": ["paseo lua", "walk lua", "lua walk", "paseo con lua", "dog walk"],
+      "lifeAreaId": "pets",
+      "alsoAreas": ["health"],
+      "note": "Walk with Lua = pet care + exercise"
+    },
+    {
+      "keywords": ["pilates", "yoga", " gap", "gap ", "gym", "entreno", "sport", "deporte", "fitness"],
+      "lifeAreaId": "health",
+      "note": "Sage — exercise"
+    },
+    {
+      "keywords": [
+        "apply",
+        "typeform",
+        "pearson",
+        "linkedin",
+        "hacienda",
+        "segir",
+        "quantic",
+        "lab65",
+        "audiii"
+      ],
+      "lifeAreaId": "job_search",
+      "note": "Tangerine / PM Life — job search & brand"
+    },
+    {
+      "keywords": [
+        "eat",
+        "eating",
+        "comer",
+        "comida",
+        "lunch",
+        "dinner",
+        "cena",
+        "almuerzo",
+        "desayuno",
+        "breakfast",
+        "brunch",
+        "food",
+        "restaurant",
+        "super",
+        "mercad"
+      ],
+      "lifeAreaId": "meals",
+      "note": "Basil 🥕 — blocked meals only"
+    },
+    {
+      "keywords": [
+        "pilates",
+        "yoga",
+        "gym",
+        "entreno"
+      ],
+      "lifeAreaId": "health",
+      "note": "Sage / exercise"
     },
     {
       "keywords": [
@@ -215,6 +289,21 @@
         "self-care"
       ],
       "lifeAreaId": "self_care"
+    },
+    {
+      "keywords": ["chermi"],
+      "lifeAreaId": "djing_music",
+      "note": "Clarified: friend's birthday — DJ session"
+    },
+    {
+      "keywords": ["dembooty"],
+      "lifeAreaId": "social_life",
+      "note": "Clarified: party/event attended"
+    },
+    {
+      "keywords": ["rob"],
+      "lifeAreaId": "social_life",
+      "note": "Clarified: person — getting to know"
     }
   ],
   "exceptions": [
@@ -235,7 +324,55 @@
   "sleepPolicy": {
     "note": "Sleep is generally not scheduled. Do not infer sleep from gaps. Only count if explicitly blocked."
   },
-  "productPrinciple": "Interpretation is wrong without the user's color and labeling system. The app must ask how they code and annotate before assuming defaults.",
+  "productPrinciples": [
+    "Interpretation is wrong without the user's color and labeling system — ask how they code and annotate.",
+    "Cryptic titles (friend names, party names) deserve a one-time clarifying question, not a silent guess.",
+    "When a label is taught once (e.g. chermi = DJing), store it in keywordOverrides and reuse."
+  ],
+  "labelClarifications": {
+    "productNote": "v1: config + onboarding. v1.1: prompt on first unknown label in a week.",
+    "resolved": [
+      {
+        "keywords": ["chermi"],
+        "lifeAreaId": "djing_music",
+        "userMeaning": "Friend's name — playing a DJ set at their birthday",
+        "clarifyingQuestion": "What does 'chermi' mean on your calendar?"
+      },
+      {
+        "keywords": ["dembooty"],
+        "lifeAreaId": "social_life",
+        "userMeaning": "Party/event attended (not DJ prep)",
+        "clarifyingQuestion": "Is 'dembooty' a social outing, DJ work, or something else?"
+      },
+      {
+        "keywords": ["rob"],
+        "lifeAreaId": "social_life",
+        "userMeaning": "Person — getting to know",
+        "clarifyingQuestion": "Who is 'rob' for you — social time, work, or other?"
+      },
+      {
+        "keywords": ["radio"],
+        "lifeAreaId": "passion_rbl",
+        "userMeaning": "RBL nonprofit radio work"
+      },
+      {
+        "keywords": ["equipment"],
+        "lifeAreaId": "passion_rbl",
+        "userMeaning": "Managing radio station equipment"
+      },
+      {
+        "keywords": ["isa enes"],
+        "lifeAreaId": "passion_rbl",
+        "alsoAreas": ["social_life"],
+        "userMeaning": "RBL-related this week"
+      },
+      {
+        "keywords": ["dog-mum", "dog mum"],
+        "lifeAreaId": "pets",
+        "userMeaning": "Dog-mum life = Lua pet care"
+      }
+    ]
+  },
   "compoundBlocks": {
     "note": "Friend's name on banana (Lua) or basil (meal) = social + pet/meal together.",
     "insightFraming": "Integration you enjoy\u2014not double-booking hustle.",
@@ -290,7 +427,7 @@
       },
       {
         "id": "lavender_rbl_errand",
-        "keywords": [],
+        "keywords": ["isa enes", "isaenes"],
         "areas": [
           "social_life",
           "passion_rbl"

@@ -74,7 +74,13 @@ Example (future, not v1):
 
 ---
 
-## 5. Curiosity, not goal-orientation
+## 5. One–two priorities, not eleven floors
+
+Users pick **1–2 priorities** per season. Only those get **hard threshold nudges**. Everything else is context—OK if lighter. See [priorities.md](priorities.md).
+
+Cryptic labels (friend names, party titles) trigger **clarifying questions** once, then remembered in config.
+
+## 6. Curiosity, not goal-orientation
 
 The app may **surface** intentions (meals ~14h, social ~10h) as **context**, not as a scoreboard. The emotional stance is:
 
@@ -86,7 +92,7 @@ Goals in config exist for **dogfood honesty** and gentle nudges—not gamificati
 
 ---
 
-## 6. MVP vs later
+## 7. MVP vs later
 
 | In v1 | Later |
 |-------|--------|
@@ -99,7 +105,7 @@ Goals in config exist for **dogfood honesty** and gentle nudges—not gamificati
 
 ---
 
-## 7. Product calibration (Sofia — May 2026)
+## 8. Product calibration (Sofia — May 2026)
 
 | Question | Answer |
 |----------|--------|

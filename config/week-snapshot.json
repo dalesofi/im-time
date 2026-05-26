@@ -1,0 +1,73 @@
+{
+  "description": "Maps the 'This week in numbers' box to goals — not generic stats.",
+  "priorityGoal": {
+    "areaId": "job_search",
+    "label": "PM Life",
+    "emoji": "💼",
+    "hex": "#F4511E",
+    "onTargetHoursGte": 12,
+    "thinHoursLt": 8,
+    "detailOnTarget": "Solid time on the calendar for job search, brand & PM work (incl. Button School).",
+    "detailCelebrate": "You went over your PM Life target this week — well done. That focus is showing up.",
+    "detailThin": "Light week for PM Life — your main season focus.",
+    "detailStrong": "Strong PM Life week — meetings and blocks showing up."
+  },
+  "onTarget": [
+    {
+      "areaId": "meals",
+      "label": "Meals",
+      "emoji": "🥕",
+      "bandMin": 10,
+      "bandMax": 20,
+      "detailOnTarget": "Eating rhythm looks roughly on your ~14h/week band (blocked time)."
+    },
+    {
+      "areaId": "pets",
+      "label": "Pet care: Lua",
+      "emoji": "🐕",
+      "alwaysShow": true,
+      "minHours": 0.5,
+      "detailOnTarget": "Lua time on the calendar (banana 🟡 blocks).",
+      "detailWhenLight": "No banana blocks this week — label Lua walks as paseo/lua or yellow; walks can count as 🐕 + 🏃."
+    },
+    {
+      "areaId": "self_care",
+      "label": "Self-care",
+      "emoji": "🛁",
+      "bandMin": 5,
+      "bandMax": 14,
+      "detailOnTarget": "Body care showed up — showers, skin/hair."
+    }
+  ],
+  "gentleNudge": [
+    {
+      "areaId": "health",
+      "label": "Exercise",
+      "emoji": "🧘",
+      "targetHours": 5,
+      "detailNudge": "Sage green blocks — pilates, yoga, GAP, walks. Walks with Lua count as pet care too. Only blocked time shows here."
+    },
+    {
+      "areaId": "djing_music",
+      "label": "DJing & music",
+      "emoji": "🎧",
+      "targetHours": 10,
+      "isPriority": true,
+      "detailNudge": "Paid creative path — worth protecting prep & gig time."
+    }
+  ],
+  "alerts": [
+    {
+      "areaId": "passion_rbl",
+      "label": "Radio Life",
+      "emoji": "📻",
+      "hoursGte": 6,
+      "percentOfScheduledGte": 12,
+      "detailAlert": "RBL / radio is using a lot of your scheduled week — notice if it crowded PM Life."
+    }
+  ],
+  "rhythm": [
+    { "key": "freeMorningsBefore11", "label": "Free mornings", "suffix": " weekdays", "icon": "🌅" },
+    { "key": "openEveningsAfter20", "label": "Open evenings", "suffix": " weekdays", "icon": "🌙" }
+  ]
+}

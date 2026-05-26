@@ -8,6 +8,8 @@ Calendar apps store **events**. They do not store **meaning**. The same color ca
 
 I'm Time must **ask** before it assumes. This is not a one-time settings screen; it's the **first** expression of learning through the **right questions**—curious, not a productivity audit. See [curiosity-reflection.md](curiosity-reflection.md).
 
+**Cryptic labels** (friend names, party names): ask once, store in [calendar-colors.json](../config/calendar-colors.json) → `labelClarifications` (e.g. chermi → DJing, dembooty → social, rob → social). See [priorities.md](priorities.md).
+
 ## When it runs
 
 | Moment | What happens |

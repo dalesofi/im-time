@@ -7,4 +7,7 @@ export const PATHS = {
   insights: path.join(ROOT, "config/insights-rules.json"),
   colors: path.join(ROOT, "config/calendar-colors.json"),
   lifeAreas: path.join(ROOT, "config/life-areas-default.json"),
+  weekSnapshot: path.join(ROOT, "config/week-snapshot.json"),
+  branding: path.join(ROOT, "config/app-branding.json"),
+  publicReportHtml: path.join(ROOT, "public/report.html"),
 };

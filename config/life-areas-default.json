@@ -2,118 +2,183 @@
   "lifeAreas": [
     {
       "id": "work",
-      "label": "Work",
+      "label": "Work (Button School)",
+      "emoji": "🏫",
+      "googleColor": "peacock",
+      "hex": "#039BE5",
+      "chartOrder": 20,
       "insightCards": false,
-      "showInChart": true
+      "showInChart": false,
+      "rollupInto": "job_search",
+      "userNote": "Counted inside PM Life 💼 on charts"
     },
     {
       "id": "passion_rbl",
-      "label": "RBL (community radio volunteer)",
+      "label": "Radio Life",
+      "emoji": "📻",
+      "googleColor": "blueberry",
+      "hex": "#3F51B5",
+      "chartOrder": 12,
       "insightCards": true,
-      "showInChart": true
+      "showInChart": true,
+      "userNote": "RBL nonprofit — radio, equipment, volunteer blocks"
     },
     {
       "id": "job_search",
-      "label": "Job search & brand",
+      "label": "PM Life",
+      "emoji": "💼",
+      "googleColor": "tangerine",
+      "hex": "#F4511E",
+      "chartOrder": 10,
       "insightCards": true,
-      "showInChart": true
+      "showInChart": true,
+      "userNote": "Orange — job search, brand, PM meetings"
     },
     {
       "id": "djing_music",
-      "label": "DJing & music prep",
+      "label": "DJing & music",
+      "emoji": "🎧",
+      "googleColor": "blueberry",
+      "hex": "#3F51B5",
+      "chartOrder": 14,
       "insightCards": true,
       "showInChart": true
-    },
-    {
-      "id": "self_care",
-      "label": "Self-care (body)",
-      "insightCards": true,
-      "showInChart": true,
-      "userNote": "Lavender \u2014 showers, skin/hair care; ~10h/week target"
     },
     {
       "id": "social_life",
       "label": "Social life",
-      "insightCards": true,
-      "showInChart": true
-    },
-    {
-      "id": "rest",
-      "label": "Rest & unstructured (lavender default)",
-      "insightCards": true,
-      "showInChart": true
-    },
-    {
-      "id": "day_rest",
-      "label": "Day rest (siesta, podcast, radio)",
-      "insightCards": true,
-      "showInChart": true
-    },
-    {
-      "id": "home_cleaning",
-      "label": "Home cleaning",
-      "insightCards": true,
-      "showInChart": true
-    },
-    {
-      "id": "laundry",
-      "label": "Laundry & wardrobe",
-      "insightCards": true,
-      "showInChart": true
-    },
-    {
-      "id": "health",
-      "label": "Health / exercise",
-      "insightCards": true,
-      "showInChart": true
-    },
-    {
-      "id": "admin",
-      "label": "Admin / life upkeep",
+      "emoji": "💜",
+      "googleColor": "lavender",
+      "hex": "#7986CB",
+      "chartOrder": 30,
       "insightCards": true,
       "showInChart": true
     },
     {
       "id": "meals",
-      "label": "Meals & nourishment",
+      "label": "Meals",
+      "emoji": "🥕",
+      "googleColor": "basil",
+      "hex": "#0B8043",
+      "chartOrder": 25,
+      "insightCards": true,
+      "showInChart": true,
+      "userNote": "Basil green — only blocked meals count; log eating on calendar to see hours"
+    },
+    {
+      "id": "pets",
+      "label": "Pet care: Lua",
+      "emoji": "🐕",
+      "googleColor": "banana",
+      "hex": "#F6BF26",
+      "chartOrder": 26,
+      "insightCards": false,
+      "showInChart": true,
+      "pinInChart": true
+    },
+    {
+      "id": "health",
+      "label": "Exercise",
+      "emoji": "🏃",
+      "googleColor": "sage",
+      "hex": "#33B679",
+      "chartOrder": 27,
+      "insightCards": true,
+      "showInChart": true,
+      "pinInChart": true,
+      "userNote": "Sage green — pilates, yoga, GAP, walks (walks with Lua also count as 🐕)"
+    },
+    {
+      "id": "self_care",
+      "label": "Self-care",
+      "emoji": "🛁",
+      "googleColor": "lavender",
+      "hex": "#7986CB",
+      "chartOrder": 28,
       "insightCards": true,
       "showInChart": true
     },
     {
-      "id": "pets",
-      "label": "Pets (Lua)",
-      "insightCards": false,
+      "id": "day_rest",
+      "label": "Day rest",
+      "emoji": "😴",
+      "googleColor": "lavender",
+      "hex": "#7986CB",
+      "chartOrder": 35,
+      "insightCards": true,
+      "showInChart": false
+    },
+    {
+      "id": "home_cleaning",
+      "label": "Home cleaning",
+      "emoji": "🧹",
+      "googleColor": "lavender",
+      "hex": "#9cb89c",
+      "chartOrder": 29,
+      "insightCards": true,
       "showInChart": true,
-      "trackOnly": true
+      "pinInChart": true
+    },
+    {
+      "id": "laundry",
+      "label": "Laundry",
+      "emoji": "👕",
+      "googleColor": "lavender",
+      "hex": "#7986CB",
+      "chartOrder": 41,
+      "insightCards": true,
+      "showInChart": false
+    },
+    {
+      "id": "admin",
+      "label": "Admin",
+      "emoji": "📋",
+      "googleColor": "graphite",
+      "hex": "#616161",
+      "chartOrder": 42,
+      "insightCards": true,
+      "showInChart": false
+    },
+    {
+      "id": "rest",
+      "label": "Rest (unstructured)",
+      "emoji": "☁️",
+      "googleColor": "lavender",
+      "hex": "#7986CB",
+      "chartOrder": 50,
+      "insightCards": false,
+      "showInChart": false
     },
     {
       "id": "uncategorized",
       "label": "Uncategorized",
+      "emoji": "❓",
+      "hex": "#c4c0bb",
+      "chartOrder": 99,
       "insightCards": false,
-      "showInChart": true
+      "showInChart": false
     }
   ],
+  "chartDisplay": {
+    "maxBars": 12,
+    "minHours": 1.5,
+    "alwaysShowAreaIds": ["pets", "health", "meals", "home_cleaning"],
+    "note": "Pinned areas always show (even 0h) with calendar nudges"
+  },
   "sourceCalendarDefaults": {
-    "buttonschool": "work",
+    "buttonschool": "job_search",
     "rbl": "passion_rbl",
-    "personal": "uncategorized"
+    "personal": "social_life"
   },
   "workCalendarInsightPolicy": "silent",
+  "meetingAlsoCountsAs": "job_search",
   "lavenderRoutingNote": "See calendar-colors.json keywordRoutes",
   "onboardingRequired": true,
   "relatedBlocksPolicy": "Allow hours to count toward multiple areas when config relatedBlocks.rules match",
   "onboardingUX": {
     "requireAccount": false,
     "persistence": "localStorage",
-    "everyQuestionAllows": [
-      "answer",
-      "skip",
-      "later"
-    ],
-    "editableLater": [
-      "mapping",
-      "goals",
-      "thresholds via config export"
-    ]
+    "everyQuestionAllows": ["answer", "skip", "later"],
+    "editableLater": ["mapping", "goals", "thresholds via config export"]
   }
 }

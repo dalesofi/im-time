@@ -79,7 +79,7 @@ Most calendar tools show *what* is scheduled. They rarely help people see *patte
 One path only. Every v1 feature should support this flow.
 
 1. **Land** — Short welcome: what I'm Time is (2–3 lines) and what it is not. Calm, spacious tone.
-2. **Load calendar data** — Product: user uploads one `.ics` file. Dogfood: app reads merged personal calendar (Button School + RBL + personal). App confirms date range and event count. Default window: **last 7 days**.
+2. **Load calendar data** — Product: user uploads one `.ics` file. Dogfood: app reads merged personal calendar (Button School + RBL + personal). User **selects week** (from/to dates). Default suggestion: last complete Mon–Sun or saved dogfood week (17–23 May 2026).
 3. **Calendar meaning interview** — Short onboarding: what each color means, how you label blocks, when one color = two meanings ([calendar-onboarding.md](calendar-onboarding.md)). Then map to life areas ([calendar-colors.json](../config/calendar-colors.json)). User edits labels—no raw event titles in UI.
 4. **Week at a glance** — Allocation view (hours and % by area) plus core stats (meeting hours, busiest day, largest open block, evenings without events). **Aggregates only**—see the forest, not every tree.
 5. **Insight cards** — 3–5 short observations from **rules + templates + data analysis** (compassionate, non-judgmental; no LLM in v1).
@@ -367,6 +367,9 @@ Explained in [tech.md §3](tech.md#3-re-import-modes-product--tech). **v1 intent
 | **Onboarding UX** | Skip / later / edit anytime; **localStorage**, no session ([onboarding-ux.md](onboarding-ux.md)) |
 | **Targets tension** | [targets-audit.md](targets-audit.md) — job search daily is aspiration, not weekly budget |
 | **Curiosity & questions** | Learn via interview + reflection; not AI-as-hero ([curiosity-reflection.md](curiosity-reflection.md)) |
+| **1–2 priorities** | Hard nudges only for user-chosen priorities; rest OK lighter ([priorities.md](priorities.md)) |
+| **Label clarifications** | Ask once for cryptic titles (names, parties); store in config |
+| **Career vs personal/care** | Observe when care time high & career blocks thin (not shame) |
 | Work calendar | Mapped, **no work insight cards** |
 
 **Scaffold:** [tech.md §13](tech.md#13-scaffold-plan-next--no-code-until-you-say-go) — say **go scaffold** when ready.

@@ -18,11 +18,11 @@ Load calendar data → map to life areas → show allocation + stats → show ru
 
 | # | Feature | What “done” means |
 |---|---------|-------------------|
-| 1 | **Data load** | Read `calendars/merged.ics` (later: upload ICS); parse events; default window = last 7 days (Mon–Sun or rolling 7—match [tech.md](tech.md)) |
+| 1 | **Data load + week picker** | Read `calendars/merged.ics`; user picks **from/to** dates ([week.html](../public/week.html)); dogfood preset 17–23 May 2026 |
 | 2 | **Calendar meaning + mapping** | Onboarding interview (questions = product); swatches + keywords; [calendar-onboarding.md](calendar-onboarding.md), [curiosity-reflection.md](curiosity-reflection.md) |
 | 3 | **Allocation view** | Hours and % per life area; total scheduled time; no event titles—aggregates only (“forest, not trees”) |
 | 4 | **Core stats** | Meeting hours/count, busiest day, longest open block, evenings without events |
-| 5 | **Insight cards** | ≥3 rule/template patterns fire on real data; compassionate copy per [mvp.md §7](mvp.md#7-content--tone-guardrails) |
+| 5 | **Insight cards** | Rule/template patterns; **1–2 priorities** get hard nudges; balance signal ([priorities.md](priorities.md)) |
 | 6 | **Lite journal** | One optional prompt; skip is neutral; shows on reflection page if filled |
 | 7 | **Weekly reflection page** | Single scrollable page: allocation + stats + insights + journal; portfolio-screenshot ready |
 | 8 | **Landing** | 2–3 line welcome; calm positioning |
@@ -41,7 +41,7 @@ Load calendar data → map to life areas → show allocation + stats → show ru
 
 **Rules:**
 - Respect timezones; document handling of all-day and recurring events.
-- Filter to selected date range (default: **current or last complete Mon–Sun week** — see [tech.md §12](tech.md#12-technical-decisions-resolved)).
+- **User selects week** (start + end date). Preset: dogfood week 17–23 May 2026. Product default suggestion: last complete Mon–Sun ([data-display.md](data-display.md)).
 - Count events; show date range to user.
 - Invalid file → friendly error.
 

@@ -47,6 +47,17 @@
         "mix",
         "party/venue names"
       ]
+    },
+    {
+      "id": "ambiguous_labels",
+      "prompt": "Some blocks are just a name or party title. When we see a label we don't know, should we ask what it means?",
+      "defaultForSofia": "Yes — one quick question, then remember (e.g. chermi = DJ gig, dembooty = social party, rob = social)"
+    },
+    {
+      "id": "weekly_priorities",
+      "prompt": "Pick 1–2 priorities for this season (only these get hard nudges). The rest can be lighter.",
+      "defaultForSofia": ["job_search", "djing_music"],
+      "maxChoices": 2
     }
   ]
 }

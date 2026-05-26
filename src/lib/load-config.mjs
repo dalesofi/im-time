@@ -10,5 +10,7 @@ export function loadConfig() {
     insights: loadJson(PATHS.insights),
     colors: loadJson(PATHS.colors),
     lifeAreas: loadJson(PATHS.lifeAreas),
+    weekSnapshot: loadJson(PATHS.weekSnapshot),
+    branding: loadJson(PATHS.branding),
   };
 }

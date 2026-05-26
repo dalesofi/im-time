@@ -1,10 +1,31 @@
 {
   "meta": {
-    "version": 5,
-    "maxCardsPerWeek": 3,
+    "version": 6,
+    "maxCardsPerWeek": 4,
     "weekBoundary": "monday_sunday",
     "voice": "gentle_friend_minimal",
     "humor": "some"
+  },
+  "priorities": {
+    "maxSelectable": 2,
+    "productPrinciple": "Only 1–2 areas get hard threshold nudges. Everything else is OK at a lighter rhythm—not failure.",
+    "defaultForSofia": ["job_search", "djing_music"],
+    "careerAreas": ["job_search", "djing_music", "passion_rbl"],
+    "personalCareAreas": [
+      "social_life",
+      "self_care",
+      "day_rest",
+      "meals",
+      "health",
+      "home_cleaning",
+      "laundry",
+      "pets"
+    ],
+    "balanceSignal": {
+      "note": "Gentle observe when personal/care time is high while career priorities are thin on the calendar",
+      "personalCareHoursGte": 30,
+      "careerHoursLt": 18
+    }
   },
   "thresholds": {
     "meetingHeavyHoursGte": 10,
@@ -57,9 +78,38 @@
       "caprixxo"
     ],
     "selfCareWeeklyHoursLt": 10,
-    "selfCareWeeklyHoursTarget": 10
+    "selfCareWeeklyHoursTarget": 10,
+    "unscheduledSleepHoursLt": 50,
+    "pmLifeCelebrateHoursGte": 12
   },
   "rules": [
+    {
+      "id": "pm_life_celebrate",
+      "priority": 0,
+      "when": {
+        "hoursAreaGte": {
+          "area": "job_search",
+          "hours": 12
+        }
+      },
+      "templates": [
+        "💼 PM Life: {job_hours}h this week — you went over your season target. That focus is showing up. Well done.",
+        "Orange blocks added up: about {job_hours}h for PM Life. You aimed high and the calendar backed you — congratulations."
+      ]
+    },
+    {
+      "id": "unscheduled_sleep_low",
+      "priority": 0,
+      "when": {
+        "unscheduledHoursLt": {
+          "useConfigThreshold": true
+        }
+      },
+      "templates": [
+        "Only about {unscheduled_hours}h unscheduled this week (mostly nights & off-calendar rest) — under your {sleep_threshold_hours}h margin. The calendar may be eating sleep.",
+        "Unscheduled time is thin ({unscheduled_hours}h of {week_hours}h in the week). Worth protecting night sleep before adding more blocks."
+      ]
+    },
     {
       "id": "meeting_heavy",
       "priority": 1,
@@ -83,8 +133,21 @@
       ]
     },
     {
+      "id": "personal_care_vs_career_focus",
+      "priority": 2,
+      "tier": "observe",
+      "when": {
+        "personalCareHighCareerLow": true
+      },
+      "templates": [
+        "Personal life & care (social, rest, meals, body…) logged about {personal_care_hours}h this week; career-focused blocks (job search, DJing, RBL) about {career_hours}h. You're prioritizing {priority_labels} this season—worth noticing if the calendar matches that, without guilt.",
+        "A lot of lavender-shaped time, lighter on the career colors you said matter most. Observation, not a verdict."
+      ]
+    },
+    {
       "id": "rbl_crumbs",
       "priority": 3,
+      "requiresPriority": "passion_rbl",
       "when": {
         "hoursAreaLt": {
           "area": "passion_rbl",
@@ -99,6 +162,7 @@
     {
       "id": "job_search_thin",
       "priority": 4,
+      "requiresPriority": "job_search",
       "when": {
         "hoursAreaLt": {
           "area": "job_search",
@@ -127,6 +191,7 @@
     {
       "id": "exercise_below_goal",
       "priority": 6,
+      "requiresPriority": "health",
       "when": {
         "hoursAreaLt": {
           "area": "health",
@@ -141,6 +206,7 @@
     {
       "id": "social_life_low",
       "priority": 7,
+      "requiresPriority": "social_life",
       "when": {
         "hoursAreaLt": {
           "area": "social_life",
@@ -165,6 +231,7 @@
     {
       "id": "djing_music_low",
       "priority": 8,
+      "requiresPriority": "djing_music",
       "when": {
         "hoursAreaLt": {
           "area": "djing_music",
@@ -212,6 +279,7 @@
     {
       "id": "meals_weekly_high",
       "priority": 12,
+      "requiresPriority": "meals",
       "when": {
         "hoursAreaGte": {
           "area": "meals",
@@ -225,6 +293,7 @@
     {
       "id": "meals_weekly_low",
       "priority": 13,
+      "requiresPriority": "meals",
       "when": {
         "hoursAreaLt": {
           "area": "meals",
@@ -238,6 +307,7 @@
     {
       "id": "home_cleaning_monthly_low",
       "priority": 14,
+      "requiresPriority": "home_cleaning",
       "when": {
         "hoursAreaRollingWeeksLt": {
           "area": "home_cleaning",
@@ -253,6 +323,7 @@
     {
       "id": "laundry_weekly_low",
       "priority": 15,
+      "requiresPriority": "laundry",
       "when": {
         "hoursAreaLt": {
           "area": "laundry",
@@ -291,6 +362,7 @@
     {
       "id": "self_care_weekly_low",
       "priority": 17,
+      "requiresPriority": "self_care",
       "when": {
         "hoursAreaLt": {
           "area": "self_care",
@@ -305,9 +377,30 @@
   ],
   "sampleGoals": [
     {
+      "id": "priorities_note",
+      "label": "This season: pick 1–2 priorities only (hard nudges). Rest = OK lighter.",
+      "editable": false,
+      "horizon": "season"
+    },
+    {
+      "id": "priority_job_search",
+      "label": "PRIORITY: PM Life 💼",
+      "editable": true,
+      "isPriority": true,
+      "areaId": "job_search"
+    },
+    {
+      "id": "priority_djing",
+      "label": "PRIORITY: DJing & music 🎧",
+      "editable": true,
+      "isPriority": true,
+      "areaId": "djing_music"
+    },
+    {
       "id": "free_mornings",
       "label": "Protect weekday mornings before 11",
-      "editable": true
+      "editable": true,
+      "trackOnly": true
     },
     {
       "id": "rbl_blocks",

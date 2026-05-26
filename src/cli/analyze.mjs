@@ -1,48 +1,29 @@
 #!/usr/bin/env node
-import { loadConfig } from "../lib/load-config.mjs";
-import { loadEvents } from "../lib/parse-ics.mjs";
-import { buildMapper } from "../lib/map-areas.mjs";
-import { getWeekRange, formatRange } from "../lib/week-range.mjs";
-import { computeStats, formatAreaBreakdown } from "../lib/stats.mjs";
-import { evaluateInsights } from "../lib/insights.mjs";
+import { writeFileSync } from "node:fs";
+import { parseWeekArgs } from "../lib/week-range.mjs";
+import { runAnalysis } from "../lib/run-analysis.mjs";
+import { buildHtmlReport } from "../lib/report-html.mjs";
 import { PATHS } from "../lib/paths.mjs";
+import { loadConfig } from "../lib/load-config.mjs";
 
 const jsonOut = process.argv.includes("--json");
+const htmlOut = process.argv.includes("--html");
 
 async function main() {
+  const weekRange = parseWeekArgs(process.argv);
+  const result = await runAnalysis(weekRange);
   const config = loadConfig();
-  const events = await loadEvents(PATHS.mergedIcs);
-  const map = buildMapper(config);
-  const mapped = events.map((ev) => {
-    const { areaId, alsoAreas = [], silentInsight } = map(ev);
-    return { ...ev, areaId, alsoAreas, silentInsight };
-  });
-
-  const weekRange = getWeekRange(new Date());
-  const stats = computeStats(mapped, weekRange, mapped);
-  const breakdown = formatAreaBreakdown(stats.areaHours, config.lifeAreas);
-  const insights = evaluateInsights(
-    config.insights,
-    stats,
-    config.insights.thresholds
-  );
-
-  const result = {
-    week: formatRange(weekRange.start, weekRange.end),
-    eventCount: stats.eventCount,
-    meetingHours: Math.round(stats.meetingHours * 10) / 10,
-    scheduledTimedHours: Math.round(stats.scheduledTimedHours * 10) / 10,
-    freeMorningsBefore11: stats.freeMorningsBefore11,
-    openEveningsAfter20: stats.openEveningsAfter20,
-    homeCleaningRolling4w: Math.round(stats.homeCleaningRolling * 10) / 10,
-    dayRestMaxHoursOneDay: Math.round(stats.dayRestMaxDay * 10) / 10,
-    allocation: breakdown,
-    insights: insights.map((i) => ({ id: i.id, text: i.text })),
-    goals: config.insights.sampleGoals?.map((g) => g.label) || [],
-  };
 
   if (jsonOut) {
     console.log(JSON.stringify(result, null, 2));
+    return;
+  }
+
+  if (htmlOut) {
+    const html = buildHtmlReport(result);
+    writeFileSync(PATHS.publicReportHtml, html, "utf8");
+    console.log(`\n  Wrote visual report → ${PATHS.publicReportHtml}`);
+    console.log("  Open: pnpm dev → http://localhost:5199/week.html\n");
     return;
   }
 
@@ -77,8 +58,17 @@ function printReport(result, config) {
     console.log(`    ${card.text}\n`);
   }
   console.log(line);
-  console.log("\n  Your intentions (not scored)\n");
+  const pri = config.insights.priorities?.defaultForSofia || [];
+  if (pri.length) {
+    console.log("\n  Your priorities (hard nudges only for these)\n");
+    for (const id of pri) {
+      const g = config.insights.sampleGoals?.find((x) => x.areaId === id);
+      console.log(`  ★ ${g?.label || id}`);
+    }
+  }
+  console.log("\n  Context intentions (lighter — OK if not hit)\n");
   for (const g of result.goals) {
+    if (g.startsWith("PRIORITY:") || g.startsWith("This season:")) continue;
     console.log(`  · ${g}`);
   }
   console.log("\n  Edit thresholds: config/insights-rules.json");

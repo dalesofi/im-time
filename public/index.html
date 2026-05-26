@@ -11,12 +11,17 @@
     <main class="shell">
       <h1>I'm Time</h1>
       <p class="lede">Make space for what matters.</p>
-      <p>
-        The product UI is not built yet. Use the <strong>CLI</strong> to fine-tune
-        insights and thresholds on your real calendar data.
+      <p class="muted" style="background:#e8e4df;padding:0.75rem;border-radius:8px">
+        If you see a <strong>Pomodoro timer</strong> or another app, you're on the wrong port.
+        Use <code>pnpm dev</code> and open the URL it prints (usually <code>:5199/week.html</code>).
       </p>
-      <pre class="cmd">pnpm analyze</pre>
-      <p class="muted">JSON: <code>pnpm analyze:json</code></p>
+      <p>
+        Pick a week in the browser, or use the <strong>CLI</strong> to tune mapping.
+      </p>
+      <p><a href="/week.html"><strong>→ Pick a week to analyze</strong></a></p>
+      <pre class="cmd">pnpm dev</pre>
+      <p class="muted">Then open <code>/week.html</code>. Setup help: <code>docs/dev-setup.md</code></p>
+      <pre class="cmd">pnpm analyze:dogfood</pre>
     </main>
   </body>
 </html>

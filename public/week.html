@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>I'm Time — pick a week</title>
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <style>
+      .picker { max-width: 32rem; }
+      label { display: block; margin-top: 1rem; font-size: 0.9rem; color: var(--color-text-muted); }
+      input[type="date"] {
+        width: 100%; padding: 0.5rem; margin-top: 0.25rem;
+        border: 1px solid var(--color-border); border-radius: 8px;
+        font-family: var(--font-family);
+      }
+      button {
+        margin-top: 1.25rem; padding: 0.6rem 1.2rem;
+        background: var(--color-accent); color: #fff; border: none;
+        border-radius: 8px; cursor: pointer; font-size: 1rem;
+      }
+      button:disabled { opacity: 0.5; cursor: wait; }
+      .presets { margin: 1rem 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+      .presets button { margin: 0; background: var(--color-surface); color: var(--color-text); border: 1px solid var(--color-border); }
+      #out { margin-top: 2rem; }
+      .err { color: #a44; }
+      pre.cmd { background: var(--color-surface); padding: 1rem; border-radius: var(--radius-card); overflow-x: auto; font-size: 0.85rem; }
+    </style>
+  </head>
+  <body>
+    <main class="shell picker">
+      <h1>Pick a week</h1>
+      <p class="lede">Choose the date range to analyze. Default dogfood week: <strong>17–23 May 2026</strong>.</p>
+
+      <div class="presets">
+        <button type="button" data-from="2026-05-17" data-to="2026-05-23">Dogfood (17–23 May)</button>
+        <button type="button" data-from="2026-05-18" data-to="2026-05-24">Mon–Sun (18–24 May)</button>
+      </div>
+
+      <form id="form">
+        <label>Start date <input type="date" name="from" value="2026-05-17" required /></label>
+        <label>End date <input type="date" name="to" value="2026-05-23" required /></label>
+        <button type="submit">Analyze this week</button>
+      </form>
+
+      <p class="muted" style="margin-top:1rem">
+        Run <code>pnpm dev</code> and use the URL it prints (port <strong>5199</strong>, not 5173).
+        If you see a Pomodoro app, wrong port — try <code>/api/health</code> on the printed URL.
+      </p>
+
+      <div id="out" hidden></div>
+    </main>
+    <script type="module">
+      const form = document.getElementById("form");
+      const out = document.getElementById("out");
+
+      document.querySelectorAll(".presets button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          form.from.value = btn.dataset.from;
+          form.to.value = btn.dataset.to;
+        });
+      });
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const from = form.from.value;
+        const to = form.to.value;
+        out.hidden = false;
+        out.innerHTML = "<p>Analyzing…</p>";
+        form.querySelector("button[type=submit]").disabled = true;
+        try {
+          const res = await fetch(`/api/analyze?from=${from}&to=${to}`);
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || res.statusText);
+          window.location.href = `/view.html?from=${from}&to=${to}`;
+        } catch (err) {
+          out.innerHTML = `
+            <p class="err"><strong>Could not analyze.</strong> ${err.message}</p>
+            <p>Run in terminal instead:</p>
+            <pre class="cmd">pnpm analyze --from ${from} --to ${to} --html\npnpm dev</pre>
+            <p class="muted">Use <code>pnpm dev</code> (our dev server), not <code>serve</code> alone — the week picker needs <code>/api/analyze</code>.</p>`;
+        } finally {
+          form.querySelector("button[type=submit]").disabled = false;
+        }
+      });
+    </script>
+  </body>
+</html>

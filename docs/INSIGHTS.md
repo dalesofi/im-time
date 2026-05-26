@@ -68,9 +68,27 @@ See `keywordRoutes` on lavender in [calendar-colors.json](../config/calendar-col
 | `djingMusicWeeklyHoursLt` | 10 | DJing below target |
 | `selfCareWeeklyHoursLt` | 10 | Self-care (lavender) below target |
 
+## Week snapshot box (“mapped to your goals”)
+
+Edit [config/week-snapshot.json](../config/week-snapshot.json):
+
+| Section | Purpose |
+|---------|---------|
+| **priorityGoal** | Main season goal (PM Life 💼) — on target / thin / strong |
+| **onTarget** | Areas that hit band this week (meals, pet care, self-care) |
+| **gentleNudge** | Below target but important (exercise, DJing) |
+| **alerts** | Radio Life if eating calendar space |
+| **rhythm** | Structural chips (free mornings, open evenings) |
+
+## Priorities (1–2 only)
+
+See [priorities.md](priorities.md). Rules with `requiresPriority` only fire if that area is in `priorities.defaultForSofia` (dogfood: **job_search**, **djing_music**).
+
+**Balance card:** `personal_care_vs_career_focus` when personal/care ≥30h and career &lt;18h.
+
 ## Targets tension
 
-See [targets-audit.md](targets-audit.md). Job search **3–4h/day** is trimester-scale; weekly thin insight stays **&lt;2h**. Many **10h floors** together are ambitious—not impossible, but they trade off.
+See [targets-audit.md](targets-audit.md). Job search **3–4h/day** is trimester-scale; weekly thin insight stays **&lt;2h**. Many **10h floors** together are ambitious—use **1–2 priorities** instead of guilting every floor.
 | `adminHeavyHoursGte` | 4 | Generic admin ceiling (separate from cleaning) |
 | `passionRblCrumbsHoursLt` | 3 | RBL crumbs |
 | `healthExerciseWeeklyHoursLt` | 5 | Exercise below goal |

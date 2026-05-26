@@ -96,16 +96,37 @@ function countOpenEvenings(events, weekStart, weekEnd, afterHour) {
 }
 
 export function formatAreaBreakdown(areaHours, lifeAreasConfig) {
-  const labels = Object.fromEntries(
-    lifeAreasConfig.lifeAreas.map((a) => [a.id, a.label])
+  const metaById = Object.fromEntries(
+    lifeAreasConfig.lifeAreas.map((a) => [
+      a.id,
+      {
+        label: a.label,
+        emoji: a.emoji || "",
+        hex: a.hex || "#5c6b8a",
+        showInChart: a.showInChart !== false,
+        pinInChart: a.pinInChart === true,
+        chartOrder: a.chartOrder ?? 50,
+      },
+    ])
   );
   const total = Object.values(areaHours).reduce((a, b) => a + b, 0) || 1;
   return Object.entries(areaHours)
-    .sort((a, b) => b[1] - a[1])
-    .map(([id, h]) => ({
-      id,
-      label: labels[id] || id,
-      hours: Math.round(h * 10) / 10,
-      percent: Math.round((h / total) * 100),
-    }));
+    .filter(([id, h]) => h > 0 && metaById[id]?.showInChart !== false)
+    .sort((a, b) => {
+      const oa = metaById[a[0]]?.chartOrder ?? 50;
+      const ob = metaById[b[0]]?.chartOrder ?? 50;
+      return oa - ob || b[1] - a[1];
+    })
+    .map(([id, h]) => {
+      const m = metaById[id] || {};
+      return {
+        id,
+        label: m.label || id,
+        emoji: m.emoji || "",
+        hex: m.hex || "#5c6b8a",
+        pinInChart: metaById[id]?.pinInChart === true,
+        hours: Math.round(h * 10) / 10,
+        percent: Math.round((h / total) * 100),
+      };
+    });
 }

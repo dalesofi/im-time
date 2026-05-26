@@ -38,6 +38,8 @@
 
 - [x] No blocking open product questions (technical fine points stay in [tech.md §12](tech.md#12-open-technical-questions))
 - [ ] One manual sanity check: event counts / hours for a known week feel plausible
+- [x] **Target dogfood week:** **17 May – 23 May 2026** (Sun–Sat) — `pnpm analyze:dogfood` / `pnpm analyze:dogfood:html`
+- [x] Priorities model + label clarifications ([priorities.md](priorities.md))
 
 ---
 
@@ -47,7 +49,8 @@
 
 - [x] `pnpm` + `package.json`, `tokens.css`, `public/` shell
 - [x] CLI: `pnpm analyze` on `merged.ics`
-- [ ] Browser: load `merged.ics` in UI stub
+- [x] Week picker UI + dev server (`week.html`, `view.html`, `pnpm dev`)
+- [ ] Spot-check mapping vs Google for dogfood week
 - [x] `config/insights-rules.json` + `config/life-areas-default.json` + `config/calendar-colors.json` + [INSIGHTS.md](INSIGHTS.md)
 
 **Exit:** `pnpm dev` (or serve) opens a calm landing page; console shows parsed event count.

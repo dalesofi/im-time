@@ -50,7 +50,14 @@ A week has **168h**; sleep and work aren't on this list. So many **10h floors** 
 
 - Keep **ceilings** (admin, day rest) as ceilings.
 - Keep **trimester** language for job search in goals, not daily failure cards.
-- In UI later: show **“this week's focus”** (pick 2–3 priorities), not all floors at once.
+- **Pick 1–2 priorities only** — hard nudges for those; rest is context ([priorities.md](priorities.md)).
+- **Balance signal:** when personal/care time is high and career blocks are light, observe gently (not “you failed social target”).
+
+## Implemented (May 2026)
+
+- `priorities.defaultForSofia`: job search + DJing
+- Insight rules use `requiresPriority` so social/self-care/meals floors don’t guilt by default
+- `personal_care_vs_career_focus` when personal/care ≥30h and career &lt;18h (with career priority set)
 
 ---
 

@@ -7,7 +7,9 @@
   "scripts": {
     "analyze": "node src/cli/analyze.mjs",
     "analyze:json": "node src/cli/analyze.mjs --json",
-    "dev": "serve public -l 5173",
+    "analyze:dogfood": "node src/cli/analyze.mjs --from 2026-05-17 --to 2026-05-23",
+    "analyze:dogfood:html": "node src/cli/analyze.mjs --from 2026-05-17 --to 2026-05-23 --html",
+    "dev": "node scripts/dev-server.mjs",
     "merge-calendars": "python3 scripts/merge-calendars.py"
   },
   "packageManager": "pnpm@10.10.0",

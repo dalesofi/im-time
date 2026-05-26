@@ -22,6 +22,9 @@ Most calendar tools optimize; I'm Time helps you see where your time actually we
 | [docs/onboarding-ux.md](docs/onboarding-ux.md) | Skip / later / edit — no account, localStorage |
 | [docs/targets-audit.md](docs/targets-audit.md) | When weekly targets add up or tension |
 | [docs/curiosity-reflection.md](docs/curiosity-reflection.md) | Questions, curiosity, reflection-powered (not AI-as-hero) |
+| [docs/dev-setup.md](docs/dev-setup.md) | **Step-by-step:** install, analyze, browser preview |
+| [docs/data-display.md](docs/data-display.md) | Text first → Python viz → custom charts |
+| [docs/priorities.md](docs/priorities.md) | 1–2 priorities, label clarifications, career vs care signal |
 | [docs/plan.md](docs/plan.md) | Phases, milestones, decisions log |
 | [docs/case-study.md](docs/case-study.md) | PM portfolio narrative + **§12 build log** (living process) |
 
@@ -38,6 +41,14 @@ python3 scripts/merge-calendars.py
 
 **Suggested reading order:** idea → mvp → features → tech → plan → case-study.
 
-**Try it:** `pnpm install` then `pnpm analyze` (needs `calendars/merged.ics` locally).
+**Try it:** [docs/dev-setup.md](docs/dev-setup.md) — install, analyze, browser preview.
+
+```bash
+pnpm install
+pnpm dev          # → http://localhost:5199/week.html (not 5173 — often Pomodoro/Vite)
+pnpm analyze:dogfood   # terminal: 17–23 May 2026
+```
+
+**Data display roadmap:** [docs/data-display.md](docs/data-display.md) (text first → Python charts → custom UI).
 
 **Next build step:** Tune mapping until allocation feels true; then wire UI (Phase 1b in [plan.md](docs/plan.md)).
