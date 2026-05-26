@@ -1,0 +1,157 @@
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:sofia@rbl.media
+X-WR-TIMEZONE:Europe/Madrid
+BEGIN:VEVENT
+DTSTART:20251128T170000Z
+DTEND:20251128T173000Z
+DTSTAMP:20260526T100035Z
+ORGANIZER;CN=Sofia Dalponte:mailto:sofia@rbl.media
+UID:5u368bd3m6ahtakkvmsd0k6455@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=TENTATIVE;CN=rblbc
+ nradio@gmail.com;X-NUM-GUESTS=0:mailto:rblbcnradio@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=jisell
+ e.steele84@gmail.com;X-NUM-GUESTS=0:mailto:jiselle.steele84@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Sofia 
+ Dalponte;X-NUM-GUESTS=0:mailto:sofia@rbl.media
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=tatian
+ a@mescladis.org;X-NUM-GUESTS=0:mailto:tatiana@mescladis.org
+X-GOOGLE-CONFERENCE:https://meet.google.com/qdn-kfyj-ywb
+CREATED:20251127T115721Z
+DESCRIPTION:-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~::~:~::-\nJoin with Google Meet: https://meet.google.com/qd
+ n-kfyj-ywb\nOr dial: (ES) +34 876 50 63 51 PIN: 679977861#\nMore phone numb
+ ers: https://tel.meet/qdn-kfyj-ywb?pin=9188873058663&hs=7\n\nLearn more abo
+ ut Meet at: https://support.google.com/a/users/answer/9282720\n\nPlease do 
+ not edit this section.\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-
+LAST-MODIFIED:20251127T190919Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:RBL <> Mescladís: Fem Barri 2026
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260430T160000Z
+DTEND:20260430T163000Z
+DTSTAMP:20260526T100035Z
+ORGANIZER;CN=Sofia Dalponte:mailto:sofia@rbl.media
+UID:0n6ohniks61ouisujpt9t30a4m@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Sofia 
+ Dalponte;X-NUM-GUESTS=0:mailto:sofia@rbl.media
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=stefan
+ ocaresana@gmail.com;X-NUM-GUESTS=0:mailto:stefanocaresana@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=mystig
+ rixmusic@gmail.com;X-NUM-GUESTS=0:mailto:mystigrixmusic@gmail.com
+X-GOOGLE-CONFERENCE:https://meet.google.com/gkg-ucja-tmu
+CREATED:20260430T105058Z
+DESCRIPTION:-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~::~:~::-\nJoin with Google Meet: https://meet.google.com/gk
+ g-ucja-tmu\nOr dial: (ES) +34 960 46 28 71 PIN: 328074995#\nMore phone numb
+ ers: https://tel.meet/gkg-ucja-tmu?pin=3209511505187&hs=7\n\nLearn more abo
+ ut Meet at: https://support.google.com/a/users/answer/9282720\n\nPlease do 
+ not edit this section.\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-
+LAST-MODIFIED:20260430T120839Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:RBL x WOMEX 2026 - Proposal 
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20251213T130000Z
+DTEND:20251213T170000Z
+DTSTAMP:20260526T100035Z
+UID:0hnipt861bn00ioqbvl857j1nk@google.com
+CREATED:20251128T171640Z
+LAST-MODIFIED:20251128T171651Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Fem Barri
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260420T150000Z
+DTEND:20260420T154500Z
+DTSTAMP:20260526T100035Z
+ORGANIZER;CN=womex.david@gmail.com:mailto:womex.david@gmail.com
+UID:3p73rmo7c2bec08ebiiteegn67@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=rblbcn
+ radio@gmail.com;X-NUM-GUESTS=0:mailto:rblbcnradio@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=womex.
+ david@gmail.com;X-NUM-GUESTS=0:mailto:womex.david@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sofia@
+ rbl.media;X-NUM-GUESTS=0:mailto:sofia@rbl.media
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=lo
+ renzo@rbl.media;X-NUM-GUESTS=0:mailto:lorenzo@rbl.media
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=st
+ ar@rbl.media;X-NUM-GUESTS=0:mailto:star@rbl.media
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=jisell
+ e.steele84@gmail.com;X-NUM-GUESTS=0:mailto:jiselle.steele84@gmail.com
+X-GOOGLE-CONFERENCE:https://meet.google.com/nyn-hhox-kix
+CREATED:20260416T134810Z
+DESCRIPTION:-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~::~:~::-\nJoin with Google Meet: https://meet.google.com/ny
+ n-hhox-kix\n\nLearn more about Meet at: https://support.google.com/a/users/
+ answer/9282720\n\nPlease do not edit this section.\n-::~:~::~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-
+LAST-MODIFIED:20260420T145938Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:WOMEX / RBL
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20250930T160000Z
+DTEND:20250930T170000Z
+DTSTAMP:20260526T100035Z
+ORGANIZER;CN=rblbcnradio@gmail.com:mailto:rblbcnradio@gmail.com
+UID:cdh3iob574s3ib9j6oqm4b9k6dimcb9pchh3gbb264s66cj4cgr62c316k@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=rblbcn
+ radio@gmail.com;X-NUM-GUESTS=0:mailto:rblbcnradio@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=gianfr
+ ancosebastiani@gmail.com;X-NUM-GUESTS=0:mailto:gianfrancosebastiani@gmail.c
+ om
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sofia@
+ rbl.media;X-NUM-GUESTS=0:mailto:sofia@rbl.media
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=pmorri
+ smaths@gmail.com;X-NUM-GUESTS=0:mailto:pmorrismaths@gmail.com
+CREATED:20250923T121349Z
+LAST-MODIFIED:20250926T101826Z
+LOCATION:Espai Salvadiscos\, Plaça de Santa Madrona\, 4\, Sants-Montjuïc\, 
+ 08004 Barcelona\, Spain
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:RBL x Salvadiscos meeting
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20251106T160000Z
+DTEND:20251106T163000Z
+DTSTAMP:20260526T100035Z
+ORGANIZER;CN=gdini@ibei.org:mailto:gdini@ibei.org
+UID:cdh3edhlcdgmcb9h70pm8b9k6krmab9o6kpm4b9p6hj3ec33ckoj2dpl64@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sofia@
+ rbl.media;X-NUM-GUESTS=0:mailto:sofia@rbl.media
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=ba
+ rbara.galdos@gmail.com;X-NUM-GUESTS=0:mailto:barbara.galdos@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=gdini@
+ ibei.org;X-NUM-GUESTS=0:mailto:gdini@ibei.org
+X-GOOGLE-CONFERENCE:https://meet.google.com/qsz-juyj-sgz
+CREATED:20251106T113710Z
+DESCRIPTION:-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~::~:~::-\nJoin with Google Meet: https://meet.google.com/qs
+ z-juyj-sgz\nOr dial: (US) +1 260-639-8034 PIN: 149842300#\n\nLearn more abo
+ ut Meet at: https://support.google.com/a/users/answer/9282720\n\nPlease do 
+ not edit this section.\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-
+LAST-MODIFIED:20251106T153548Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Invoicing!
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR
