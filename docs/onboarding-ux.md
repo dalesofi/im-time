@@ -4,6 +4,8 @@
 
 ## Principles
 
+**Tone:** Questions should feel like **curiosity** (“help us understand how you already see your week”), not judgment or optimization. Control comes from teaching and observing—not from being scored. See [curiosity-reflection.md](curiosity-reflection.md).
+
 Every onboarding step must offer:
 
 | Action | Meaning |

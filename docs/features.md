@@ -19,7 +19,7 @@ Load calendar data → map to life areas → show allocation + stats → show ru
 | # | Feature | What “done” means |
 |---|---------|-------------------|
 | 1 | **Data load** | Read `calendars/merged.ics` (later: upload ICS); parse events; default window = last 7 days (Mon–Sun or rolling 7—match [tech.md](tech.md)) |
-| 2 | **Calendar meaning + mapping** | Onboarding interview; swatches + keywords; [calendar-onboarding.md](calendar-onboarding.md) |
+| 2 | **Calendar meaning + mapping** | Onboarding interview (questions = product); swatches + keywords; [calendar-onboarding.md](calendar-onboarding.md), [curiosity-reflection.md](curiosity-reflection.md) |
 | 3 | **Allocation view** | Hours and % per life area; total scheduled time; no event titles—aggregates only (“forest, not trees”) |
 | 4 | **Core stats** | Meeting hours/count, busiest day, longest open block, evenings without events |
 | 5 | **Insight cards** | ≥3 rule/template patterns fire on real data; compassionate copy per [mvp.md §7](mvp.md#7-content--tone-guardrails) |
@@ -175,10 +175,11 @@ Load calendar data → map to life areas → show allocation + stats → show ru
 | Related-blocks UI (CAPRIXXO, errands) | v1.1 |
 | DJing verb subcategories (prep/sort/…) | v2 |
 | Full onboarding UI | v1.1 (config exists now) |
+| **Curiosity prompts** (pattern-triggered questions, ambiguity follow-ups) | v1.1–v2 — [curiosity-reflection.md](curiosity-reflection.md) |
 | Tasks, planning assistant, full journal | v2 |
 
 ---
-S
+
 ## Stretch (only if core loop ships early)
 
 Documented interest, **not committed:**

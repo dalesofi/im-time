@@ -1,7 +1,8 @@
 # I'm Time — Case Study (PM portfolio draft)
 
 > **Purpose:** Story for hiring managers and your portfolio site. Complements a future live demo.  
-> **Build list:** [features.md](features.md) · **Tech:** [tech.md](tech.md) · **Spec:** [mvp.md](mvp.md)
+> **Build list:** [features.md](features.md) · **Tech:** [tech.md](tech.md) · **Spec:** [mvp.md](mvp.md)  
+> **Process:** Portfolio narrative lives here; [plan.md](plan.md) and specialized docs are working notes. After each dogfood week or major milestone, merge highlights into **§4 Findings**, **§11**, and **§12 Build log**.
 
 ---
 
@@ -26,6 +27,8 @@ Meanwhile, “productivity culture” promises that the right system will elimin
 **Gap in the market:** Tools cluster at extremes—raw calendars, ruthless optimizers, or generic wellness apps. Few products sit in the middle: **data-informed, emotionally intelligent, anti-hustle.**
 
 **Design insight:** A calendar color is not a category until the user says what it means. The product must **interview** users on how they code and annotate—or mislabel social life, paid DJ work, and laundry.
+
+**Founder insight:** Many people already stare at their calendars out of **curiosity**, not goal-orientation. The product should **ask the right questions** so patterns become conscious through **participation**—reflection-powered, not optimization- or AI-powered. Control can come from observing something confusing until it clarifies. See [curiosity-reflection.md](curiosity-reflection.md).
 
 ---
 
@@ -59,7 +62,7 @@ Meanwhile, “productivity culture” promises that the right system will elimin
 
 | Method | Purpose | Status |
 |--------|---------|--------|
-| Founder dogfood | Weekly reflection on merged personal calendars | Ready (data in repo) |
+| Founder dogfood | Weekly reflection on merged personal calendars | **In progress** — first CLI pass done |
 | ICS merge + spot-check | Three calendars → one life view | **Done** — [calendars/merged.ics](../calendars/merged.ics) |
 | 2–3 informal conversations | Language and willingness to re-import weekly | **Later** (post–v1 loop) |
 | Portfolio review | Story lands with PM mentors | Optional |
@@ -70,11 +73,19 @@ Meanwhile, “productivity culture” promises that the right system will elimin
 - Do **rule-based insights** feel true on a real week?
 - When we add re-import, is **history + compare** the right v1.1 hook?
 
-### Findings (placeholder)
+### Findings
 
-```text
-[ Date ] — Observation:
-```
+| Date | Observation |
+|------|-------------|
+| 2026-05-26 | **Google ICS exports omit event colors** — product must ask how users color-code ([calendar-onboarding.md](calendar-onboarding.md)); dogfood uses keywords on titles until UI onboarding exists. |
+| 2026-05-26 | **First `pnpm analyze` (week 25–31 May):** ~70% of timed hours still **uncategorized** — mapping/onboarding is the real wedge, not “more insights.” |
+| 2026-05-26 | Rule-based cards on a thin week felt **directionally true** (RBL crumbs, job search thin, exercise 0h) without shaming event titles. |
+| 2026-05-26 | **Many ~10h/week floors** (social, self-care, DJing) plus job-search “3–4h/day” don’t fit one week at once — documented tensions, not failures ([targets-audit.md](targets-audit.md)). |
+| 2026-05-26 | **No account for MVP onboarding** is enough: skip / later / edit + `localStorage` ([onboarding-ux.md](onboarding-ux.md)); CLI + config for dogfood now. |
+| 2026-05-26 | **Curiosity > optimization** — calendar-heavy users look often to *understand*, not to win; product learns via questions + participation ([curiosity-reflection.md](curiosity-reflection.md)). |
+| 2026-05-26 | Follow-ups **only when ambiguous**; founder looks at **big blocks** (“what did I actually do?”) | Shapes v1.1 prompt triggers, not weekly quiz fatigue |
+
+*Add a row after each dogfood week or milestone.*
 
 ---
 
@@ -87,6 +98,8 @@ Meanwhile, “productivity culture” promises that the right system will elimin
 | H3 | Awareness wedge is right before planning/tasks | Complete loop without task features | Untested |
 | H4 | Aggregate-only UI builds trust (privacy + patterns) | You prefer labels over event titles | Untested |
 | H5 | One optional journal prompt adds meaning without homework | You write some weeks, skip others, both feel fine | Untested |
+| H6 | **Right questions** make patterns conscious better than passive stats | You engage with mapping/reflection prompts; insights feel *yours* | Untested |
+| H7 | Curiosity framing (observe, don’t fix) feels relieving for calendar-heavy users | You return without guilt; no urge to “optimize” the app | Untested |
 
 ---
 
@@ -121,6 +134,12 @@ You open I'm Time and see a calm welcome—this is not another productivity app.
 | Live / research bar | Beta cohort · Solo dogfood | **Solo dogfood for portfolio** | User research scheduled after v1 story exists |
 | Google sync | v1 · v1.1 · v2 | **v1.1+** | Defer integration cost |
 | AI in positioning | Lead with AI · Lead with philosophy | **Philosophy / interpretation** | Not “another AI calendar” |
+| Onboarding UX | Wizard only · Skip/later everywhere | **Answer · Skip · Set later**; always editable | Humane MVP; no forced interview |
+| Auth / persistence (v1) | Account · local only | **localStorage**; no server session | Ships portfolio demo without backend |
+| Lavender routing | One meaning · Keywords | **Default social**; keywords → self-care, cleaning, laundry, day rest | Same swatch, different life areas |
+| Self-care | Fold into social · Own area | **`self_care` on lavender** (~10h/wk) | Showers/skin/hair ≠ social time |
+| Related blocks | Single count · Dual areas | **Dual-count** (`alsoAreas`) for CAPRIXXO, RBL errands | Intentional overlap, not double guilt |
+| Weekly target honesty | Hide tension · Surface gently | **[targets-audit.md](targets-audit.md)** + insights observe | Job search daily = trimester aspiration |
 
 ---
 
@@ -171,6 +190,7 @@ You open I'm Time and see a calm welcome—this is not another productivity app.
 - [ ] Screenshot — insight cards
 - [ ] Screenshot — weekly reflection
 - [ ] Dogfood story (§11)
+- [x] Build log started (§12)
 - [ ] Demo/repo link (*when exists*)
 - [ ] Role clarity — product definition, scoping, copy direction, build
 
@@ -178,13 +198,44 @@ You open I'm Time and see a calm welcome—this is not another productivity app.
 
 ## 11. Open narrative gaps
 
-- **Before:** *[ how I related to my calendar ]*
-- **After:** *[ what shifted after reflection cycles ]*
-- **Surprise:** *[ what the merged view revealed across work / projects / personal ]*
-- **Tradeoff:** *[ one renunciation I noticed ]*
-- **What I cut:** Re-import, comparison, AI, event titles — to ship a honest weekly mirror first
-- **What’s next:** History + compare, then user conversations
+Draft from build so far — refine after four reflection cycles.
+
+- **Before:** Calendar = schedule of obligations; colors meant something to me in Google but that meaning didn't travel in exports.
+- **After:** *[ TBD after 4 weekly reflection sessions ]*
+- **Surprise:** Merging three calendars (~4k events) made "one life" visible, but **first analyzed week was mostly uncategorized** — the product's job is interpretation layer (mapping + onboarding), not raw ICS.
+- **Tradeoff:** I can't maximize social + self-care + DJing + meals + exercise + RBL + job search in the same 168h week; insights should **observe**, not pretend all floors hit every week ([targets-audit.md](targets-audit.md)).
+- **What I cut:** Re-import, week comparison, LLM, event titles in UI, Google OAuth — to ship an honest weekly mirror first.
+- **What's next:** Improve keyword/color mapping until allocation feels true → UI shell → onboarding wizard (skip/later) → history + compare (v1.1) → 2–3 user conversations.
 
 ---
 
-*Last updated: May 2026.*
+## 12. Build log
+
+Chronological process journal for portfolio "how I built it." Stable decisions stay in **§7**; dated work lives here.
+
+| Date | What we did | Decision / learning | Artifact |
+|------|-------------|---------------------|----------|
+| 2026-05-26 | Initial product thesis and repo | Humane time ≠ productivity optimization | [idea.md](idea.md), first commit |
+| 2026-05-26 | MVP + docs scaffold | Awareness wedge; Mon–Sun week; aggregates-only UI | [mvp.md](mvp.md), [features.md](features.md), [tech.md](tech.md), [plan.md](plan.md) |
+| 2026-05-26 | Merged 3 personal ICS exports | One dogfood file; UID dedupe; source tags | [scripts/merge-calendars.py](../scripts/merge-calendars.py), `calendars/merged.ics` |
+| 2026-05-26 | Insight + color config (editable) | Rules/templates not LLM; max 3 cards/week | [config/insights-rules.json](../config/insights-rules.json), [INSIGHTS.md](INSIGHTS.md) |
+| 2026-05-26 | Personal color legend + keywords | Lavender→social default; blueberry→RBL + DJing; CAPRIXXO dual-count | [config/calendar-colors.json](../config/calendar-colors.json), [calendar-onboarding.md](calendar-onboarding.md) |
+| 2026-05-26 | Related / compound blocks | Hours can count in two areas by design | `alsoAreas`, compound banana/basil notes in config |
+| 2026-05-26 | Targets audit | 10h floors + daily job aspiration = tension, not bug | [targets-audit.md](targets-audit.md) |
+| 2026-05-26 | Self-care on lavender | Showers, skin/hair → `self_care` ~10h/wk | config + [INSIGHTS.md](INSIGHTS.md) |
+| 2026-05-26 | Onboarding UX spec | Skip / later / edit; no login v1 | [onboarding-ux.md](onboarding-ux.md), [config/onboarding-questions.json](../config/onboarding-questions.json) |
+| 2026-05-26 | CLI scaffold (`pnpm analyze`) | Validate rules on real week before UI | [src/cli/analyze.mjs](../src/cli/analyze.mjs), `src/lib/*` |
+| 2026-05-26 | First analyze run | ~70% uncategorized → prioritize mapping | Terminal / CLI output (week 25–31 May 2026) |
+| 2026-05-26 | Fixed `node-ical` install | Lockfile out of sync with package.json | `pnpm install`, updated `pnpm-lock.yaml` |
+| 2026-05-26 | Build log + findings backfill | Case study = living process doc | This file §4, §11, §12 |
+| 2026-05-26 | Curiosity & reflection pillar | Questions = product; reflection-powered; control via observing | [curiosity-reflection.md](curiosity-reflection.md) |
+
+### How to maintain
+
+1. **After each dogfood week:** one row in §12; one line in §4 Findings if something new surfaced.
+2. **After a major milestone** (e.g. UI allocation shipped): update §11 narrative + [plan.md](plan.md) checklist; link artifact.
+3. **When a decision locks:** add or update a row in §7 (don't duplicate long rationale in §12).
+
+---
+
+*Last updated: 26 May 2026.*

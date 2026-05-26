@@ -59,6 +59,18 @@ The product should help users:
 - notice unconscious patterns,
 - and intentionally choose what deserves their finite attention.
 
+## 2b. Curiosity Over Optimization
+
+Many people already study their calendar—often obsessively—not to maximize output, but out of **curiosity**: *How did I actually live this week?*
+
+I'm Time supports that stance:
+
+- **Learning about you** means asking the **right** questions (how you color-code, what labels mean, when one swatch hides two lives)—not inferring from data alone.
+- **Patterns become conscious** when the user participates: answer, skip, revisit, one optional reflection line—not passive dashboards.
+- **Reflection-powered, not AI-as-hero:** rules and your words first; any automation serves interpretation, not replacement.
+- **Control through observing:** sitting with a confusing week until it clarifies beats micromanaging every block.
+
+See [curiosity-reflection.md](curiosity-reflection.md) for product implications and roadmap.
 
 ## 3. Time Is Not Something We “Have”
 
@@ -127,7 +139,9 @@ Never shaming.
 
 ## 2. Pattern Recognition
 
-Use AI to detect:
+> **v1 note:** Pattern surfacing is **rule-based + user-taught mapping**, with compassionate copy—not LLM detection. AI-assisted detection is a possible later layer; see [curiosity-reflection.md](curiosity-reflection.md).
+
+Use AI to detect (future / optional):
 - recurring routines,
 - overload cycles,
 - burnout signals,

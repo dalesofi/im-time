@@ -1,6 +1,7 @@
 {
   "title": "How do you code your calendar?",
-  "intro": "We can't interpret your time without your system. Colors and labels mean different things for everyone.",
+  "intro": "We can't interpret your time without your system. Colors and labels mean different things for everyone. These questions aren't a test—we're curious how you already see your week.",
+  "tone": "curiosity_not_audit",
   "questions": [
     {
       "id": "lavender_means",

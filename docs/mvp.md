@@ -14,12 +14,16 @@ This document defines **what** v1 is, **for whom**, and **why**. Build order and
 
 **Core learning:** calendars encode *how you already organize meaning* (colors, names, annotations). The product must **ask how you code and label time** before interpreting—otherwise insights are wrong. See [calendar-onboarding.md](calendar-onboarding.md).
 
+**Differentiator (beyond v1 stats):** The product **learns about you through questions**—curious, specific, skippable—not through optimization scoring. Users become conscious of patterns by **participating** (mapping, reflection prompts), not by being told what to fix. **Reflection-powered**, not AI-as-hero. See [curiosity-reflection.md](curiosity-reflection.md).
+
 **Positioning**
 
 | This is | This is not |
 |---------|-------------|
 | A reflective companion for finite humans | Another productivity or hustle app |
 | Awareness and interpretation | Optimization, gamification, streaks |
+| Curious observation (“what kind of week was this?”) | Goal tracking and performance dashboards |
+| Learning via the right questions | Guessing meaning from data alone |
 | Compassionate honesty about tradeoffs | Shame, guilt, or “fix your calendar” framing |
 
 **Inspired by:** humane time philosophy (e.g. *Four Thousand Weeks*) — peace comes from accepting limits within time, not mastering it.
@@ -362,6 +366,7 @@ Explained in [tech.md §3](tech.md#3-re-import-modes-product--tech). **v1 intent
 | **Self-care (lavender)** | Showers, skin/hair; **~10h/week** target |
 | **Onboarding UX** | Skip / later / edit anytime; **localStorage**, no session ([onboarding-ux.md](onboarding-ux.md)) |
 | **Targets tension** | [targets-audit.md](targets-audit.md) — job search daily is aspiration, not weekly budget |
+| **Curiosity & questions** | Learn via interview + reflection; not AI-as-hero ([curiosity-reflection.md](curiosity-reflection.md)) |
 | Work calendar | Mapped, **no work insight cards** |
 
 **Scaffold:** [tech.md §13](tech.md#13-scaffold-plan-next--no-code-until-you-say-go) — say **go scaffold** when ready.

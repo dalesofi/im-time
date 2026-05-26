@@ -10,6 +10,8 @@
 
 **Process north star:** Documentation → build smallest loop ([features.md](features.md) F1–F8) → dogfood on [calendars/merged.ics](../calendars/merged.ics) → polish for portfolio.
 
+**Documentation rhythm:** [plan.md](plan.md) + specialized docs = working notes. After each dogfood week or major milestone, **merge highlights** into [case-study.md §4 / §11 / §12](case-study.md#12-build-log).
+
 **Ready to build when:**
 - [x] Product decisions captured in [mvp.md §10](mvp.md#10-product-decisions)
 - [x] Technical decisions in [tech.md §12](tech.md#12-technical-decisions-resolved)
@@ -27,7 +29,8 @@
 
 - [x] Edit [mvp.md](mvp.md) — decisions in §10
 - [x] Merge three ICS exports → [calendars/merged.ics](../calendars/merged.ics)
-- [ ] Edit [case-study.md](case-study.md) after first dogfood insights
+- [x] Edit [case-study.md](case-study.md) — §12 build log + first dogfood findings (2026-05-26)
+- [ ] Add next dogfood week row to case-study §12 + §4
 - [ ] Spot-check one week in merged data vs Google Calendar
 - [ ] *(Later)* 2–3 informal conversations — noted in case-study; **not blocking v1 build**
 
@@ -42,7 +45,9 @@
 
 **Goal:** Empty app shell per [tech.md §13 Phase A](tech.md#13-scaffold-plan-next--no-code-until-you-say-go).
 
-- [ ] `pnpm init`, `tokens.css`, `main.js` stub, load `merged.ics`
+- [x] `pnpm` + `package.json`, `tokens.css`, `public/` shell
+- [x] CLI: `pnpm analyze` on `merged.ics`
+- [ ] Browser: load `merged.ics` in UI stub
 - [x] `config/insights-rules.json` + `config/life-areas-default.json` + `config/calendar-colors.json` + [INSIGHTS.md](INSIGHTS.md)
 
 **Exit:** `pnpm dev` (or serve) opens a calm landing page; console shows parsed event count.
@@ -107,11 +112,12 @@
 - [x] mvp.md §10 decisions
 - [x] merged.ics created
 - [x] insight + color + life-area configs
-- [ ] case-study.md updated post-dogfood
+- [x] case-study.md §12 build log + first findings (ongoing: add per dogfood week)
 - [ ] Calendar spot-check
 
 ### Phase 1a
-- [ ] pnpm + vanilla shell + tokens.css
+- [x] pnpm + vanilla shell + tokens.css
+- [x] CLI analyzes merged.ics
 - [ ] merged.ics loads in browser
 
 ### Phase 1b

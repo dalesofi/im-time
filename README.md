@@ -4,7 +4,9 @@ A reflective companion for finite humans — **make space for what matters.**
 
 Most calendar tools optimize; I'm Time helps you see where your time actually went and reflect on it with calm, honest interpretation.
 
-**Status:** Documentation + calendar data + **insight/color config**. App scaffold next ([tech.md §13](docs/tech.md#13-scaffold-plan-next--no-code-until-you-say-go)).
+**Status:** Docs + merged calendars + insight/color config + **CLI weekly analyze** (`pnpm analyze`). UI shell next.
+
+**Living process doc:** [docs/case-study.md](docs/case-study.md) — portfolio narrative plus **§12 Build log** (backfilled after each dogfood week or milestone). Working notes stay in [plan.md](docs/plan.md) and specialized docs; merge highlights into the case study when something ships or surprises you.
 
 ## Documents
 
@@ -19,8 +21,9 @@ Most calendar tools optimize; I'm Time helps you see where your time actually we
 | [docs/calendar-onboarding.md](docs/calendar-onboarding.md) | Why we ask how you color-code your calendar |
 | [docs/onboarding-ux.md](docs/onboarding-ux.md) | Skip / later / edit — no account, localStorage |
 | [docs/targets-audit.md](docs/targets-audit.md) | When weekly targets add up or tension |
+| [docs/curiosity-reflection.md](docs/curiosity-reflection.md) | Questions, curiosity, reflection-powered (not AI-as-hero) |
 | [docs/plan.md](docs/plan.md) | Phases, milestones, decisions log |
-| [docs/case-study.md](docs/case-study.md) | PM portfolio narrative |
+| [docs/case-study.md](docs/case-study.md) | PM portfolio narrative + **§12 build log** (living process) |
 
 ## Calendar data
 
@@ -35,4 +38,6 @@ python3 scripts/merge-calendars.py
 
 **Suggested reading order:** idea → mvp → features → tech → plan → case-study.
 
-**Next build step:** Say **go scaffold** to run Phase 1a (pnpm, `tokens.css`, vanilla shell).
+**Try it:** `pnpm install` then `pnpm analyze` (needs `calendars/merged.ics` locally).
+
+**Next build step:** Tune mapping until allocation feels true; then wire UI (Phase 1b in [plan.md](docs/plan.md)).

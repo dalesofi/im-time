@@ -6,7 +6,7 @@
 
 Calendar apps store **events**. They do not store **meaning**. The same color can mean social life, volunteer work, paid creative work, or laundry—depending on the person.
 
-I'm Time must **ask** before it assumes. This is not a one-time settings screen; it's core to the thesis: *interpretation, not optimization.*
+I'm Time must **ask** before it assumes. This is not a one-time settings screen; it's the **first** expression of learning through the **right questions**—curious, not a productivity audit. See [curiosity-reflection.md](curiosity-reflection.md).
 
 ## When it runs
 
