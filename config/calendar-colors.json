@@ -5,8 +5,38 @@
       "id": "lavender",
       "label": "Lavender",
       "hex": "#7986CB",
-      "lifeAreaId": "rest",
-      "userNote": "Rest & unstructured"
+      "lifeAreaId": "day_rest",
+      "userNote": "Split by keyword: day rest (default), home cleaning, laundry. Sleep is usually not scheduled.",
+      "keywordRoutes": [
+        {
+          "keywords": [
+            "cleaning",
+            "limpiar",
+            "limpieza"
+          ],
+          "lifeAreaId": "home_cleaning",
+          "match": "title_contains"
+        },
+        {
+          "keywords": [
+            "ropa",
+            "colada",
+            "laundry",
+            "wardrobe"
+          ],
+          "lifeAreaId": "laundry",
+          "match": "title_contains"
+        },
+        {
+          "keywords": [
+            "siesta",
+            "podcast",
+            "radio"
+          ],
+          "lifeAreaId": "day_rest",
+          "match": "title_contains"
+        }
+      ]
     },
     "tangerine": {
       "id": "tangerine",
@@ -51,7 +81,43 @@
         "park"
       ],
       "lifeAreaId": "pets",
-      "note": "Special activities with Lua beyond neighbourhood walks"
+      "note": "Lua special outings"
+    },
+    {
+      "keywords": [
+        "cleaning",
+        "limpiar",
+        "limpieza"
+      ],
+      "lifeAreaId": "home_cleaning",
+      "note": "Often on lavender; house cleaning"
+    },
+    {
+      "keywords": [
+        "ropa",
+        "colada"
+      ],
+      "lifeAreaId": "laundry",
+      "note": "Often on lavender; clothes & wardrobe"
+    },
+    {
+      "keywords": [
+        "siesta",
+        "podcast",
+        "radio"
+      ],
+      "lifeAreaId": "day_rest",
+      "note": "Mid-day rest; not sleep"
+    },
+    {
+      "keywords": [
+        "supermarket",
+        "supermercado",
+        "cooking",
+        "cocinar"
+      ],
+      "lifeAreaId": "meals",
+      "note": "Often on basil"
     }
   ],
   "exceptions": [
@@ -68,5 +134,8 @@
     "basil",
     "banana",
     "sage"
-  ]
+  ],
+  "sleepPolicy": {
+    "note": "Sleep is generally not scheduled. Do not infer sleep from gaps. Only count if explicitly blocked."
+  }
 }

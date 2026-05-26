@@ -111,6 +111,12 @@ Filter events where `start` falls within range (define inclusive boundaries in c
 
 **Exceptions:** Banana/yellow = **always** Pets (Lua), any calendar.
 
+**Lavender split** (title keywords, case-insensitive): `siesta|podcast|radio` → `day_rest`; `limpiar|limpieza|cleaning` → `home_cleaning`; `ropa|colada` → `laundry`; default lavender → `day_rest`.
+
+**Sleep:** do not schedule or infer from gaps.
+
+**Keyword routing uses event titles internally only** — never displayed in UI (forest, not trees).
+
 **Category labels (forest, not trees):**
 
 - Do **not** show raw `SUMMARY` in UI.

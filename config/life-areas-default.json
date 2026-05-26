@@ -26,7 +26,25 @@
     },
     {
       "id": "rest",
-      "label": "Rest & unstructured",
+      "label": "Rest & unstructured (lavender default)",
+      "insightCards": true,
+      "showInChart": true
+    },
+    {
+      "id": "day_rest",
+      "label": "Day rest (siesta, podcast, radio)",
+      "insightCards": true,
+      "showInChart": true
+    },
+    {
+      "id": "home_cleaning",
+      "label": "Home cleaning",
+      "insightCards": true,
+      "showInChart": true
+    },
+    {
+      "id": "laundry",
+      "label": "Laundry & wardrobe",
       "insightCards": true,
       "showInChart": true
     },
@@ -45,9 +63,8 @@
     {
       "id": "meals",
       "label": "Meals & nourishment",
-      "insightCards": false,
-      "showInChart": true,
-      "trackOnly": true
+      "insightCards": true,
+      "showInChart": true
     },
     {
       "id": "pets",
@@ -68,5 +85,6 @@
     "rbl": "passion_rbl",
     "personal": "uncategorized"
   },
-  "workCalendarInsightPolicy": "silent"
+  "workCalendarInsightPolicy": "silent",
+  "lavenderRoutingNote": "See calendar-colors.json keywordRoutes"
 }

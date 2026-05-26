@@ -199,6 +199,12 @@ Phase 2 polish
 | Exercise goal | **≥5h/week**; insight if below |
 | RBL goal | 2× **2–3h** blocks/week |
 | Job search | Thin **&lt;2h**; aspiration **3–4h daily** (trimester) |
+| Lavender | Split: day rest / home cleaning / laundry (keywords) |
+| Day rest | Max **2h/day** (siesta, podcast, radio) |
+| Meals | **~14h/week** target band |
+| Home cleaning | **10h/month** (4-week roll); **3h** / 2 weeks |
+| Laundry | **2h/week** |
+| Sleep | Not inferred |
 | Merge script | **`scripts/merge-calendars.py`** ✓ |
 | Hosting / public URL | ___ when portfolio needs a live URL |
 

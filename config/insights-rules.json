@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": 1,
+    "version": 2,
     "maxCardsPerWeek": 3,
     "weekBoundary": "monday_sunday",
     "voice": "gentle_friend_minimal",
@@ -26,7 +26,22 @@
     "healthExerciseWeeklyHoursLt": 5,
     "relationshipsLowHoursLt": 2,
     "mealsTrackOnly": true,
-    "petsTrackOnly": true
+    "petsTrackOnly": true,
+    "dayRestDailyHoursMax": 2,
+    "dayRestKeywords": [
+      "siesta",
+      "podcast",
+      "radio"
+    ],
+    "mealsWeeklyTargetHours": 14,
+    "mealsDailyEatingHoursTarget": 2,
+    "mealsPrepWeeklyHoursTarget": 4,
+    "mealsWeeklyHighHoursGte": 18,
+    "homeCleaningMonthlyHoursMin": 10,
+    "homeCleaningBlockHours": 3,
+    "homeCleaningBiweeklyWeeks": 2,
+    "laundryWeeklyHoursMin": 2,
+    "monthlyEvaluationWindowWeeks": 4
   },
   "rules": [
     {
@@ -153,6 +168,71 @@
       ]
     },
     {
+      "id": "day_rest_over_daily",
+      "priority": 11,
+      "when": {
+        "dayRestAnyDayHoursGt": 2
+      },
+      "templates": [
+        "One day had more than 2h of siesta / podcast / radio on the books. Mid-day rest is allowed—it just piled up that day.",
+        "Day rest passed 2h on at least one day. Notice if it felt restorative or like avoidance."
+      ]
+    },
+    {
+      "id": "meals_weekly_high",
+      "priority": 12,
+      "when": {
+        "hoursAreaGte": {
+          "area": "meals",
+          "hours": 18
+        }
+      },
+      "templates": [
+        "Meals & nourishment: about {meals_hours}h this week—above your ~14h band (≈2h/day eating + ~4h prep). Counting isn't judging—just seeing the pattern."
+      ]
+    },
+    {
+      "id": "meals_weekly_low",
+      "priority": 13,
+      "when": {
+        "hoursAreaLt": {
+          "area": "meals",
+          "hours": 8
+        }
+      },
+      "templates": [
+        "Only about {meals_hours}h blocked for meals this week. You aim for ~14h—time to eat and shop matters to you."
+      ]
+    },
+    {
+      "id": "home_cleaning_monthly_low",
+      "priority": 14,
+      "when": {
+        "hoursAreaRollingWeeksLt": {
+          "area": "home_cleaning",
+          "hours": 10,
+          "weeks": 4
+        }
+      },
+      "templates": [
+        "Home cleaning: about {cleaning_hours}h over the last {window_weeks} weeks. You're aiming for ~10h/month (3h blocks every two weeks).",
+        "Less house-cleaning time than you meant. A 3h block every two weeks is the rhythm you wanted."
+      ]
+    },
+    {
+      "id": "laundry_weekly_low",
+      "priority": 15,
+      "when": {
+        "hoursAreaLt": {
+          "area": "laundry",
+          "hours": 2
+        }
+      },
+      "templates": [
+        "Laundry & wardrobe: about {laundry_hours}h this week. You'd like ~2h weekly for ropa/colada and ordering your space."
+      ]
+    },
+    {
       "id": "quiet_week",
       "priority": 99,
       "when": {
@@ -216,6 +296,26 @@
     {
       "id": "less_admin",
       "label": "Stop letting admin eat the gaps",
+      "editable": true
+    },
+    {
+      "id": "day_rest_ceiling",
+      "label": "Day rest (siesta, podcast, radio): max ~2h per day",
+      "editable": true
+    },
+    {
+      "id": "meals_weekly_band",
+      "label": "Meals ~14h/week (≈2h/day eating + ~4h supermarket/prep)",
+      "editable": true
+    },
+    {
+      "id": "home_cleaning_monthly",
+      "label": "Home cleaning: ~10h/month (3h blocks every two weeks)",
+      "editable": true
+    },
+    {
+      "id": "laundry_weekly",
+      "label": "Laundry & wardrobe (ropa/colada): ~2h/week",
       "editable": true
     }
   ]

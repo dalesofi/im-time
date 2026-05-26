@@ -57,9 +57,12 @@ Load calendar data → map to life areas → show allocation + stats → show ru
 - Seed from [config/life-areas-default.json](../config/life-areas-default.json) and [config/calendar-colors.json](../config/calendar-colors.json).
 - **Source calendar:** `buttonschool` → Work (insights silent); `rbl` → Passion/RBL; `personal` → uncategorized until colored.
 - **Color onboarding (product):** Google-like swatches → life area (ICS exports usually **lack colors**; full value with Google sync v1.1).
-- **Your legend:** tangerine → job search; blueberry → RBL; lavender → rest; sage → exercise; basil → meals; banana → Lua/pets (any calendar); beach/park keywords → pets.
+- **Your legend:** tangerine → job search; blueberry → RBL; sage → exercise; basil → meals; banana → Lua/pets (any calendar).
+- **Lavender (split by keyword on title):** siesta/podcast/radio → day rest; limpiar/limpieza/cleaning → home cleaning; ropa/colada → laundry.
+- **Sleep:** not inferred; only explicit blocks.
 - User can **rename, add, delete** areas; edit labels—no event titles in UI.
-- **Track-only chart areas:** Meals, Pets (no insight cards unless rules added later).
+- **Insights on:** meals band, day rest daily cap, home cleaning (4-week window), laundry weekly.
+- **Track-only insights:** Pets (chart always; Lua goals in sampleGoals).
 
 **UI principle:** Show **category labels**, not raw event titles ([mvp.md §10](mvp.md#10-product-decisions)).
 

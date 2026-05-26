@@ -342,12 +342,17 @@ Explained in [tech.md §3](tech.md#3-re-import-modes-product--tech). **v1 intent
 
 | Signal | Threshold / intention |
 |--------|------------------------|
-| Admin | Insight when **≥4h/week** (goal: stay **under 4h**) |
+| Admin (generic) | Insight when **≥4h/week** (goal: stay **under 4h**) |
 | RBL | Crumbs **&lt;3h**; goal **2× 2–3h blocks**/week |
-| Job search | Thin week **&lt;2h**; aspiration **3–4h daily** (trimester/weekly) |
+| Job search | Thin week **&lt;2h**; aspiration **3–4h daily** (trimester) |
 | Exercise (sage) | Insight when **&lt;5h/week** |
-| Meals (basil) | Track in chart only |
-| Pets (banana / Lua) | **Always pets**, any calendar; keywords beach/park; track in chart |
+| **Day rest** (lavender: siesta, podcast, radio) | OK; insight if **&gt;2h on any day** |
+| **Meals** (basil) | Target **~14h/week** (~2h/day + ~4h prep); insights if far off band |
+| **Home cleaning** (lavender + limpiar/limpieza) | **~10h/month**; **3h** blocks every **2 weeks** |
+| **Laundry** (lavender + ropa/colada) | **~2h/week** |
+| Pets (banana / Lua) | Always pets, any calendar; chart (track-only insights) |
+| **Sleep** | Not scheduled by default — not inferred from gaps |
+| **Lavender** | Split by keywords → day rest / cleaning / laundry ([INSIGHTS.md](INSIGHTS.md)) |
 | Work calendar | Mapped, **no work insight cards** |
 
 **Scaffold:** [tech.md §13](tech.md#13-scaffold-plan-next--no-code-until-you-say-go) — say **go scaffold** when ready.
