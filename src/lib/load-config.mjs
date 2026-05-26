@@ -12,5 +12,7 @@ export function loadConfig() {
     lifeAreas: loadJson(PATHS.lifeAreas),
     weekSnapshot: loadJson(PATHS.weekSnapshot),
     branding: loadJson(PATHS.branding),
+    observeCopy: loadJson(PATHS.observeCopy),
+    observeThresholds: loadJson(PATHS.observeThresholds),
   };
 }

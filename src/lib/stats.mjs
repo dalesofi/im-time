@@ -1,6 +1,7 @@
 import { hoursBetween } from "./week-range.mjs";
+import { computeNightRestHours } from "./night-rest.mjs";
 
-export function computeStats(mappedEvents, weekRange, allEventsForRolling) {
+export function computeStats(mappedEvents, weekRange, allEventsForRolling, nightRestOpts = {}) {
   const { start, end } = weekRange;
   const weekEvents = mappedEvents.filter((e) => e.start <= end && e.end >= start);
 
@@ -45,11 +46,18 @@ export function computeStats(mappedEvents, weekRange, allEventsForRolling) {
   }
 
   const dayRestMaxDay = Math.max(0, ...Object.values(dayRestByDate));
+  const nightRestHours = computeNightRestHours(
+    weekEvents,
+    start,
+    end,
+    nightRestOpts
+  );
 
   return {
     areaHours,
     meetingHours,
     scheduledTimedHours,
+    nightRestHours,
     freeMorningsBefore11,
     openEveningsAfter20,
     homeCleaningRolling,

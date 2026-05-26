@@ -47,8 +47,11 @@ export function evaluateInsights(config, stats, thresholds) {
     personal_care_hours: Math.round(personalCareHours * 10) / 10,
     priority_labels: priorityLabels(config),
     window_weeks: thresholds.monthlyEvaluationWindowWeeks || 4,
-    unscheduled_hours: Math.round((stats.unscheduledHours ?? 0) * 10) / 10,
-    sleep_threshold_hours: thresholds.unscheduledSleepHoursLt ?? 50,
+    night_rest_hours: Math.round((stats.nightRestHours ?? 0) * 10) / 10,
+    sleep_threshold_hours:
+      thresholds.nightRest?.alarmIfWeekHoursLt ??
+      thresholds.unscheduledSleepHoursLt ??
+      50,
     week_hours: Math.round((stats.weekHours ?? 168) * 10) / 10,
   };
 
@@ -100,11 +103,12 @@ function matches(when, stats, t, ctx) {
   if (when.openWeekdayEveningsAfter20Lte != null && stats.openEveningsAfter20 > when.openWeekdayEveningsAfter20Lte) return false;
   if (when.scheduledHoursGt != null && stats.scheduledTimedHours <= when.scheduledHoursGt) return false;
   if (when.dayRestAnyDayHoursGt != null && stats.dayRestMaxDay <= when.dayRestAnyDayHoursGt) return false;
-  if (when.unscheduledHoursLt != null) {
-    const u = stats.unscheduledHours ?? 0;
-    const threshold = when.unscheduledHoursLt.useConfigThreshold
-      ? (t.unscheduledSleepHoursLt ?? 50)
-      : when.unscheduledHoursLt.hours;
+  if (when.unscheduledHoursLt != null || when.nightRestHoursLt != null) {
+    const u = stats.nightRestHours ?? stats.unscheduledHours ?? 0;
+    const whenClause = when.nightRestHoursLt || when.unscheduledHoursLt;
+    const threshold = whenClause.useConfigThreshold
+      ? (t.nightRest?.alarmIfWeekHoursLt ?? t.unscheduledSleepHoursLt ?? 50)
+      : whenClause.hours;
     if (u >= threshold) return false;
   }
 

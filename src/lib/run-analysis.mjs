@@ -4,7 +4,7 @@ import { buildMapper } from "./map-areas.mjs";
 import { formatRange, toLocalDateIso } from "./week-range.mjs";
 import { computeStats, formatAreaBreakdown } from "./stats.mjs";
 import { buildAreaMeta } from "./area-meta.mjs";
-import { buildChartAllocation } from "./chart-allocation.mjs";
+import { buildChartAllocation, buildFullBreakdown } from "./chart-allocation.mjs";
 import { evaluateInsights } from "./insights.mjs";
 import { buildWeekSnapshot } from "./goal-snapshot.mjs";
 import { hoursBetween } from "./week-range.mjs";
@@ -29,7 +29,12 @@ export async function runAnalysis(weekRange, icsPath = PATHS.mergedIcs) {
     return { ...ev, areaId, alsoAreas, silentInsight };
   });
 
-  const stats = computeStats(mapped, weekRange, mapped);
+  const nightRule = config.insights.thresholds?.nightRest || {};
+  const stats = computeStats(mapped, weekRange, mapped, {
+    nightStartHour: nightRule.windowStartHour ?? 21,
+    nightEndHour: nightRule.windowEndHour ?? 8,
+    minBlockHours: nightRule.minBlockHours ?? 3,
+  });
   applyAreaRollups(stats.areaHours, config.lifeAreas);
   const breakdown = formatAreaBreakdown(stats.areaHours, config.lifeAreas);
   const { rows: chartAllocation, weekHours } = buildChartAllocation(
@@ -37,12 +42,20 @@ export async function runAnalysis(weekRange, icsPath = PATHS.mergedIcs) {
     config.lifeAreas,
     weekRange
   );
+  const nightRestHours = stats.nightRestHours;
   const unscheduledHours =
     Math.round((weekHours - stats.scheduledTimedHours) * 10) / 10;
   const sleepThresholdDefault =
-    config.insights.thresholds?.unscheduledSleepHoursLt ?? 50;
+    config.insights.thresholds?.nightRest?.alarmIfWeekHoursLt ??
+    config.insights.thresholds?.unscheduledSleepHoursLt ??
+    50;
 
-  const statsForInsights = { ...stats, unscheduledHours, weekHours };
+  const fullBreakdown = buildFullBreakdown(
+    stats.areaHours,
+    config.lifeAreas,
+    weekRange
+  );
+  const statsForInsights = { ...stats, nightRestHours, unscheduledHours, weekHours };
   const insights = evaluateInsights(
     config.insights,
     statsForInsights,
@@ -60,6 +73,28 @@ export async function runAnalysis(weekRange, icsPath = PATHS.mergedIcs) {
   const weekFrom = toLocalDateIso(weekRange.start);
   const weekTo = toLocalDateIso(weekRange.end);
 
+  const priorityOptions = (config.lifeAreas.lifeAreas || [])
+    .filter((a) => a.showInChart !== false && a.id !== "uncategorized" && a.id !== "other")
+    .sort((a, b) => (a.chartOrder ?? 50) - (b.chartOrder ?? 50))
+    .map((a) => ({
+      id: a.id,
+      label: a.label,
+      emoji: a.emoji || "",
+      hex: a.hex || "#5c6b8a",
+    }));
+
+  const areaHoursSummary = {};
+  for (const row of breakdown) {
+    areaHoursSummary[row.id] = row.hours;
+  }
+  for (const [id, h] of Object.entries(stats.areaHours)) {
+    if (areaHoursSummary[id] == null) {
+      areaHoursSummary[id] = Math.round(h * 10) / 10;
+    }
+  }
+
+  const pmLifeHours = areaHoursSummary.job_search ?? 0;
+
   return {
     week: formatRange(weekRange.start, weekRange.end),
     weekFrom,
@@ -68,8 +103,15 @@ export async function runAnalysis(weekRange, icsPath = PATHS.mergedIcs) {
     branding: config.branding,
     eventCount: stats.eventCount,
     weekHours,
+    nightRestHours,
     unscheduledHours,
+    pmLifeHours,
     sleepThresholdDefault,
+    observeCopy: config.observeCopy,
+    observeThresholds: config.observeThresholds,
+    priorityOptions,
+    areaHoursSummary,
+    defaultPriorityId: config.insights.priorities?.defaultForSofia?.[0] || "job_search",
     meetingHours: Math.round(stats.meetingHours * 10) / 10,
     scheduledTimedHours: Math.round(stats.scheduledTimedHours * 10) / 10,
     freeMorningsBefore11: stats.freeMorningsBefore11,
@@ -77,10 +119,10 @@ export async function runAnalysis(weekRange, icsPath = PATHS.mergedIcs) {
     homeCleaningRolling4w: Math.round(stats.homeCleaningRolling * 10) / 10,
     dayRestMaxHoursOneDay: Math.round(stats.dayRestMaxDay * 10) / 10,
     allocation: breakdown,
+    fullBreakdown,
     chartAllocation,
     areaMeta: buildAreaMeta(config.lifeAreas),
     weekSnapshot,
-    mealsNote: weekSnapshot.mealsCalendarNote || null,
     insights: insights.map((i) => ({ id: i.id, text: i.text })),
     goals: config.insights.sampleGoals?.map((g) => g.label) || [],
     priorities,

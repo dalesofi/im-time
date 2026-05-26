@@ -80,6 +80,12 @@
     "selfCareWeeklyHoursLt": 10,
     "selfCareWeeklyHoursTarget": 10,
     "unscheduledSleepHoursLt": 50,
+    "nightRest": {
+      "windowStartHour": 21,
+      "windowEndHour": 8,
+      "minBlockHours": 3,
+      "alarmIfWeekHoursLt": 50
+    },
     "pmLifeCelebrateHoursGte": 12
   },
   "rules": [
@@ -98,16 +104,16 @@
       ]
     },
     {
-      "id": "unscheduled_sleep_low",
+      "id": "night_rest_low",
       "priority": 0,
       "when": {
-        "unscheduledHoursLt": {
+        "nightRestHoursLt": {
           "useConfigThreshold": true
         }
       },
       "templates": [
-        "Only about {unscheduled_hours}h unscheduled this week (mostly nights & off-calendar rest) — under your {sleep_threshold_hours}h margin. The calendar may be eating sleep.",
-        "Unscheduled time is thin ({unscheduled_hours}h of {week_hours}h in the week). Worth protecting night sleep before adding more blocks."
+        "Night rest looks thin — about {night_rest_hours}h from long off-calendar blocks between 9pm and 8am, under your {sleep_threshold_hours}h margin. Worth protecting sleep before adding more blocks.",
+        "Estimated night rest: {night_rest_hours}h this week (big off-calendar gaps at night). Below your {sleep_threshold_hours}h line — notice, don't panic."
       ]
     },
     {

@@ -1,15 +1,14 @@
-import { renderWeekNumbers, bindWeekNumbers, mergeSleepInsight, getSleepThreshold } from "./render-week-numbers.js";
-import { renderBars } from "./render-bars.js";
+import {
+  renderWeekNumbers,
+  bindWeekNumbers,
+  applyClientInsights,
+} from "./render-week-numbers.js";
+import { renderAllocationSection } from "./render-allocation.js";
 import { renderReflection, bindReflection } from "./render-reflection.js";
-
 function esc(s) {
   const d = document.createElement("div");
   d.textContent = s;
   return d.innerHTML;
-}
-
-function areaLabel(r) {
-  return r.emoji ? `${r.emoji} ${r.label}` : r.label;
 }
 
 function renderHeader(data) {
@@ -26,7 +25,13 @@ function renderHeader(data) {
 function renderInsights(insights) {
   return insights
     .map((c) => {
-      const kind = c.kind || (c.id === "pm_life_celebrate" ? "celebrate" : c.id?.includes("sleep") ? "alarm" : "");
+      const kind =
+        c.kind ||
+        (c.id?.includes("celebrate") || c.id === "pm_life_celebrate"
+          ? "celebrate"
+          : c.id?.includes("sleep") || c.id?.includes("rest") || c.id?.includes("unscheduled")
+            ? "alarm"
+            : "");
       return `<article class="insight${kind ? ` insight--${kind}` : ""}">
         <p class="insight-text">${esc(c.text)}</p>
         <p class="insight-id">${esc(c.id)}</p>
@@ -35,32 +40,22 @@ function renderInsights(insights) {
     .join("");
 }
 
-let latestData = null;
-
-function paintInsights(data, threshold) {
-  const merged = mergeSleepInsight(data.insights, data, threshold);
+function paintInsights(data) {
+  const merged = applyClientInsights(data.insights, data, data.observeThresholds);
   const el = document.getElementById("insights-list");
   if (el) el.innerHTML = renderInsights(merged) || "<p class='note'>None this week.</p>";
 }
 
 function render(data) {
-  latestData = data;
-  const chartRows = data.chartAllocation || data.allocation;
-  const fullList = data.allocation
-    .map((r) => `<li>${esc(areaLabel(r))}: <strong>${r.hours}h</strong> (${r.percent}%)</li>`)
-    .join("");
-  const threshold = getSleepThreshold(data.sleepThresholdDefault ?? 50);
-
   document.getElementById("app").innerHTML = `
     ${renderHeader(data)}
-    <section><h2>Where your timed hours went</h2>${renderBars(chartRows)}
-      <p class="note">Bar fill = your Google color · width = share of the ${data.weekHours}h week. ${data.eventCount} events in range.</p>
-      <details><summary>Full breakdown</summary><ul>${fullList}</ul></details></section>
+    ${renderAllocationSection(data)}
     <div id="week-numbers">${renderWeekNumbers(data)}</div>
-    <section><h2>Insight cards</h2><div id="insights-list">${renderInsights(mergeSleepInsight(data.insights, data, threshold))}</div></section>
+    <section><h2>Insight cards</h2><div id="insights-list"></div></section>
     <div id="reflection-wrap">${renderReflection(data.weekFrom, data.weekTo)}</div>`;
 
-  bindWeekNumbers(data, (t) => paintInsights(data, t));
+  paintInsights(data);
+  bindWeekNumbers(data, () => paintInsights(data));
   bindReflection(data.weekFrom, data.weekTo);
 }
 

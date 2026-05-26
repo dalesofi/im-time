@@ -9,5 +9,7 @@ export const PATHS = {
   lifeAreas: path.join(ROOT, "config/life-areas-default.json"),
   weekSnapshot: path.join(ROOT, "config/week-snapshot.json"),
   branding: path.join(ROOT, "config/app-branding.json"),
+  observeCopy: path.join(ROOT, "config/observe-copy.json"),
+  observeThresholds: path.join(ROOT, "config/observe-thresholds.json"),
   publicReportHtml: path.join(ROOT, "public/report.html"),
 };

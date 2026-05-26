@@ -1,0 +1,45 @@
+{
+  "description": "Editable floors/ceilings in the observe section (saved on device). Insights use server defaults until v1.1 sync.",
+  "thresholds": [
+    {
+      "id": "unscheduled_sleep",
+      "label": "Alert if unscheduled time falls below",
+      "storageKey": "imtime-sleep-threshold-hours",
+      "default": 50,
+      "min": 20,
+      "max": 120,
+      "suffix": "h / week",
+      "direction": "below"
+    },
+    {
+      "id": "pm_life_celebrate",
+      "label": "Celebrate PM Life at or above",
+      "storageKey": "imtime-threshold-pm-life",
+      "default": 12,
+      "min": 4,
+      "max": 40,
+      "suffix": "h / week",
+      "direction": "above"
+    },
+    {
+      "id": "djing_music",
+      "label": "Gentle nudge if DJing & music below",
+      "storageKey": "imtime-threshold-djing",
+      "default": 10,
+      "min": 2,
+      "max": 30,
+      "suffix": "h / week",
+      "direction": "below"
+    },
+    {
+      "id": "health",
+      "label": "Gentle nudge if exercise below",
+      "storageKey": "imtime-threshold-exercise",
+      "default": 5,
+      "min": 1,
+      "max": 20,
+      "suffix": "h / week",
+      "direction": "below"
+    }
+  ]
+}

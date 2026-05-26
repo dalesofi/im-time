@@ -17,6 +17,132 @@ section {
   margin-bottom: var(--space-lg);
 }
 .stats-hero { background: linear-gradient(180deg, #fff 0%, #f7f5f2 100%); }
+.observe-section { padding-bottom: var(--space-lg); }
+.observe-subtitle {
+  margin: -0.35rem 0 var(--space-md);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+.priority-picker {
+  margin-bottom: var(--space-md);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+}
+.priority-picker label { font-size: 0.9rem; font-weight: 500; }
+.priority-picker select {
+  font-family: var(--font-family);
+  font-size: 0.95rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  min-width: 12rem;
+}
+.observe-hero {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem 1.35rem;
+  margin-bottom: var(--space-md);
+  border-radius: 12px;
+  background: #fff;
+  border-left: 5px solid var(--accent, #f4511e);
+  box-shadow: var(--shadow-soft);
+}
+.observe-hero-emoji { font-size: 2.25rem; line-height: 1; }
+.observe-hero-body { display: flex; flex-direction: column; gap: 0.2rem; }
+.section-eyebrow {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin: 0 0 0.35rem;
+  font-style: italic;
+}
+.allocation-section { margin-bottom: var(--space-lg); }
+.breakdown-list { list-style: none; padding-left: 0; }
+.breakdown-list li { display: flex; align-items: baseline; gap: 0.35rem; margin-bottom: 0.4rem; }
+.breakdown-emoji { width: 1.25rem; flex-shrink: 0; }
+.bar-row .bar-label { color: var(--color-text); }
+.observe-hero-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+.observe-hero-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  display: block;
+}
+.observe-hero--target {
+  border-left-width: 6px;
+  background: linear-gradient(135deg, #fff5f0 0%, #fff 100%);
+}
+.threshold-editors {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+.threshold-editors-title { font-weight: 600; margin: 0 0 0.25rem; font-size: 0.95rem; }
+.threshold-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  margin-top: 0.65rem;
+  font-size: 0.88rem;
+}
+.threshold-row label { flex: 1 1 12rem; }
+.threshold-row input[type="number"] {
+  width: 4rem;
+  padding: 0.25rem 0.35rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-family: var(--font-family);
+}
+.threshold-suffix { color: var(--color-text-muted); font-size: 0.85rem; }
+.priority-picker { display: none; }
+.observe-hero-value {
+  font-size: 2rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent, var(--color-text));
+}
+.observe-hero-context { font-size: 0.85rem; color: var(--color-text-muted); }
+.observe-hero-note { margin: 0.35rem 0 0; font-size: 0.85rem; color: var(--color-text-muted); }
+.stat-card--nudge .stat-nudge,
+.stat-card--note .stat-rule {
+  margin: 0.5rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.stat-card--nudge { grid-column: 1 / -1; }
+.reflection-lede { margin: -0.25rem 0 var(--space-md); color: var(--color-text-muted); font-size: 0.9rem; }
+.reflection-display {
+  background: var(--color-bg);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  margin-bottom: var(--space-md);
+  border-left: 3px solid var(--color-accent);
+}
+.reflection-display-heading { margin: 0 0 0.25rem; font-size: 1rem; }
+.reflection-display-hint { margin: 0 0 0.75rem; font-size: 0.8rem; color: var(--color-text-muted); }
+.reflection-display-block { margin-bottom: 0.75rem; }
+.reflection-display-block:last-child { margin-bottom: 0; }
+.reflection-display-label {
+  margin: 0 0 0.25rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+.reflection-display-text { margin: 0; white-space: pre-wrap; line-height: 1.5; }
 .app-header { margin-bottom: var(--space-lg); }
 .app-name {
   font-size: 0.85rem;

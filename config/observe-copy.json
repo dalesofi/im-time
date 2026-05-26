@@ -1,0 +1,17 @@
+{
+  "sectionTitle": "Take a moment to observe",
+  "sectionSubtitle": "This week in numbers",
+  "seasonTargetLabel": "Your season target",
+  "scheduledTime": {
+    "label": "Scheduled time",
+    "nudge": "Only blocked time can teach us. Add a color, a name, a rough length — not to perform, but to see your week more clearly next time."
+  },
+  "unscheduled": {
+    "label": "Unscheduled time",
+    "rule": "Hours in the week with nothing on the calendar — often sleep, drift, or space you didn't name. We use this for your rest alarm below."
+  },
+  "allocation": {
+    "eyebrow": "Time flies, but…",
+    "title": "Where did time go this week?"
+  }
+}

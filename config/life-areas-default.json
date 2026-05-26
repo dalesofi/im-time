@@ -162,7 +162,7 @@
   "chartDisplay": {
     "maxBars": 12,
     "minHours": 1.5,
-    "alwaysShowAreaIds": ["pets", "health", "meals", "home_cleaning"],
+    "alwaysShowAreaIds": ["pets", "health", "meals"],
     "note": "Pinned areas always show (even 0h) with calendar nudges"
   },
   "sourceCalendarDefaults": {
