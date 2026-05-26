@@ -1,7 +1,5 @@
-# I'm Time 
-
+# I'm Time
 ## Working Thesis
-
 Most time-management tools are built around optimization, control, and productivity maximization.  
 But human life is finite, emotional, relational, unpredictable, and deeply imperfect.
 
@@ -19,10 +17,7 @@ Instead of helping users become “perfectly efficient,” the goal is to help t
 - reduce anxiety around planning and productivity,
 - and create space for spontaneity, gratitude, relationships, and surprise.
 
----
-
 # Core Philosophy
-
 ## 1. Anti–Toxic Productivity
 
 Modern productivity culture often promotes the fantasy that:
@@ -45,8 +40,6 @@ The product embraces:
 
 Not as failure, but as strength.
 
----
-
 ## 2. Accepting Human Finitude
 
 A human life is roughly four thousand weeks long.
@@ -66,7 +59,6 @@ The product should help users:
 - notice unconscious patterns,
 - and intentionally choose what deserves their finite attention.
 
----
 
 ## 3. Time Is Not Something We “Have”
 
@@ -86,12 +78,8 @@ Human beings are:
 - and unpredictable.
 
 So time itself becomes relational and imperfect.
+The goal is not perfect planning. The goal is learning how to live well within uncertainty.
 
-The goal is not perfect planning.
-
-The goal is learning how to live well within uncertainty.
-
----
 
 # Product Concept
 
@@ -99,8 +87,6 @@ A reflective calendar and planning tool designed around:
 - awareness instead of optimization,
 - intentionality instead of efficiency,
 - and flexibility instead of control.
-
----
 
 # Core Product Features
 
@@ -139,8 +125,6 @@ The tone should feel:
 
 Never shaming.
 
----
-
 ## 2. Pattern Recognition
 
 Use AI to detect:
@@ -164,8 +148,6 @@ The system should act more like:
 
 rather than:
 - a productivity optimizer.
-
----
 
 ## 3. Gentle Planning Assistant
 
@@ -195,8 +177,6 @@ The philosophy:
 
 > A good life cannot be fully pre-planned.
 
----
-
 ## 4. Intentional Prioritization
 
 Help users consciously decide:
@@ -213,8 +193,6 @@ The product should normalize:
 - incompleteness,
 - tradeoffs,
 - and limitation.
-
----
 
 ## 5. Gratitude + Surprise Journal
 
@@ -235,8 +213,6 @@ The app could surface:
 
 This becomes a counterweight to overcontrol.
 
----
-
 ## 6. Flexible To-Do System
 
 A lightweight task system designed around:
@@ -253,8 +229,6 @@ Potential ideas:
 - “enough for today” mode,
 - highlight deferred tasks without guilt.
 
----
-
 # Product Principles
 
 ## The Product Should Feel
@@ -268,8 +242,6 @@ Potential ideas:
 - gentle,
 - honest.
 
----
-
 ## The Product Should Avoid
 
 - hustle culture,
@@ -279,8 +251,6 @@ Potential ideas:
 - productivity guilt,
 - hyper-efficiency language,
 - treating users like machines.
-
----
 
 # Potential Emotional Outcomes
 
@@ -292,8 +262,6 @@ Users may feel:
 - more aligned with their values,
 - less anxious about productivity,
 - more open to spontaneity and relationships.
-
----
 
 # Design Philosophy
 
@@ -313,8 +281,6 @@ Potential inspirations:
 - analog notebooks,
 - Japanese concepts like *ma* (space/emptiness).
 
----
-
 # Positioning
 
 This is not:
@@ -326,8 +292,6 @@ This is:
 - a reflective companion for finite humans.
 
 A tool for people who are exhausted by optimization.
-
----
 
 # Product Directions
 
