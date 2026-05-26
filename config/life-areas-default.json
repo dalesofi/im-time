@@ -8,7 +8,7 @@
     },
     {
       "id": "passion_rbl",
-      "label": "Passion / RBL",
+      "label": "RBL (community radio volunteer)",
       "insightCards": true,
       "showInChart": true
     },
@@ -19,8 +19,21 @@
       "showInChart": true
     },
     {
-      "id": "relationships",
-      "label": "Relationships",
+      "id": "djing_music",
+      "label": "DJing & music prep",
+      "insightCards": true,
+      "showInChart": true
+    },
+    {
+      "id": "self_care",
+      "label": "Self-care (body)",
+      "insightCards": true,
+      "showInChart": true,
+      "userNote": "Lavender \u2014 showers, skin/hair care; ~10h/week target"
+    },
+    {
+      "id": "social_life",
+      "label": "Social life",
       "insightCards": true,
       "showInChart": true
     },
@@ -86,5 +99,21 @@
     "personal": "uncategorized"
   },
   "workCalendarInsightPolicy": "silent",
-  "lavenderRoutingNote": "See calendar-colors.json keywordRoutes"
+  "lavenderRoutingNote": "See calendar-colors.json keywordRoutes",
+  "onboardingRequired": true,
+  "relatedBlocksPolicy": "Allow hours to count toward multiple areas when config relatedBlocks.rules match",
+  "onboardingUX": {
+    "requireAccount": false,
+    "persistence": "localStorage",
+    "everyQuestionAllows": [
+      "answer",
+      "skip",
+      "later"
+    ],
+    "editableLater": [
+      "mapping",
+      "goals",
+      "thresholds via config export"
+    ]
+  }
 }

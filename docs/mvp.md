@@ -12,6 +12,8 @@ This document defines **what** v1 is, **for whom**, and **why**. Build order and
 
 **I'm Time** is a reflective web companion for people who are tired of optimization culture. It helps you see where your finite time actually went—and reflect on it with calm, honest interpretation instead of productivity scoring.
 
+**Core learning:** calendars encode *how you already organize meaning* (colors, names, annotations). The product must **ask how you code and label time** before interpreting—otherwise insights are wrong. See [calendar-onboarding.md](calendar-onboarding.md).
+
 **Positioning**
 
 | This is | This is not |
@@ -74,7 +76,7 @@ One path only. Every v1 feature should support this flow.
 
 1. **Land** — Short welcome: what I'm Time is (2–3 lines) and what it is not. Calm, spacious tone.
 2. **Load calendar data** — Product: user uploads one `.ics` file. Dogfood: app reads merged personal calendar (Button School + RBL + personal). App confirms date range and event count. Default window: **last 7 days**.
-3. **Map life areas** *(first time or when needed)* — Defaults + custom areas (Meals, Pets/Lua, Job search, etc.). **Color onboarding:** Google-like swatches → life area ([calendar-colors.json](../config/calendar-colors.json)). Until colors exist in data: source calendar + manual mapping. User edits labels—no raw event titles.
+3. **Calendar meaning interview** — Short onboarding: what each color means, how you label blocks, when one color = two meanings ([calendar-onboarding.md](calendar-onboarding.md)). Then map to life areas ([calendar-colors.json](../config/calendar-colors.json)). User edits labels—no raw event titles in UI.
 4. **Week at a glance** — Allocation view (hours and % by area) plus core stats (meeting hours, busiest day, largest open block, evenings without events). **Aggregates only**—see the forest, not every tree.
 5. **Insight cards** — 3–5 short observations from **rules + templates + data analysis** (compassionate, non-judgmental; no LLM in v1).
 6. **Optional journal** — One prompt, e.g. *“What surprised you this week?”* User may skip.
@@ -100,7 +102,7 @@ One path only. Every v1 feature should support this flow.
 | Journal | One optional text field per week (lite) |
 | Persistence | Calendar truth in `calendars/`; mapping/journal in browser local storage for v1 |
 | Re-import / history | **Out of v1** — single analysis session; history + compare in v1.1 |
-| Accounts | None required for v1 |
+| Accounts | **None for v1** — onboarding + mapping in **localStorage** (no server session) |
 
 ### Out of scope (v1)
 
@@ -352,7 +354,14 @@ Explained in [tech.md §3](tech.md#3-re-import-modes-product--tech). **v1 intent
 | **Laundry** (lavender + ropa/colada) | **~2h/week** |
 | Pets (banana / Lua) | Always pets, any calendar; chart (track-only insights) |
 | **Sleep** | Not scheduled by default — not inferred from gaps |
-| **Lavender** | Split by keywords → day rest / cleaning / laundry ([INSIGHTS.md](INSIGHTS.md)) |
+| **Lavender** | Default **social life** (~10h/wk); keywords → cleaning / laundry / day rest |
+| **Blueberry** | **RBL volunteer** vs **DJing/music prep** (same color — must ask); DJ ~10h/wk, €400/mo goal |
+| **Related blocks** | CAPRIXXO → RBL+DJing; lavender errands → social+RBL ([calendar-onboarding.md](calendar-onboarding.md)) |
+| **Compound blocks** | Friend on banana/basil = social + pet/meal |
+| **DJing labels** | prep, sort, mix, …; verb subcategories later |
+| **Self-care (lavender)** | Showers, skin/hair; **~10h/week** target |
+| **Onboarding UX** | Skip / later / edit anytime; **localStorage**, no session ([onboarding-ux.md](onboarding-ux.md)) |
+| **Targets tension** | [targets-audit.md](targets-audit.md) — job search daily is aspiration, not weekly budget |
 | Work calendar | Mapped, **no work insight cards** |
 
 **Scaffold:** [tech.md §13](tech.md#13-scaffold-plan-next--no-code-until-you-say-go) — say **go scaffold** when ready.

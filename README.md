@@ -15,7 +15,10 @@ Most calendar tools optimize; I'm Time helps you see where your time actually we
 | [docs/features.md](docs/features.md) | **What to build** — ordered feature list and acceptance |
 | [docs/tech.md](docs/tech.md) | **How to build** — data, parsing, insights, open tech choices |
 | [docs/INSIGHTS.md](docs/INSIGHTS.md) | How to edit insight rules, thresholds, and goals |
-| [config/](config/) | `insights-rules.json`, `calendar-colors.json`, `life-areas-default.json` |
+| [config/](config/) | `insights-rules.json`, `calendar-colors.json`, `life-areas-default.json`, `onboarding-questions.json` |
+| [docs/calendar-onboarding.md](docs/calendar-onboarding.md) | Why we ask how you color-code your calendar |
+| [docs/onboarding-ux.md](docs/onboarding-ux.md) | Skip / later / edit — no account, localStorage |
+| [docs/targets-audit.md](docs/targets-audit.md) | When weekly targets add up or tension |
 | [docs/plan.md](docs/plan.md) | Phases, milestones, decisions log |
 | [docs/case-study.md](docs/case-study.md) | PM portfolio narrative |
 

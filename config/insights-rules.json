@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": 2,
+    "version": 5,
     "maxCardsPerWeek": 3,
     "weekBoundary": "monday_sunday",
     "voice": "gentle_friend_minimal",
@@ -41,7 +41,23 @@
     "homeCleaningBlockHours": 3,
     "homeCleaningBiweeklyWeeks": 2,
     "laundryWeeklyHoursMin": 2,
-    "monthlyEvaluationWindowWeeks": 4
+    "monthlyEvaluationWindowWeeks": 4,
+    "socialLifeWeeklyHoursLt": 10,
+    "socialLifeWeeklyHoursTarget": 10,
+    "djingMusicWeeklyHoursLt": 10,
+    "djingMusicWeeklyHoursTarget": 10,
+    "djingIncomeGoalMonthlyEur": 400,
+    "djingPrepKeywords": [
+      "prep",
+      "sort",
+      "ordenar",
+      "clasificar"
+    ],
+    "dualTagKeywords": [
+      "caprixxo"
+    ],
+    "selfCareWeeklyHoursLt": 10,
+    "selfCareWeeklyHoursTarget": 10
   },
   "rules": [
     {
@@ -51,7 +67,7 @@
         "meetingHoursGte": 10
       },
       "templates": [
-        "{meeting_hours} hours in meetings this week. That's a full workweek inside the week—notice how it landed, not how to fix it tonight.",
+        "{meeting_hours} hours in meetings this week. That's a full workweek inside the week\u2014notice how it landed, not how to fix it tonight.",
         "{meeting_hours}h of meetings. The calendar was loud. You don't have to be."
       ]
     },
@@ -63,7 +79,7 @@
       },
       "templates": [
         "Only {free_mornings_before_11} weekday morning(s) before 11 with nothing scheduled. Mornings are where you wanted space.",
-        "Your mornings before 11 are mostly spoken for. That's a pattern—not a verdict."
+        "Your mornings before 11 are mostly spoken for. That's a pattern\u2014not a verdict."
       ]
     },
     {
@@ -76,7 +92,7 @@
         }
       },
       "templates": [
-        "Passion / RBL had about {rbl_hours}h on the calendar—crumbs, not the two 2–3h blocks you're aiming for.",
+        "Passion / RBL had about {rbl_hours}h on the calendar\u2014crumbs, not the two 2\u20133h blocks you're aiming for.",
         "RBL showed up as fragments. You wanted real blocks this week, not leftovers."
       ]
     },
@@ -90,7 +106,7 @@
         }
       },
       "templates": [
-        "Job search & brand: roughly {job_hours}h scheduled. Your trimester aim is closer to 3–4h daily—this week was thin.",
+        "Job search & brand: roughly {job_hours}h scheduled. Your trimester aim is closer to 3\u20134h daily\u2014this week was thin.",
         "Not much orange on the calendar. Intentions and blocks diverge sometimes."
       ]
     },
@@ -104,7 +120,7 @@
         }
       },
       "templates": [
-        "Admin and life upkeep hit about {admin_hours}h—above the ~4h/week you want as a ceiling. Gaps get eaten fast.",
+        "Admin and life upkeep hit about {admin_hours}h\u2014above the ~4h/week you want as a ceiling. Gaps get eaten fast.",
         "More admin than you meant to allow. Keeping it under 4h is a quiet kind of discipline."
       ]
     },
@@ -118,21 +134,22 @@
         }
       },
       "templates": [
-        "Health / exercise: about {health_hours}h blocked. You're aiming for at least 5h—yoga, gym, home sessions.",
-        "Movement didn't get much calendar space this week. Bodies don't live in Google Calendar—but you said 5h matters."
+        "Health / exercise: about {health_hours}h blocked. You're aiming for at least 5h\u2014yoga, gym, home sessions.",
+        "Movement didn't get much calendar space this week. Bodies don't live in Google Calendar\u2014but you said 5h matters."
       ]
     },
     {
-      "id": "relationships_low",
+      "id": "social_life_low",
       "priority": 7,
       "when": {
         "hoursAreaLt": {
-          "area": "relationships",
-          "hours": 2
+          "area": "social_life",
+          "hours": 10
         }
       },
       "templates": [
-        "Relationships had about {rel_hours}h scheduled. People aren't only events—but the space matters."
+        "Social life: about {social_hours}h on the calendar this week. You're often around {social_target}h\u2014people and plans matter to you.",
+        "Less lavender than usual\u2014fewer names, fewer events. Worth noticing, not fixing tonight."
       ]
     },
     {
@@ -142,7 +159,21 @@
         "openWeekdayEveningsAfter20Gte": 3
       },
       "templates": [
-        "{open_evenings_after_20} weeknights after 8pm had nothing on the calendar. Space—even if it didn't all feel like rest."
+        "{open_evenings_after_20} weeknights after 8pm had nothing on the calendar. Space\u2014even if it didn't all feel like rest."
+      ]
+    },
+    {
+      "id": "djing_music_low",
+      "priority": 8,
+      "when": {
+        "hoursAreaLt": {
+          "area": "djing_music",
+          "hours": 10
+        }
+      },
+      "templates": [
+        "DJing & music prep: about {djing_hours}h this week\u2014under your ~10h target. It's paying work and creative life, not a side hustle guilt trip.",
+        "Less blueberry time for mixes and prep. You said this path is worth investing in\u2014not only enjoying it."
       ]
     },
     {
@@ -163,7 +194,7 @@
         "freeWeekdayMorningsBefore11Gte": 3
       },
       "templates": [
-        "{free_mornings_before_11} weekday mornings before 11 stayed open. Room—even if it didn't all feel like rest.",
+        "{free_mornings_before_11} weekday mornings before 11 stayed open. Room\u2014even if it didn't all feel like rest.",
         "Three+ quiet mornings before 11. Suspiciously civilized."
       ]
     },
@@ -174,7 +205,7 @@
         "dayRestAnyDayHoursGt": 2
       },
       "templates": [
-        "One day had more than 2h of siesta / podcast / radio on the books. Mid-day rest is allowed—it just piled up that day.",
+        "One day had more than 2h of siesta / podcast / radio on the books. Mid-day rest is allowed\u2014it just piled up that day.",
         "Day rest passed 2h on at least one day. Notice if it felt restorative or like avoidance."
       ]
     },
@@ -188,7 +219,7 @@
         }
       },
       "templates": [
-        "Meals & nourishment: about {meals_hours}h this week—above your ~14h band (≈2h/day eating + ~4h prep). Counting isn't judging—just seeing the pattern."
+        "Meals & nourishment: about {meals_hours}h this week\u2014above your ~14h band (\u22482h/day eating + ~4h prep). Counting isn't judging\u2014just seeing the pattern."
       ]
     },
     {
@@ -201,7 +232,7 @@
         }
       },
       "templates": [
-        "Only about {meals_hours}h blocked for meals this week. You aim for ~14h—time to eat and shop matters to you."
+        "Only about {meals_hours}h blocked for meals this week. You aim for ~14h\u2014time to eat and shop matters to you."
       ]
     },
     {
@@ -233,14 +264,42 @@
       ]
     },
     {
+      "id": "djing_music_present",
+      "priority": 16,
+      "when": {
+        "hoursAreaGte": {
+          "area": "djing_music",
+          "hours": 10
+        }
+      },
+      "templates": [
+        "DJing & music prep: about {djing_hours}h this week\u2014you're showing up for the craft and the income path (\u20ac400/mo is in sight).",
+        "Solid time on music work. Worthy of investment, not just fun between job-search blocks."
+      ]
+    },
+    {
       "id": "quiet_week",
       "priority": 99,
       "when": {
         "fallback": true
       },
       "templates": [
-        "A lighter week on the calendar. Nothing loud to report—maybe that's the insight.",
+        "A lighter week on the calendar. Nothing loud to report\u2014maybe that's the insight.",
         "Not much for the algorithm to perform about. Co-Star would be jealous."
+      ]
+    },
+    {
+      "id": "self_care_weekly_low",
+      "priority": 17,
+      "when": {
+        "hoursAreaLt": {
+          "area": "self_care",
+          "hours": 10
+        }
+      },
+      "templates": [
+        "Self-care (showers, skin/hair): about {self_care_hours}h this week. You're aiming for ~10h\u2014body care as scheduled care, not vanity.",
+        "Less time blocked for self-care than you wanted. Worth noticing without turning it into another thing to optimize."
       ]
     }
   ],
@@ -252,12 +311,12 @@
     },
     {
       "id": "rbl_blocks",
-      "label": "Two RBL blocks per week (2–3 hours each)",
+      "label": "Two RBL blocks per week (2\u20133 hours each)",
       "editable": true
     },
     {
       "id": "job_search_daily",
-      "label": "Job search & brand: 3–4 hours daily (trimester / weekly intention)",
+      "label": "Job search & brand: 3\u20134 hours daily (trimester / weekly intention)",
       "editable": true,
       "horizon": "trimester"
     },
@@ -273,19 +332,19 @@
     },
     {
       "id": "lua_quality_time",
-      "label": "Quality time with Lua — walks & special outings (beach, park…)",
+      "label": "Quality time with Lua \u2014 walks & special outings (beach, park\u2026)",
       "editable": true,
-      "note": "Yellow blocks anywhere; easy to overlook—worth seeing in the chart"
+      "note": "Yellow blocks anywhere; easy to overlook\u2014worth seeing in the chart"
     },
     {
       "id": "meals_nourishment",
       "label": "Time to eat well: meals, cooking, supermarket (sustainable nourishment)",
       "editable": true,
-      "note": "Basil / green blocks — hidden goal, track in chart"
+      "note": "Basil / green blocks \u2014 hidden goal, track in chart"
     },
     {
       "id": "evenings_8",
-      "label": "Keep Mon–Fri after 8pm mostly open",
+      "label": "Keep Mon\u2013Fri after 8pm mostly open",
       "editable": true
     },
     {
@@ -305,7 +364,7 @@
     },
     {
       "id": "meals_weekly_band",
-      "label": "Meals ~14h/week (≈2h/day eating + ~4h supermarket/prep)",
+      "label": "Meals ~14h/week (\u22482h/day eating + ~4h supermarket/prep)",
       "editable": true
     },
     {
@@ -317,6 +376,63 @@
       "id": "laundry_weekly",
       "label": "Laundry & wardrobe (ropa/colada): ~2h/week",
       "editable": true
+    },
+    {
+      "id": "social_life_weekly",
+      "label": "Social life (lavender): ~10 hours per week",
+      "editable": true
+    },
+    {
+      "id": "djing_weekly",
+      "label": "DJing & music prep: ~10 hours per week",
+      "editable": true,
+      "note": "Party/venue/friend labels on blueberry"
+    },
+    {
+      "id": "djing_income",
+      "label": "Build DJ income toward \u20ac400/month (paid creative work)",
+      "editable": true,
+      "horizon": "monthly"
+    },
+    {
+      "id": "compound_social",
+      "label": "Meals or Lua walks with friends \u2014 same moment, two colors OK",
+      "editable": true,
+      "note": "Banana/basil + person's name = integration, not hustle"
+    },
+    {
+      "id": "caprixxo_dual",
+      "label": "CAPRIXXO \u2014 counts as both RBL and DJing",
+      "editable": true
+    },
+    {
+      "id": "lavender_rbl_errands",
+      "label": "Lavender errands tied to RBL (pickups, handoffs)",
+      "editable": true,
+      "note": "May look social; also volunteer logistics"
+    },
+    {
+      "id": "self_care_weekly",
+      "label": "Self-care (lavender): ~10 hours per week \u2014 showers, skin/hair",
+      "editable": true
     }
-  ]
+  ],
+  "targetsAudit": {
+    "note": "See docs/targets-audit.md \u2014 some goals are aspirations; job-search daily is trimester-scale",
+    "weeklyExplicitMinsRough": {
+      "social_life": 10,
+      "djing_music": 10,
+      "self_care": 10,
+      "health": 5,
+      "meals": 14,
+      "passion_rbl": "4-6 (2 blocks)",
+      "laundry": 2,
+      "admin": "ceiling 4 max"
+    },
+    "tensions": [
+      "job_search_daily_3-4h is ~21-28h/week if taken literally \u2014 trimester aspiration, not weekly budget",
+      "social + djing + self_care = 30h/week before work, meals, RBL, job search",
+      "relatedBlocks may double-count hours in chart (intentional)"
+    ]
+  }
 }

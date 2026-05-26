@@ -1,12 +1,12 @@
 {
-  "$schema": "User-defined Google Calendar color → life area mapping. ICS exports often omit colors; used for onboarding swatches and Google sync (v1.1).",
+  "$schema": "User-defined Google Calendar color \u2192 life area mapping. ICS exports often omit colors; used for onboarding swatches and Google sync (v1.1).",
   "googleEventColors": {
     "lavender": {
       "id": "lavender",
       "label": "Lavender",
       "hex": "#7986CB",
-      "lifeAreaId": "day_rest",
-      "userNote": "Split by keyword: day rest (default), home cleaning, laundry. Sleep is usually not scheduled.",
+      "lifeAreaId": "social_life",
+      "userNote": "Default: social life \u2014 person names, events. Keyword exceptions: cleaning, laundry, siesta/podcast.",
       "keywordRoutes": [
         {
           "keywords": [
@@ -29,12 +29,45 @@
         },
         {
           "keywords": [
+            "shower",
+            "ducha",
+            "skincare",
+            "skin care",
+            "hair",
+            "pelo",
+            "self care",
+            "self-care",
+            "autocuidado",
+            "bath",
+            "ba\u00f1o"
+          ],
+          "lifeAreaId": "self_care",
+          "match": "title_contains",
+          "note": "Lavender \u2014 body care (showers, skin/hair)"
+        },
+        {
+          "keywords": [
             "siesta",
-            "podcast",
-            "radio"
+            "podcast"
           ],
           "lifeAreaId": "day_rest",
           "match": "title_contains"
+        },
+        {
+          "keywords": [
+            "errand",
+            "recoger",
+            "pick up",
+            "pickup",
+            "entrega",
+            "env\u00edo"
+          ],
+          "lifeAreaId": "social_life",
+          "alsoAreas": [
+            "passion_rbl"
+          ],
+          "match": "title_contains",
+          "note": "Errand on lavender \u2014 often a person\u2019s name; links social + RBL"
         }
       ]
     },
@@ -50,28 +83,59 @@
       "label": "Blueberry",
       "hex": "#3F51B5",
       "lifeAreaId": "passion_rbl",
-      "userNote": "RBL / passion project"
+      "userNote": "RBL volunteer vs DJing/music prep (paid). Same color \u2014 ask user; route by keywords.",
+      "keywordRoutes": [
+        {
+          "keywords": [
+            "dj",
+            "djing",
+            "mix",
+            "mixing",
+            "prep",
+            "sort",
+            "gig",
+            "export",
+            "listen",
+            "ordenar",
+            "clasificar",
+            "music"
+          ],
+          "lifeAreaId": "djing_music",
+          "match": "title_contains"
+        },
+        {
+          "keywords": [
+            "rbl",
+            "fem barri",
+            "mescladis",
+            "volunteer"
+          ],
+          "lifeAreaId": "passion_rbl",
+          "match": "title_contains"
+        }
+      ],
+      "onboardingQuestion": "Blueberry: RBL volunteer, DJing/prep, or both? How do you tell them apart in labels?"
     },
     "basil": {
       "id": "basil",
       "label": "Basil (dark green)",
       "hex": "#0B8043",
       "lifeAreaId": "meals",
-      "userNote": "Lunch, dinner, supermarket, cooking — eating well & sustainable rhythms"
+      "userNote": "Lunch, dinner, supermarket, cooking \u2014 eating well & sustainable rhythms"
     },
     "banana": {
       "id": "banana",
       "label": "Banana (yellow)",
       "hex": "#F6BF26",
       "lifeAreaId": "pets",
-      "userNote": "Always Lua (dog) — any calendar. Special outings: keywords beach, park, etc."
+      "userNote": "Always Lua (dog) \u2014 any calendar. Special outings: keywords beach, park, etc."
     },
     "sage": {
       "id": "sage",
       "label": "Sage (light green)",
       "hex": "#33B679",
       "lifeAreaId": "health",
-      "userNote": "Exercise — yoga at home, gym; target 5h/week"
+      "userNote": "Exercise \u2014 yoga at home, gym; target 5h/week"
     }
   },
   "keywordOverrides": [
@@ -80,8 +144,7 @@
         "beach",
         "park"
       ],
-      "lifeAreaId": "pets",
-      "note": "Lua special outings"
+      "lifeAreaId": "pets"
     },
     {
       "keywords": [
@@ -89,25 +152,21 @@
         "limpiar",
         "limpieza"
       ],
-      "lifeAreaId": "home_cleaning",
-      "note": "Often on lavender; house cleaning"
+      "lifeAreaId": "home_cleaning"
     },
     {
       "keywords": [
         "ropa",
         "colada"
       ],
-      "lifeAreaId": "laundry",
-      "note": "Often on lavender; clothes & wardrobe"
+      "lifeAreaId": "laundry"
     },
     {
       "keywords": [
         "siesta",
-        "podcast",
-        "radio"
+        "podcast"
       ],
-      "lifeAreaId": "day_rest",
-      "note": "Mid-day rest; not sleep"
+      "lifeAreaId": "day_rest"
     },
     {
       "keywords": [
@@ -116,15 +175,53 @@
         "cooking",
         "cocinar"
       ],
-      "lifeAreaId": "meals",
-      "note": "Often on basil"
+      "lifeAreaId": "meals"
+    },
+    {
+      "keywords": [
+        "dj",
+        "djing",
+        "mix",
+        "mixing"
+      ],
+      "lifeAreaId": "djing_music"
+    },
+    {
+      "keywords": [
+        "caprixxo"
+      ],
+      "lifeAreaId": "djing_music",
+      "alsoAreas": [
+        "passion_rbl"
+      ],
+      "note": "Dual: RBL + DJing"
+    },
+    {
+      "keywords": [
+        "prep",
+        "sort"
+      ],
+      "lifeAreaId": "djing_music"
+    },
+    {
+      "keywords": [
+        "shower",
+        "ducha",
+        "skincare",
+        "skin care",
+        "hair",
+        "pelo",
+        "self care",
+        "self-care"
+      ],
+      "lifeAreaId": "self_care"
     }
   ],
   "exceptions": [
     {
       "rule": "banana_on_any_calendar",
       "lifeAreaId": "pets",
-      "note": "Yellow is always pet care — booked wherever Lua needs care"
+      "note": "Yellow is always pet care \u2014 booked wherever Lua needs care"
     }
   ],
   "colorsActivelyUsed": [
@@ -137,5 +234,74 @@
   ],
   "sleepPolicy": {
     "note": "Sleep is generally not scheduled. Do not infer sleep from gaps. Only count if explicitly blocked."
+  },
+  "productPrinciple": "Interpretation is wrong without the user's color and labeling system. The app must ask how they code and annotate before assuming defaults.",
+  "compoundBlocks": {
+    "note": "Friend's name on banana (Lua) or basil (meal) = social + pet/meal together.",
+    "insightFraming": "Integration you enjoy\u2014not double-booking hustle.",
+    "types": [
+      "social_plus_pets",
+      "social_plus_meals",
+      "social_plus_rbl_errand",
+      "rbl_plus_djing"
+    ]
+  },
+  "djingMusicKeywords": {
+    "areaId": "djing_music",
+    "keywords": [
+      "dj",
+      "djing",
+      "mix",
+      "mixing",
+      "prep",
+      "sort",
+      "gig",
+      "export",
+      "listen",
+      "ordenar",
+      "clasificar",
+      "music"
+    ],
+    "futureSubcategories": {
+      "note": "v2: split hours by verb \u2014 prep, sort, gig, listen, etc.",
+      "planned": [
+        "prep",
+        "sort",
+        "gig",
+        "listen",
+        "export"
+      ]
+    }
+  },
+  "relatedBlocks": {
+    "description": "One calendar block often belongs to more than one life area. Count or link without treating it as an error.",
+    "rules": [
+      {
+        "id": "caprixxo_dual",
+        "keywords": [
+          "caprixxo"
+        ],
+        "areas": [
+          "passion_rbl",
+          "djing_music"
+        ],
+        "countStrategy": "both",
+        "note": "CAPRIXXO spans RBL and DJing \u2014 track in both"
+      },
+      {
+        "id": "lavender_rbl_errand",
+        "keywords": [],
+        "areas": [
+          "social_life",
+          "passion_rbl"
+        ],
+        "countStrategy": "both",
+        "matchHint": "lavender + person-name errand (pickup, handoff, from my house)",
+        "userExamples": [
+          "Isa Enes \u2014 pick something up from my house"
+        ],
+        "onboardingPrompt": "Some lavender blocks are social but also RBL logistics. Do you want those linked to RBL?"
+      }
+    ]
   }
 }

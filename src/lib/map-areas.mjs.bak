@@ -1,0 +1,57 @@
+function titleMatches(summaryLower, keywords) {
+  return keywords.some((k) => summaryLower.includes(k.toLowerCase()));
+}
+
+function routeLavender(summaryLower, colors) {
+  const lav = colors.googleEventColors?.lavender;
+  const routes = lav?.keywordRoutes || [];
+  for (const r of routes) {
+    if (titleMatches(summaryLower, r.keywords)) return r.lifeAreaId;
+  }
+  return lav?.lifeAreaId || "social_life";
+}
+
+export function buildMapper(config) {
+  const { colors, lifeAreas } = config;
+  const globalKw = colors.keywordOverrides || [];
+  const sourceDefaults = lifeAreas.sourceCalendarDefaults || {};
+  const silentWork = lifeAreas.workCalendarInsightPolicy === "silent";
+
+  return function mapEvent(ev) {
+    for (const o of globalKw) {
+      if (titleMatches(ev.summaryLower, o.keywords)) {
+        return { areaId: o.lifeAreaId, silentInsight: false };
+      }
+    }
+    if (ev.sourceCalendar === "buttonschool") {
+      return { areaId: sourceDefaults.buttonschool || "work", silentInsight: silentWork };
+    }
+    if (ev.sourceCalendar === "rbl") {
+      return { areaId: sourceDefaults.rbl || "passion_rbl", silentInsight: false };
+    }
+    // lavender-style: if we had color we'd use it; keyword routing on summary for dogfood
+    const fromLav = routeLavender(ev.summaryLower, colors);
+    if (titleMatches(ev.summaryLower, ["cleaning", "limpiar", "limpieza"])) {
+      return { areaId: "home_cleaning", silentInsight: false };
+    }
+    if (titleMatches(ev.summaryLower, ["ropa", "colada", "laundry"])) {
+      return { areaId: "laundry", silentInsight: false };
+    }
+    if (titleMatches(ev.summaryLower, ["siesta", "podcast"])) {
+      return { areaId: "day_rest", silentInsight: false };
+    }
+    if (titleMatches(ev.summaryLower, ["supermarket", "supermercado", "cooking", "cocinar"])) {
+      return { areaId: "meals", silentInsight: false };
+    }
+    if (titleMatches(ev.summaryLower, ["dj", "djing", "mix", "mixing", "gig"])) {
+      return { areaId: "djing_music", silentInsight: false };
+    }
+    if (titleMatches(ev.summaryLower, ["beach", "park"])) {
+      return { areaId: "pets", silentInsight: false };
+    }
+    if (ev.sourceCalendar === "personal") {
+      return { areaId: sourceDefaults.personal || "uncategorized", silentInsight: false };
+    }
+    return { areaId: fromLav || "uncategorized", silentInsight: false };
+  };
+}

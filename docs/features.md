@@ -19,7 +19,7 @@ Load calendar data → map to life areas → show allocation + stats → show ru
 | # | Feature | What “done” means |
 |---|---------|-------------------|
 | 1 | **Data load** | Read `calendars/merged.ics` (later: upload ICS); parse events; default window = last 7 days (Mon–Sun or rolling 7—match [tech.md](tech.md)) |
-| 2 | **Source → life area** | Map `X-IMTIME-SOURCE-CALENDAR` + user rules to areas; defaults editable; user can add areas (hobbies, pets, health, fitness) |
+| 2 | **Calendar meaning + mapping** | Onboarding interview; swatches + keywords; [calendar-onboarding.md](calendar-onboarding.md) |
 | 3 | **Allocation view** | Hours and % per life area; total scheduled time; no event titles—aggregates only (“forest, not trees”) |
 | 4 | **Core stats** | Meeting hours/count, busiest day, longest open block, evenings without events |
 | 5 | **Insight cards** | ≥3 rule/template patterns fire on real data; compassionate copy per [mvp.md §7](mvp.md#7-content--tone-guardrails) |
@@ -49,16 +49,29 @@ Load calendar data → map to life areas → show allocation + stats → show ru
 
 ---
 
-### F2 — Life-area mapping
+### F2 — Calendar meaning + life-area mapping
 
-**What:** Roll events into meaningful categories.
+**What:** Learn *how the user codes their calendar*, then roll events into life areas.
 
-**How:**
+**Why:** Same color can mean social life, DJing, or laundry. Without asking, interpretation is wrong ([calendar-onboarding.md](calendar-onboarding.md)).
+
+**How (onboarding):**
+- Interview from [onboarding-questions.json](../config/onboarding-questions.json): colors used, lavender = ?, blueberry split ?, compound banana/basil + names?
+- **Every question:** Answer · Skip · Set later — always editable ([onboarding-ux.md](onboarding-ux.md)).
+- **No login for v1** — `localStorage` on device; CLI/config for dogfood now.
+- Google-like **swatch → area**; allow **one color → multiple areas** with label rules.
+- Revisit when insights feel generic.
+
+**How (mapping):**
 - Seed from [config/life-areas-default.json](../config/life-areas-default.json) and [config/calendar-colors.json](../config/calendar-colors.json).
 - **Source calendar:** `buttonschool` → Work (insights silent); `rbl` → Passion/RBL; `personal` → uncategorized until colored.
 - **Color onboarding (product):** Google-like swatches → life area (ICS exports usually **lack colors**; full value with Google sync v1.1).
 - **Your legend:** tangerine → job search; blueberry → RBL; sage → exercise; basil → meals; banana → Lua/pets (any calendar).
-- **Lavender (split by keyword on title):** siesta/podcast/radio → day rest; limpiar/limpieza/cleaning → home cleaning; ropa/colada → laundry.
+- **Lavender default → social life** (~10h/wk); person/event names. Keywords: **self-care** (shower, skin/hair), cleaning, laundry, siesta/podcast.
+- **Blueberry → RBL volunteer** *or* **DJing/music prep** (keywords + onboarding); DJ ~10h/wk, income goal note in goals.
+- **Related blocks:** CAPRIXXO → RBL + DJing; lavender errands → social + RBL; hours can count in both.
+- **DJing keywords:** prep, sort, mix, … (verb subcategories = v2).
+- **Compound blocks (v1.1):** friend's name on banana or basil = social + pet/meal; insight = integration not hustle.
 - **Sleep:** not inferred; only explicit blocks.
 - User can **rename, add, delete** areas; edit labels—no event titles in UI.
 - **Insights on:** meals band, day rest daily cap, home cleaning (4-week window), laundry weekly.
@@ -158,6 +171,10 @@ Load calendar data → map to life areas → show allocation + stats → show ru
 | LLM-generated insights | v2 or never |
 | Event titles in UI | Out (aggregates only) |
 | User research / private beta | Post–portfolio MVP |
+| Compound-block insights | v1.1 |
+| Related-blocks UI (CAPRIXXO, errands) | v1.1 |
+| DJing verb subcategories (prep/sort/…) | v2 |
+| Full onboarding UI | v1.1 (config exists now) |
 | Tasks, planning assistant, full journal | v2 |
 
 ---

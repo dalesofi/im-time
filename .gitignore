@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.vite/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Personal calendar data
+calendars/*.ics
+!calendars/README.md
+
+# Editor
+.idea/
+.vscode/*
+!.vscode/extensions.json

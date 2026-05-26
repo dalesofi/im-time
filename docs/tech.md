@@ -111,7 +111,15 @@ Filter events where `start` falls within range (define inclusive boundaries in c
 
 **Exceptions:** Banana/yellow = **always** Pets (Lua), any calendar.
 
-**Lavender split** (title keywords, case-insensitive): `siesta|podcast|radio` → `day_rest`; `limpiar|limpieza|cleaning` → `home_cleaning`; `ropa|colada` → `laundry`; default lavender → `day_rest`.
+**Lavender:** default → `social_life`; keywords → `home_cleaning`, `laundry`, `day_rest` (siesta/podcast only—not RBL).
+
+**Blueberry:** `dj|djing|mix` → `djing_music`; `rbl|fem barri|volunteer` → `passion_rbl`; **onboarding required** when ambiguous.
+
+**Related blocks:** `config/calendar-colors.json` → `relatedBlocks.rules` — e.g. CAPRIXXO → `passion_rbl` + `djing_music`; lavender errand → `social_life` + `passion_rbl`. Mapper returns `alsoAreas[]`; stats count hours in both.
+
+**DJing keywords:** prep, sort, mix, caprixxo, … — subcategories by verb deferred to v2.
+
+**Compound blocks:** banana/basil + friend name → v1.1 UI ([calendar-onboarding.md](calendar-onboarding.md)).
 
 **Sleep:** do not schedule or infer from gaps.
 
@@ -222,6 +230,7 @@ im-time/
 | Meeting detection | **ATTENDEE present** = meeting; tune thresholds during dogfood on merged data |
 | Mapping persistence | **`localStorage`** for user edits; **seed** from `config/life-areas-default.json` |
 | Journal persistence | **`localStorage`** keyed by week id |
+| Onboarding state | **`localStorage`** — skip/later/completed; no auth session |
 | Merge script | **`scripts/merge-calendars.py`** in repo — run after refreshing exports |
 | Insights config | **`config/insights-rules.json`** — rules, templates, thresholds; **you co-author** with agent |
 

@@ -1,0 +1,51 @@
+{
+  "title": "How do you code your calendar?",
+  "intro": "We can't interpret your time without your system. Colors and labels mean different things for everyone.",
+  "questions": [
+    {
+      "id": "lavender_means",
+      "prompt": "What does lavender usually mean?",
+      "defaultForSofia": "Social life — person's name or event"
+    },
+    {
+      "id": "blueberry_split",
+      "prompt": "Blueberry can mean more than one thing. What lives here?",
+      "defaultForSofia": [
+        "RBL community radio (volunteer)",
+        "DJing & music prep (paid, ~€400/mo goal)"
+      ]
+    },
+    {
+      "id": "banana_basil_social",
+      "prompt": "Friend's name on yellow (Lua) or green (meals) when doing both?",
+      "defaultForSofia": true
+    },
+    {
+      "id": "label_style",
+      "prompt": "How do you label DJ/social blocks?",
+      "defaultForSofia": "Party, venue, or friend's name"
+    },
+    {
+      "id": "dual_keywords",
+      "prompt": "Any labels that always mean TWO areas? (e.g. CAPRIXXO = RBL + DJing)",
+      "defaultForSofia": [
+        "CAPRIXXO"
+      ]
+    },
+    {
+      "id": "lavender_errands",
+      "prompt": "Do lavender blocks sometimes include errands or handoffs (e.g. someone picking something up for RBL)?",
+      "defaultForSofia": true
+    },
+    {
+      "id": "djing_verbs",
+      "prompt": "Which words in titles mean DJing/prep for you?",
+      "defaultForSofia": [
+        "prep",
+        "sort",
+        "mix",
+        "party/venue names"
+      ]
+    }
+  ]
+}

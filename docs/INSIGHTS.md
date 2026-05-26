@@ -13,16 +13,41 @@
 
 Sleep is **not** generally scheduled. The app does **not** infer sleep from empty calendar gaps. Only explicit blocks count (rare).
 
-## Lavender — split routing
+## Lavender — social first
 
-Lavender is **not** one life area. Default + keywords:
+| Match | Life area |
+|-------|-----------|
+| *(lavender default)* | **Social life** (~10h/wk target) |
+| `cleaning`, `limpiar`, `limpieza` | Home cleaning |
+| `ropa`, `colada` | Laundry |
+| `siesta`, `podcast` | Day rest |
 
-| Match (title, case-insensitive) | Life area |
-|---------------------------------|-----------|
-| `siesta`, `podcast`, `radio` | **Day rest** |
-| `cleaning`, `limpiar`, `limpieza` | **Home cleaning** |
-| `ropa`, `colada`, `laundry` | **Laundry & wardrobe** |
-| *(lavender, no match)* | **Day rest** (default) |
+## Blueberry — two meanings (ask user)
+
+| Match | Life area |
+|-------|-----------|
+| `dj`, `djing`, `mix`, … | **DJing & music prep** (~10h/wk; €400/mo goal) |
+| `rbl`, `fem barri`, `volunteer`, … | **RBL volunteer** |
+| Ambiguous | Onboarding question |
+
+## Related blocks (dual areas)
+
+| Keyword / pattern | Areas |
+|-------------------|--------|
+| **CAPRIXXO** | `passion_rbl` + `djing_music` |
+| Lavender errand (pickup, handoff) | `social_life` + `passion_rbl` |
+| Lavender shower / skin / hair | `self_care` (~10h/wk) |
+| Friend on banana/basil | compound — see onboarding doc |
+
+Hours count toward **both** areas in CLI (v1). UI confirmation in v1.1.
+
+## DJing keywords (titles, internal only)
+
+`prep`, `sort`, `mix`, `dj`/`djing`, `gig`, `caprixxo`, … — **subcategories** (prep vs sort vs gig) planned for v2.
+
+## Compound blocks
+
+Friend's name on **banana** (Lua) or **basil** (meal) = social + pet/meal. See [calendar-onboarding.md](calendar-onboarding.md).
 
 See `keywordRoutes` on lavender in [calendar-colors.json](../config/calendar-colors.json).
 
@@ -39,6 +64,13 @@ See `keywordRoutes` on lavender in [calendar-colors.json](../config/calendar-col
 | `homeCleaningBlockHours` | 3 | Target block size |
 | `homeCleaningBiweeklyWeeks` | 2 | Every two weeks |
 | `laundryWeeklyHoursMin` | 2 | Ropa/colada weekly |
+| `socialLifeWeeklyHoursLt` | 10 | Social (lavender) below target |
+| `djingMusicWeeklyHoursLt` | 10 | DJing below target |
+| `selfCareWeeklyHoursLt` | 10 | Self-care (lavender) below target |
+
+## Targets tension
+
+See [targets-audit.md](targets-audit.md). Job search **3–4h/day** is trimester-scale; weekly thin insight stays **&lt;2h**. Many **10h floors** together are ambitious—not impossible, but they trade off.
 | `adminHeavyHoursGte` | 4 | Generic admin ceiling (separate from cleaning) |
 | `passionRblCrumbsHoursLt` | 3 | RBL crumbs |
 | `healthExerciseWeeklyHoursLt` | 5 | Exercise below goal |

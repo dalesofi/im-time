@@ -205,6 +205,9 @@ Phase 2 polish
 | Home cleaning | **10h/month** (4-week roll); **3h** / 2 weeks |
 | Laundry | **2h/week** |
 | Sleep | Not inferred |
+| Calendar onboarding | **Required** — [calendar-onboarding.md](calendar-onboarding.md) |
+| Social (lavender) | ~10h/week |
+| DJing (blueberry) | ~10h/week; €400/mo goal (dogfood) |
 | Merge script | **`scripts/merge-calendars.py`** ✓ |
 | Hosting / public URL | ___ when portfolio needs a live URL |
 

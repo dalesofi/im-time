@@ -25,6 +25,8 @@ Meanwhile, “productivity culture” promises that the right system will elimin
 
 **Gap in the market:** Tools cluster at extremes—raw calendars, ruthless optimizers, or generic wellness apps. Few products sit in the middle: **data-informed, emotionally intelligent, anti-hustle.**
 
+**Design insight:** A calendar color is not a category until the user says what it means. The product must **interview** users on how they code and annotate—or mislabel social life, paid DJ work, and laundry.
+
 ---
 
 ## 3. Target user & market framing
