@@ -4,15 +4,30 @@ A reflective companion for finite humans — **make space for what matters.**
 
 Most calendar tools optimize; I'm Time helps you see where your time actually went and reflect on it with calm, honest interpretation.
 
-**Status:** Documentation only — no application code yet.
+**Status:** Documentation + calendar data. **App scaffold planned** ([tech.md §13](docs/tech.md#13-scaffold-plan-next--no-code-until-you-say-go)) — vanilla JS + pnpm first, Vite later.
 
 ## Documents
 
 | File | What it is |
 |------|------------|
-| [idea.md](idea.md) | Full product thesis, philosophy, and long-term vision |
-| [mvp.md](mvp.md) | v1 product spec: scope, features, tone, metrics, open questions |
-| [plan.md](plan.md) | Phased build plan (no tech stack); milestones and definition of done |
-| [case-study.md](case-study.md) | PM portfolio narrative for hiring managers and your portfolio site |
+| [docs/idea.md](docs/idea.md) | Full product thesis, philosophy, and long-term vision |
+| [docs/mvp.md](docs/mvp.md) | v1 product spec, decisions, tone, metrics |
+| [docs/features.md](docs/features.md) | **What to build** — ordered feature list and acceptance |
+| [docs/tech.md](docs/tech.md) | **How to build** — data, parsing, insights, open tech choices |
+| [docs/plan.md](docs/plan.md) | Phases, milestones, decisions log |
+| [docs/case-study.md](docs/case-study.md) | PM portfolio narrative |
 
-**Suggested reading order:** idea → mvp → plan → case-study (edit mvp and case-study before building).
+## Calendar data
+
+| Path | What it is |
+|------|------------|
+| [calendars/](calendars/) | Personal ICS exports + **merged.ics** (3 calendars combined) |
+| [scripts/merge-calendars.py](scripts/merge-calendars.py) | Regenerate merged file after updating exports |
+
+```bash
+python3 scripts/merge-calendars.py
+```
+
+**Suggested reading order:** idea → mvp → features → tech → plan → case-study.
+
+**Next build step:** Say **go scaffold** to run Phase 1a (pnpm, `tokens.css`, vanilla shell).

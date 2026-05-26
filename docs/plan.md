@@ -1,9 +1,6 @@
-# I'm Time — Build Plan (phases only)
+# I'm Time — Build Plan
 
-> **No tech stack. No AI choices. No code tasks.**  
-> This document sequences *when* and *in what order* work happens. Implementation decisions come after you’ve edited [mvp.md](mvp.md) and [case-study.md](case-study.md).
-
-**Related docs:** [mvp.md](mvp.md) (what to build) · [case-study.md](case-study.md) (portfolio story) · [idea.md](idea.md) (long-term vision)
+> Phases, milestones, and **decisions log**. Build list: [features.md](features.md). Tech: [tech.md](tech.md). Product spec: [mvp.md](mvp.md).
 
 ---
 
@@ -11,217 +8,214 @@
 
 **Product north star:** Help someone see where their week went and reflect on it with calm interpretation—not optimization pressure.
 
-**Process north star:** Documentation first → resolve open questions → build the smallest loop that satisfies [mvp.md](mvp.md) acceptance criteria → dogfood → polish for portfolio.
+**Process north star:** Documentation → build smallest loop ([features.md](features.md) F1–F8) → dogfood on [calendars/merged.ics](../calendars/merged.ics) → polish for portfolio.
 
-**Do not start implementation until:**
-- Open questions in [mvp.md §10](mvp.md#10-open-questions) are answered or explicitly deferred with a note.
-- You’re comfortable describing the hero journey in one minute.
+**Ready to build when:**
+- [x] Product decisions captured in [mvp.md §10](mvp.md#10-product-decisions)
+- [x] Technical decisions in [tech.md §12](tech.md#12-technical-decisions-resolved)
+- [ ] You’ve skimmed [features.md](features.md) and [tech.md §13 scaffold](tech.md#13-scaffold-plan-next--no-code-until-you-say-go)
+- [ ] You can explain the hero journey in one minute
+- [ ] You say **go** to scaffold (Phase A in tech.md §13)
 
 ---
 
 ## 2. Phase 0 — Validate documentation
 
-**Goal:** Turn drafts into decisions you trust.
+**Goal:** Trust the docs; real calendar data in repo.
 
 ### Activities
 
-- [ ] Read and edit [mvp.md](mvp.md) (scope, features, tone examples).
-- [ ] Read and edit [case-study.md](case-study.md) (pitch, hypotheses, tradeoffs table).
-- [ ] Resolve or defer each item in [mvp.md §10](mvp.md#10-open-questions).
-- [ ] Export your own calendar as ICS twice (two different weeks) to sanity-check feasibility.
-- [ ] *(Optional)* Talk to 2–3 people who match the reflective optimizer persona; capture notes in case-study §4.
+- [x] Edit [mvp.md](mvp.md) — decisions in §10
+- [x] Merge three ICS exports → [calendars/merged.ics](../calendars/merged.ics)
+- [ ] Edit [case-study.md](case-study.md) after first dogfood insights
+- [ ] Spot-check one week in merged data vs Google Calendar
+- [ ] *(Later)* 2–3 informal conversations — noted in case-study; **not blocking v1 build**
 
 ### Exit criteria
 
-- [ ] mvp.md has no “TBD” on items you consider blocking (or blockers are listed in §9 below with owner: you).
-- [ ] You can explain v1 in one sentence and one hero journey without opening idea.md.
-
-**Estimated effort:** A few focused sessions (not calendar weeks)—you set the pace.
+- [x] No blocking open product questions (technical fine points stay in [tech.md §12](tech.md#12-open-technical-questions))
+- [ ] One manual sanity check: event counts / hours for a known week feel plausible
 
 ---
 
-## 3. Phase 1 — Core awareness loop
+## 3. Phase 1a — Scaffold (vanilla + pnpm)
 
-**Goal:** ICS in → allocation + insight cards → weekly reflection (including optional journal). Solo dogfood ready.
+**Goal:** Empty app shell per [tech.md §13 Phase A](tech.md#13-scaffold-plan-next--no-code-until-you-say-go).
 
-**Maps to mvp.md features:** §6.1–6.6 (import, mapping, allocation, insights, journal, reflection page).
+- [ ] `pnpm init`, `tokens.css`, `main.js` stub, load `merged.ics`
+- [ ] Placeholder `config/insights-rules.json` + `config/life-areas-default.json`
 
-### Outcomes (not tickets)
-
-- [ ] Upload ICS and see correct week boundaries and event count.
-- [ ] Map events to life areas; allocation view updates.
-- [ ] Week at a glance shows hours/% and core stats.
-- [ ] At least three insight card types can appear on a real week of your data.
-- [ ] Optional journal prompt saves and appears on reflection page.
-- [ ] Single weekly reflection page satisfies mvp.md §6.6 acceptance criteria.
-- [ ] You’ve completed **one** full loop with your own calendar.
-
-### Exit criteria
-
-- [ ] All “In scope (v1)” items in [mvp.md §5](mvp.md#5-scope) are either done or cut with a note in mvp.md.
-- [ ] Copy pass against [mvp.md §7](mvp.md#7-content--tone-guardrails) (no shame language).
-
-**Dependencies before starting Phase 1:** See §7.
+**Exit:** `pnpm dev` (or serve) opens a calm landing page; console shows parsed event count.
 
 ---
 
-## 4. Phase 2 — Polish for portfolio
+## 4. Phase 1b — Core awareness loop
 
-**Goal:** Make v1 credible on a portfolio page and pleasant for repeated weekly use—still solo dogfood.
+**Goal:** F1–F7 from [features.md](features.md) on merged data. No re-import UI.
 
 ### Outcomes
 
-- [ ] Re-import flow for a new week (per decision in mvp.md §10.2).
-- [ ] Empty states and error states feel on-brand (calm, not alarming).
-- [ ] Weekly reflection page is screenshot-ready (hierarchy, spacing, readable type).
-- [ ] Landing / welcome copy matches positioning (2–3 lines, not a manifesto).
-- [ ] You’ve completed **four** weekly loops (mvp.md §8 learning metrics).
-- [ ] Fill portfolio placeholders in [case-study.md §10–11](case-study.md#10-portfolio-artifacts-checklist).
+- [ ] Load merged ICS; default last-7-days view
+- [ ] Life-area mapping with defaults + custom areas
+- [ ] Allocation + stats (aggregates only)
+- [ ] ≥3 insight card types (rules + templates)
+- [ ] Optional journal + weekly reflection page
+- [ ] **One** full personal dogfood pass
 
 ### Exit criteria
 
-- [ ] Definition of done (§10) met.
-- [ ] case-study.md narrative gaps (§11) updated with at least one real tradeoff story.
+- [ ] [features.md](features.md) acceptance checklist (core items) met
+- [ ] Copy pass per [mvp.md §7](mvp.md#7-content--tone-guardrails)
 
 ---
 
-## 5. Phase 3 — Stretch (optional, not scheduled)
+## 5. Phase 2 — Polish for portfolio
 
-Only after Phase 2 is done and you still have energy. **None of this is required for v1.**
+**Goal:** Screenshot-ready; four reflection cycles (can use same import with different date ranges until re-import exists).
+
+### Outcomes
+
+- [ ] Landing copy and empty/error states
+- [ ] Reflection page visual polish
+- [ ] Four weekly reflection sessions documented (journal optional)
+- [ ] [case-study.md §11](case-study.md#11-open-narrative-gaps) — at least tradeoff story drafted
+
+### Exit criteria
+
+- [ ] Definition of done (§10 below) met
+
+**Note:** Re-import moved to Phase 3 / v1.1—not required for Phase 2 exit.
+
+---
+
+## 6. Phase 3 — Stretch & v1.1 (optional)
 
 | Item | Notes |
 |------|--------|
-| Google Calendar sync | Replaces manual ICS habit |
-| Week-over-week comparison | Trends across imports |
-| Richer journal | Multiple prompts, surprise/gratitude from idea.md |
-| Gentle planning nudges | Anti-overplanning suggestions |
-| Prioritization exercises | “What to fail at this season” |
-| Private beta (5–10 users) | Requires hosting + maybe accounts—decide then |
-
-Pull full vision from [idea.md](idea.md); do not expand Phase 3 without cutting something or extending timeline consciously.
+| **Re-import + week history + compare** | Replace/merge/history — see [tech.md §3](tech.md#3-re-import-modes-product--tech) |
+| Trimester / monthly / annual views | On same or historical imports |
+| Multi-calendar upload in UI | Mirror merge script |
+| Google Calendar sync | OAuth |
+| User research / 3–5 user beta | After solo dogfood story exists |
+| Richer journal, planning, tasks | v2 per [idea.md](idea.md) |
 
 ---
 
-## 6. Milestones checklist (by phase)
+## 7. Milestones checklist
 
 ### Phase 0
-- [ ] mvp.md edited and “ready for build”
-- [ ] case-study.md edited
-- [ ] ICS export tested on your calendar
-- [ ] Open questions resolved or deferred in writing
+- [x] mvp.md §10 decisions
+- [x] merged.ics created
+- [ ] case-study.md updated post-dogfood
+- [ ] Calendar spot-check
 
-### Phase 1
-- [ ] ICS import works
-- [ ] Life-area mapping works
-- [ ] Allocation + stats work
-- [ ] Insight cards work (mechanism chosen)
-- [ ] Lite journal works
-- [ ] Weekly reflection page works
-- [ ] First personal dogfood week complete
+### Phase 1a
+- [ ] pnpm + vanilla shell + tokens.css
+- [ ] merged.ics loads in browser
+
+### Phase 1b
+- [ ] F1–F7 shipped
+- [ ] insights-rules.json populated (with your help)
+- [ ] First dogfood week
 
 ### Phase 2
-- [ ] Re-import works
-- [ ] Empty/error states done
-- [ ] Visual polish for screenshots
-- [ ] Four dogfood weeks complete
-- [ ] case-study.md artifacts checklist started
+- [ ] Portfolio polish
+- [ ] Four reflection cycles
+- [ ] case-study §11 tradeoff story
 
-### Phase 3 (optional)
-- [ ] *You define if/when*
+### Phase 3
+- [ ] *If/when*
 
 ---
 
-## 7. Dependencies
-
-Work in this order where possible:
+## 8. Dependencies
 
 ```text
-mvp.md decisions (especially §10)
+mvp.md §10 decisions
     ↓
-Insight card patterns + copy (what to say, when)
+features.md F1 (data load) — merged.ics
     ↓
-ICS import behavior (date range, edge cases)
+F2 life-area mapping (seed from X-IMTIME-SOURCE-CALENDAR)
     ↓
-Life-area mapping
+F3 allocation + F4 stats
     ↓
-Allocation + stats
+F5 insight rules + copy
     ↓
-Insight cards (wired to stats)
+F6 journal + F7 reflection page
     ↓
-Lite journal
+F8 landing
     ↓
-Weekly reflection page (layout combines all outputs)
+Phase 2 polish
     ↓
-Re-import behavior
-    ↓
-Polish + portfolio capture
+(v1.1) re-import / history / compare
 ```
-
-**Blocking decisions (from mvp.md):**
-- Insight generation approach → before building insight cards.
-- Re-import replace vs history → before building re-import.
-- Event titles vs aggregates only → before any UI that lists events.
 
 ---
 
-## 8. Risks & contingencies
+## 9. Risks & contingencies
 
 | Risk | Signal | Contingency |
 |------|--------|-------------|
-| Timeline slip (part-time solo) | Phase 1 not started weeks after Phase 0 | Cut re-import to Phase 2; reduce insight card types to 2 |
-| ICS quirks | Hours don’t match calendar app | Document rules; narrow v1 to one calendar provider you test |
-| Insights feel weak | You don’t trust cards on your own data | Pause build; rewrite insight patterns in mvp.md §7; consider manual cards for dogfood |
-| Scope creep | Building journal/planning/sync “while here” | Re-read mvp.md §5 Out of scope; move idea to Phase 3 |
-| Portfolio without users | Interviews ask “who used it?” | Lead with dogfood + optional 2–3 conversations; honest n in case-study |
+| Timeline slip | Phase 1 stalls | Drop to 2 insight types; simplify stats |
+| ICS quirks | Hours don’t match Google | Document rules in tech.md; fix parser |
+| Insights feel generic | You don’t trust cards | Add more rules; tune thresholds on your data |
+| Scope creep | Building compare before F7 done | Re-read [features.md](features.md) “not v1” |
+| Personal data in git | Public repo | gitignore `calendars/*.ics` |
 
 ---
 
-## 9. Open build questions
+## 10. Decisions log
 
-*Fill these in when you start implementation planning. Leave blank until then.*
+*Synced with [mvp.md §10](mvp.md#10-product-decisions). Anchor: §10 Decisions log.*
 
-### Product (should be answered in mvp.md first)
+### Product — resolved
 
-- [ ] Insight generation approach: ___
-- [ ] Re-import behavior: ___
-- [ ] Default life areas: ___
-- [ ] Event titles in UI: ___
-- [ ] Week comparison in v1: ___
+| Topic | Decision |
+|-------|----------|
+| Insight generation | **Rules + templates + data analysis** (no LLM v1) |
+| Re-import / history | **None in v1**; v1.1 = **history + compare** |
+| Default life areas | **Yes**, user can add/edit (Health, Hobbies, Pets, …) |
+| Event titles in UI | **No** — aggregates only; editable labels; forest/trees metaphor |
+| Default date range | **Last 7 days**; monthly/annual/trimester later |
+| Dogfood data | **`calendars/merged.ics`** (+ source exports) |
+| Week comparison | **Out of v1**; stretch trimester later |
+| User research / beta | **Later**; solo dogfood for portfolio |
 
-### Implementation (decide in a future tech appendix or here)
+### Implementation — resolved
 
-- [ ] Stack / framework: ___
-- [ ] Where data persists for solo v1: ___
-- [ ] Hosting / URL (if any for portfolio): ___
-- [ ] Privacy copy (local-only vs server): ___
+| Topic | Decision |
+|-------|----------|
+| Package manager | **pnpm** |
+| Stack phase A | **Vanilla JS** (HTML + ES modules) |
+| Stack phase B | **Vite** when HMR/bundling worth it ([tech.md §13](tech.md#13-scaffold-plan-next--no-code-until-you-say-go)) |
+| UI styling | **`src/styles/tokens.css`** — you manage token values |
+| Default week boundary | **Mon–Sun** |
+| All-day events | **Not in hour totals**; separate day/all-day tracking |
+| Mapping persistence | **localStorage** + seed `config/life-areas-default.json` |
+| Insights config | **`config/insights-rules.json`** (co-authored) |
+| Merge script | **`scripts/merge-calendars.py`** ✓ |
+| Hosting / public URL | ___ when portfolio needs a live URL |
 
-### AI / automation (optional future appendix)
+### AI / automation
 
-- [ ] Use automated interpretation in v1? Yes / No / Later
-- [ ] If yes, what inputs and what guardrails: ___
+| Topic | Decision |
+|-------|----------|
+| LLM in v1 | **No** |
+| LLM later | Optional; not part of portfolio thesis |
 
 ---
 
-## 10. Definition of done (v1)
+## 11. Definition of done (v1)
 
-v1 is **done** when all of the following are true:
+1. [features.md](features.md) core checklist complete (F1–F8).
+2. **Four** weekly reflection sessions on your data (same or different 7-day windows).
+3. One **tradeoff story** in [case-study.md §11](case-study.md#11-open-narrative-gaps).
+4. Weekly reflection page **portfolio-ready** (screenshots).
+5. No shame-language violations ([mvp.md §7](mvp.md#7-content--tone-guardrails)).
+6. case-study artifacts checklist started (§10).
 
-1. **mvp.md** acceptance criteria for §6.1–6.7 are met (or consciously cut with doc update).
-2. You have used the product for **four** weekly cycles with your own ICS exports.
-3. You can tell **one** specific tradeoff story (written in case-study.md §11).
-4. Weekly reflection page is **portfolio-ready** (screenshots you’d show a hiring manager).
-5. No shame-language violations per mvp.md §7 on shipped copy.
-6. case-study.md artifacts checklist has at least: pitch, tradeoffs table, 3 screenshot placeholders filled.
-
-**Not required for v1 done:** Google sync, other users, public launch, AI, tasks, planning assistant.
+**Not required:** re-import, Google sync, other users, LLM, public launch.
 
 ---
 
-*Edit this plan as your timeline and priorities shift. When you’re ready for tech, add an appendix section below or a separate `tech.md`—not required now.*
-
-### Appendix placeholder (future)
-
-```text
-## Tech & implementation notes
-(add when ready)
-```
+*Last updated: May 2026.*

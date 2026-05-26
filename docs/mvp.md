@@ -2,9 +2,9 @@
 
 > **Tagline:** Make space for what matters.
 
-**Related docs:** [idea.md](idea.md) (thesis) · [plan.md](plan.md) (phases & milestones) · [case-study.md](case-study.md) (portfolio narrative)
+**Related docs:** [idea.md](idea.md) (thesis) · [features.md](features.md) (build list) · [tech.md](tech.md) (implementation notes) · [plan.md](plan.md) (phases) · [case-study.md](case-study.md) (portfolio narrative)
 
-This document defines **what** v1 is, **for whom**, and **why**. It does not specify technology or how insights are generated—that is left as an open question for you to decide before build.
+This document defines **what** v1 is, **for whom**, and **why**. Build order and acceptance: [features.md](features.md). Technical notes: [tech.md](tech.md).
 
 ---
 
@@ -23,7 +23,7 @@ This document defines **what** v1 is, **for whom**, and **why**. It does not spe
 **Inspired by:** humane time philosophy (e.g. *Four Thousand Weeks*) — peace comes from accepting limits within time, not mastering it.
 
 **Platform (v1):** Responsive web app, desktop-first.  
-**Data (v1):** Calendar via **ICS file import**; solo use (you try it yourself first).
+**Data (v1):** Calendar via **ICS** (upload in product; dogfood uses [calendars/merged.ics](../calendars/merged.ics) from three personal exports). Solo use first.
 
 ---
 
@@ -73,13 +73,14 @@ Most calendar tools show *what* is scheduled. They rarely help people see *patte
 One path only. Every v1 feature should support this flow.
 
 1. **Land** — Short welcome: what I'm Time is (2–3 lines) and what it is not. Calm, spacious tone.
-2. **Upload ICS** — User exports a calendar file (e.g. last 7 days) and uploads it. App confirms date range and event count.
-3. **Map life areas** *(first time or when needed)* — User assigns calendar signals (colors, keywords, or categories) to life areas: e.g. Work, Relationships, Rest, Admin, Other. Unmapped events → “Uncategorized.”
-4. **Week at a glance** — Allocation view (hours and % by area) plus core stats (meeting hours, busiest day, largest open block, evenings without events).
-5. **Insight cards** — 3–5 short observations about patterns in *this* week (compassionate, non-judgmental).
+2. **Load calendar data** — Product: user uploads one `.ics` file. Dogfood: app reads merged personal calendar (Button School + RBL + personal). App confirms date range and event count. Default window: **last 7 days**.
+3. **Map life areas** *(first time or when needed)* — Default areas offered (Work, Relationships, Rest, Admin, Other); user can add/edit (e.g. Health, Hobbies, Pets). Map by source calendar and/or rules. Unmapped → “Uncategorized.” User can **edit assigned labels** so names feel right—without seeing raw event titles.
+4. **Week at a glance** — Allocation view (hours and % by area) plus core stats (meeting hours, busiest day, largest open block, evenings without events). **Aggregates only**—see the forest, not every tree.
+5. **Insight cards** — 3–5 short observations from **rules + templates + data analysis** (compassionate, non-judgmental; no LLM in v1).
 6. **Optional journal** — One prompt, e.g. *“What surprised you this week?”* User may skip.
 7. **Weekly reflection** — Single page combining allocation, stats, insight cards, and optional journal text. Readable in under two minutes.
-8. **Return next week** — User exports and uploads a new ICS file (manual habit in v1). Compare or replace week—behavior TBD (see open questions).
+
+**Not in v1 hero path:** re-import, week history, or week-over-week comparison (see [Product decisions §10](#10-product-decisions) and [tech.md §3](tech.md#3-re-import-modes-product--tech)).
 
 ---
 
@@ -89,12 +90,15 @@ One path only. Every v1 feature should support this flow.
 
 | Area | Included |
 |------|----------|
-| Input | ICS file upload for a chosen date range |
-| Mapping | Life-area rules (color/keyword → area); uncategorized bucket |
-| Analysis | Time allocation by area; meeting count/hours; fragmentation signals; open/unscheduled time |
+| Input | ICS (upload); dogfood: [calendars/merged.ics](../calendars/merged.ics) (3 personal calendars merged) |
+| Date range | Default **last 7 days**; data may span longer in file—filter for weekly view |
+| Mapping | Default life areas + user-defined; source calendar + rules; editable labels; uncategorized bucket |
+| Analysis | Time allocation by area; meeting count/hours; open/unscheduled time; **no event titles in UI** |
+| Insights | Rule/template-based interpretation (not LLM) |
 | Output | Week at a glance, insight cards, weekly reflection page |
 | Journal | One optional text field per week (lite) |
-| Persistence | Data survives refresh for solo use (approach TBD in build phase) |
+| Persistence | Calendar truth in `calendars/`; mapping/journal in browser local storage for v1 |
+| Re-import / history | **Out of v1** — single analysis session; history + compare in v1.1 |
 | Accounts | None required for v1 |
 
 ### Out of scope (v1)
@@ -110,8 +114,11 @@ One path only. Every v1 feature should support this flow.
 
 ### Later (v1.1 / v2 — not committed)
 
+- Re-import and **week history** (replace vs merge vs compare—see [tech.md §3](tech.md#3-re-import-modes-product--tech))
+- Week-over-week and **trimester / monthly / annual** views
 - Google Calendar integration
-- Trend views across multiple weeks/imports
+- Multi-calendar upload in UI (merge like `merged.ics`)
+- User research / small beta cohort
 - Richer journaling and “unplanned moments” surfacing
 - Gentle planning suggestions and anti-overplanning nudges
 - Intentional prioritization exercises
@@ -132,10 +139,10 @@ Format: **Description** → **Acceptance criteria** → **Tone / UX notes**
 **Acceptance criteria**
 - [ ] Valid ICS file parses successfully; user sees event count and date range.
 - [ ] Invalid or empty file shows a clear, friendly error (no technical stack trace).
-- [ ] Recurring events and all-day events are handled in a documented, consistent way.
+- [ ] Recurring events handled consistently; **all-day events do not count toward hour totals** (tracked separately—see [tech.md §12](tech.md#12-technical-decisions-resolved)).
 - [ ] User understands which week they are viewing.
 
-**Tone / UX:** Reassuring copy about privacy (file stays local / not uploaded to a server—wording depends on build choices). No blame if export is wrong.
+**Tone / UX:** Reassuring copy about privacy (client-side parse preferred when upload exists). No blame if export is wrong. Dogfood: three exports merged into one file—see [calendars/README.md](../calendars/README.md).
 
 ---
 
@@ -145,7 +152,8 @@ Format: **Description** → **Acceptance criteria** → **Tone / UX notes**
 
 **Acceptance criteria**
 - [ ] User can define at least four life areas (plus Uncategorized).
-- [ ] Mapping rules can be applied (e.g. by calendar color or keyword—exact mechanism TBD at build).
+- [ ] Mapping rules can be applied (source calendar, color/keyword, or user override).
+- [ ] User can add/rename life areas beyond defaults.
 - [ ] Unmapped events appear under Uncategorized; user can refine mapping and see updated allocation.
 - [ ] Mapping persists for solo user across sessions.
 
@@ -162,7 +170,7 @@ Format: **Description** → **Acceptance criteria** → **Tone / UX notes**
 - [ ] Empty or near-empty weeks handled gracefully.
 - [ ] Core stats visible without drilling down: e.g. meeting hours, number of days with back-to-back blocks, largest single open block, count of evenings with no scheduled events.
 
-**Tone / UX:** Charts feel spacious, not dashboard-dense. No red/green “good/bad” scoring.
+**Tone / UX:** Charts feel spacious, not dashboard-dense. No red/green “good/bad” scoring. **No raw event titles**—only life areas and pattern-level stats (“forest, not trees”).
 
 ---
 
@@ -176,7 +184,7 @@ Format: **Description** → **Acceptance criteria** → **Tone / UX notes**
 - [ ] Insights reference patterns, not moral judgment (“you failed to…”).
 - [ ] If no strong pattern applies, show fewer cards or a gentle “quiet week” message—not filler noise.
 
-**Tone / UX:** Reads like a thoughtful friend, not a coach optimizing output. *How insights are produced is an open question (see §10).*
+**Tone / UX:** Reads like a thoughtful friend, not a coach optimizing output. **v1 mechanism:** rules + templates + data analysis (see [features.md F5](features.md#f5--insight-cards)).
 
 ---
 
@@ -208,16 +216,17 @@ Format: **Description** → **Acceptance criteria** → **Tone / UX notes**
 
 ---
 
-### 6.7 Re-import (new week)
+### 6.7 Re-import & history — deferred to v1.1
 
-**Description:** User brings a new ICS export for a subsequent week.
+**Not in v1.** Documented so build stays focused.
 
-**Acceptance criteria**
-- [ ] Flow to upload a new file is obvious from home or reflection page.
-- [ ] Behavior for replace vs merge vs history is **defined and documented** once you decide (open question).
-- [ ] User always knows which week they are viewing.
+| Mode | Meaning |
+|------|---------|
+| **Replace** | New upload replaces the current snapshot (one active week). |
+| **Merge** | New events join current data; requires UID dedupe (like `merged.ics`). |
+| **History** | Each week stored separately; browse and compare over time. |
 
-**Tone / UX:** Gentle nudge to weekly ritual, not a streak (“don’t break the chain”).
+**v1:** Single load → analyze default range → reflect. **v1.1:** Re-import + history + comparison (your stated preference). Details: [tech.md §3](tech.md#3-re-import-modes-product--tech).
 
 ---
 
@@ -256,7 +265,7 @@ Hustle language · gamification · streak obsession · productivity guilt · hyp
 
 - [ ] Completed at least **4** weekly import → reflection cycles.
 - [ ] Can articulate **one** tradeoff you noticed (e.g. “I schedule rest but fill gaps with admin”).
-- [ ] Resolved or consciously deferred each open question in §10.
+- [ ] Product decisions in §10 reflected in shipped v1 (or consciously deferred in writing).
 
 ### Product (if you share with others later)
 
@@ -297,18 +306,37 @@ Hustle language · gamification · streak obsession · productivity guilt · hyp
 
 ---
 
-## 10. Open questions
+## 10. Product decisions
 
-Resolve these by editing this doc (and [plan.md](plan.md)) before implementation.
+Locked from scoping (May 2026). Synced to [plan.md §10](plan.md#10-decisions-log), [features.md](features.md), [tech.md](tech.md), [case-study.md §7](case-study.md#7-key-decisions--tradeoffs).
 
-1. **How should insight cards be generated?** (Rules, templates, manual curation, something else—decide without defaulting to “AI” in v1.)
-2. **Re-import behavior:** Replace current week only, keep history of past weeks, or merge overlapping imports?
-3. **Default life areas:** Offer defaults (Work, Relationships, Rest, Admin, Other) or start blank?
-4. **Event titles in UI:** Show event titles anywhere, or only aggregated stats (privacy/simplicity)?
-5. **Default date range on upload:** Last 7 days, calendar week (Mon–Sun), or user picks?
-6. **Where does data live for v1 solo use?** (Browser only vs exportable backup—build decision, but product implications matter.)
-7. **Comparison across weeks:** In v1, any week-over-week view, or strictly single-week reflection?
-8. **“Live product” bar:** Is solo dogfood enough for portfolio, or do you want 3–5 friends on a staging URL before interviews?
+| # | Decision | v1 choice | Later |
+|---|----------|-----------|--------|
+| 1 | **Insight cards** | Rules + templates + data analysis | LLM not in v1 |
+| 2 | **Re-import** | **None** — single analysis session | v1.1: history + week compare |
+| 3 | **Life areas** | Defaults (Work, Relationships, Rest, Admin, Other) + user add/edit (Health, Hobbies, Pets, etc.) | — |
+| 4 | **Event titles in UI** | **No** — aggregates only; user edits **labels** we assign; “forest, not trees” metaphor in copy | — |
+| 5 | **Default date range** | **Last 7 days** (weekly reflection) | Monthly, annual, trimester overview in v1.1+ |
+| 6 | **Calendar data (dogfood)** | Source exports + [merged.ics](../calendars/merged.ics) in `calendars/` | Upload UI; multi-file merge in product |
+| 7 | **Week comparison** | **Out of v1** UI; merged file can hold years of data for future ranges | Stretch: trimester view; user-chosen “main mode” |
+| 8 | **Live / research bar** | Solo dogfood enough for portfolio | User research & beta in later iteration ([plan.md](plan.md) Phase 3) |
+
+### Re-import modes (reference for v1.1)
+
+Explained in [tech.md §3](tech.md#3-re-import-modes-product--tech). **v1 intentionally skips all three** in the UI: load once, reflect, done.
+
+### Technical decisions (see [tech.md §12](tech.md#12-technical-decisions-resolved))
+
+| Topic | Choice |
+|-------|--------|
+| Week boundary | **Mon–Sun** calendar week |
+| All-day events | **Not counted as hours**; separate day-level tracking |
+| Meeting detection | **ATTENDEE** = meeting (tune thresholds in config) |
+| Persistence | **localStorage** + seed `config/life-areas-default.json` |
+| Insights data | **`config/insights-rules.json`** — rules, templates, thresholds (co-edited with you) |
+| Stack | **pnpm** + **vanilla JS** first → **Vite** when bundling/HMR helps |
+
+**Scaffold:** documented in [tech.md §13](tech.md#13-scaffold-plan-next--no-code-until-you-say-go) — not started until you approve.
 
 ---
 
@@ -338,10 +366,10 @@ Resolve these by editing this doc (and [plan.md](plan.md)) before implementation
 │  │                                                         │ │
 │  └─────────────────────────────────────────────────────────┘ │
 ├─────────────────────────────────────────────────────────────┤
-│  [ Upload a new week ]                                       │
+│  (v1.1: Upload a new week)                                   │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-*Last updated: draft for your edit. When this stabilizes, use [plan.md](plan.md) to sequence build work.*
+*Last updated: May 2026 — decisions in §10. Build via [features.md](features.md) and [plan.md](plan.md).*
