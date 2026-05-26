@@ -1,0 +1,222 @@
+{
+  "meta": {
+    "version": 1,
+    "maxCardsPerWeek": 3,
+    "weekBoundary": "monday_sunday",
+    "voice": "gentle_friend_minimal",
+    "humor": "some"
+  },
+  "thresholds": {
+    "meetingHeavyHoursGte": 10,
+    "weekdayFreeMorningBefore": "11:00",
+    "weekdayFreeMorningMinCount": 2,
+    "weekdayFreeMorningCelebrateGte": 3,
+    "weekdayEveningOpenAfter": "20:00",
+    "weekdayEveningOpenMinCount": 3,
+    "weekdayEveningOpenMaxCount": 1,
+    "busyWeekScheduledHoursGt": 20,
+    "passionRblCrumbsHoursLt": 3,
+    "passionRblGoalBlocksPerWeek": 2,
+    "passionRblGoalBlockHoursMin": 2,
+    "passionRblGoalBlockHoursMax": 3,
+    "jobSearchThinHoursLt": 2,
+    "jobSearchDailyGoalHoursMin": 3,
+    "jobSearchDailyGoalHoursMax": 4,
+    "adminHeavyHoursGte": 4,
+    "healthExerciseWeeklyHoursLt": 5,
+    "relationshipsLowHoursLt": 2,
+    "mealsTrackOnly": true,
+    "petsTrackOnly": true
+  },
+  "rules": [
+    {
+      "id": "meeting_heavy",
+      "priority": 1,
+      "when": {
+        "meetingHoursGte": 10
+      },
+      "templates": [
+        "{meeting_hours} hours in meetings this week. That's a full workweek inside the week—notice how it landed, not how to fix it tonight.",
+        "{meeting_hours}h of meetings. The calendar was loud. You don't have to be."
+      ]
+    },
+    {
+      "id": "weekday_mornings_scarce",
+      "priority": 2,
+      "when": {
+        "freeWeekdayMorningsBefore11Lt": 2
+      },
+      "templates": [
+        "Only {free_mornings_before_11} weekday morning(s) before 11 with nothing scheduled. Mornings are where you wanted space.",
+        "Your mornings before 11 are mostly spoken for. That's a pattern—not a verdict."
+      ]
+    },
+    {
+      "id": "rbl_crumbs",
+      "priority": 3,
+      "when": {
+        "hoursAreaLt": {
+          "area": "passion_rbl",
+          "hours": 3
+        }
+      },
+      "templates": [
+        "Passion / RBL had about {rbl_hours}h on the calendar—crumbs, not the two 2–3h blocks you're aiming for.",
+        "RBL showed up as fragments. You wanted real blocks this week, not leftovers."
+      ]
+    },
+    {
+      "id": "job_search_thin",
+      "priority": 4,
+      "when": {
+        "hoursAreaLt": {
+          "area": "job_search",
+          "hours": 2
+        }
+      },
+      "templates": [
+        "Job search & brand: roughly {job_hours}h scheduled. Your trimester aim is closer to 3–4h daily—this week was thin.",
+        "Not much orange on the calendar. Intentions and blocks diverge sometimes."
+      ]
+    },
+    {
+      "id": "admin_heavy",
+      "priority": 5,
+      "when": {
+        "hoursAreaGte": {
+          "area": "admin",
+          "hours": 4
+        }
+      },
+      "templates": [
+        "Admin and life upkeep hit about {admin_hours}h—above the ~4h/week you want as a ceiling. Gaps get eaten fast.",
+        "More admin than you meant to allow. Keeping it under 4h is a quiet kind of discipline."
+      ]
+    },
+    {
+      "id": "exercise_below_goal",
+      "priority": 6,
+      "when": {
+        "hoursAreaLt": {
+          "area": "health",
+          "hours": 5
+        }
+      },
+      "templates": [
+        "Health / exercise: about {health_hours}h blocked. You're aiming for at least 5h—yoga, gym, home sessions.",
+        "Movement didn't get much calendar space this week. Bodies don't live in Google Calendar—but you said 5h matters."
+      ]
+    },
+    {
+      "id": "relationships_low",
+      "priority": 7,
+      "when": {
+        "hoursAreaLt": {
+          "area": "relationships",
+          "hours": 2
+        }
+      },
+      "templates": [
+        "Relationships had about {rel_hours}h scheduled. People aren't only events—but the space matters."
+      ]
+    },
+    {
+      "id": "evenings_open",
+      "priority": 8,
+      "when": {
+        "openWeekdayEveningsAfter20Gte": 3
+      },
+      "templates": [
+        "{open_evenings_after_20} weeknights after 8pm had nothing on the calendar. Space—even if it didn't all feel like rest."
+      ]
+    },
+    {
+      "id": "evenings_full",
+      "priority": 9,
+      "when": {
+        "openWeekdayEveningsAfter20Lte": 1,
+        "scheduledHoursGt": 15
+      },
+      "templates": [
+        "Most weeknights after 8pm were booked. Evenings are a different kind of morning."
+      ]
+    },
+    {
+      "id": "weekday_mornings_present",
+      "priority": 10,
+      "when": {
+        "freeWeekdayMorningsBefore11Gte": 3
+      },
+      "templates": [
+        "{free_mornings_before_11} weekday mornings before 11 stayed open. Room—even if it didn't all feel like rest.",
+        "Three+ quiet mornings before 11. Suspiciously civilized."
+      ]
+    },
+    {
+      "id": "quiet_week",
+      "priority": 99,
+      "when": {
+        "fallback": true
+      },
+      "templates": [
+        "A lighter week on the calendar. Nothing loud to report—maybe that's the insight.",
+        "Not much for the algorithm to perform about. Co-Star would be jealous."
+      ]
+    }
+  ],
+  "sampleGoals": [
+    {
+      "id": "free_mornings",
+      "label": "Protect weekday mornings before 11",
+      "editable": true
+    },
+    {
+      "id": "rbl_blocks",
+      "label": "Two RBL blocks per week (2–3 hours each)",
+      "editable": true
+    },
+    {
+      "id": "job_search_daily",
+      "label": "Job search & brand: 3–4 hours daily (trimester / weekly intention)",
+      "editable": true,
+      "horizon": "trimester"
+    },
+    {
+      "id": "admin_ceiling",
+      "label": "Keep admin under 4 hours per week",
+      "editable": true
+    },
+    {
+      "id": "exercise_weekly",
+      "label": "At least 5 hours of exercise per week (yoga, gym, home)",
+      "editable": true
+    },
+    {
+      "id": "lua_quality_time",
+      "label": "Quality time with Lua — walks & special outings (beach, park…)",
+      "editable": true,
+      "note": "Yellow blocks anywhere; easy to overlook—worth seeing in the chart"
+    },
+    {
+      "id": "meals_nourishment",
+      "label": "Time to eat well: meals, cooking, supermarket (sustainable nourishment)",
+      "editable": true,
+      "note": "Basil / green blocks — hidden goal, track in chart"
+    },
+    {
+      "id": "evenings_8",
+      "label": "Keep Mon–Fri after 8pm mostly open",
+      "editable": true
+    },
+    {
+      "id": "health_body",
+      "label": "Body & health on the calendar",
+      "editable": true
+    },
+    {
+      "id": "less_admin",
+      "label": "Stop letting admin eat the gaps",
+      "editable": true
+    }
+  ]
+}

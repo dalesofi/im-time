@@ -107,7 +107,10 @@ You open I'm Time and see a calm welcome—this is not another productivity app.
 | MVP wedge | Awareness · Reflection · Planning · Prioritization | **Awareness** | Strongest proof of “interpretation not optimization” |
 | Calendar input | Google OAuth · ICS · Demo only | **ICS** | Ships without OAuth; real exports for dogfood |
 | Multi-calendar life | Single calendar · Merge exports | **Merge 3 ICS → merged.ics** | One person, multiple roles—matches real life |
-| Insight mechanism | Rules/templates · LLM · Manual only | **Rules + templates + stats** | Controllable tone; no AI dependency in v1 |
+| Insight mechanism | Rules/templates · LLM · Manual only | **config/insights-rules.json** | Controllable tone; no LLM v1; max 3 cards/week |
+| Color mapping | From ICS · Manual · Swatch onboarding | **Swatch onboarding** + `calendar-colors.json` | Google ICS omits colors; legend ready for API sync |
+| Hidden goals | Ignore · Chart only · Insights | **Chart + goals list** | Lua/pets, meals, exercise 5h—easy to overlook |
+| Admin / RBL / job | Generic thresholds | **Admin ≥4h alert**; RBL &lt;3h + 2× blocks goal; job &lt;2h thin, 3–4h/d aspirational | Personal dogfood thresholds |
 | Event titles in UI | Full list · Aggregates only | **Aggregates only** | Privacy, simplicity, pattern-focus; user edits labels |
 | Default horizon | Day · Week · Month · Quarter | **Last 7 days** | Weekly reflection ritual; longer views v1.1+ |
 | Re-import model | Replace · Merge · History | **No re-import v1**; **history + compare v1.1** | Simplest loop first; recurrent user later |

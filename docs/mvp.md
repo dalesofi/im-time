@@ -2,7 +2,7 @@
 
 > **Tagline:** Make space for what matters.
 
-**Related docs:** [idea.md](idea.md) (thesis) · [features.md](features.md) (build list) · [tech.md](tech.md) (implementation notes) · [plan.md](plan.md) (phases) · [case-study.md](case-study.md) (portfolio narrative)
+**Related docs:** [idea.md](idea.md) (thesis) · [features.md](features.md) (build list) · [tech.md](tech.md) (implementation) · [INSIGHTS.md](INSIGHTS.md) (rules & goals) · [plan.md](plan.md) (phases) · [case-study.md](case-study.md) (portfolio narrative)
 
 This document defines **what** v1 is, **for whom**, and **why**. Build order and acceptance: [features.md](features.md). Technical notes: [tech.md](tech.md).
 
@@ -74,7 +74,7 @@ One path only. Every v1 feature should support this flow.
 
 1. **Land** — Short welcome: what I'm Time is (2–3 lines) and what it is not. Calm, spacious tone.
 2. **Load calendar data** — Product: user uploads one `.ics` file. Dogfood: app reads merged personal calendar (Button School + RBL + personal). App confirms date range and event count. Default window: **last 7 days**.
-3. **Map life areas** *(first time or when needed)* — Default areas offered (Work, Relationships, Rest, Admin, Other); user can add/edit (e.g. Health, Hobbies, Pets). Map by source calendar and/or rules. Unmapped → “Uncategorized.” User can **edit assigned labels** so names feel right—without seeing raw event titles.
+3. **Map life areas** *(first time or when needed)* — Defaults + custom areas (Meals, Pets/Lua, Job search, etc.). **Color onboarding:** Google-like swatches → life area ([calendar-colors.json](../config/calendar-colors.json)). Until colors exist in data: source calendar + manual mapping. User edits labels—no raw event titles.
 4. **Week at a glance** — Allocation view (hours and % by area) plus core stats (meeting hours, busiest day, largest open block, evenings without events). **Aggregates only**—see the forest, not every tree.
 5. **Insight cards** — 3–5 short observations from **rules + templates + data analysis** (compassionate, non-judgmental; no LLM in v1).
 6. **Optional journal** — One prompt, e.g. *“What surprised you this week?”* User may skip.
@@ -92,9 +92,10 @@ One path only. Every v1 feature should support this flow.
 |------|----------|
 | Input | ICS (upload); dogfood: [calendars/merged.ics](../calendars/merged.ics) (3 personal calendars merged) |
 | Date range | Default **last 7 days**; data may span longer in file—filter for weekly view |
-| Mapping | Default life areas + user-defined; source calendar + rules; editable labels; uncategorized bucket |
+| Mapping | Source calendar + **color swatch onboarding** (when colors available); [life-areas-default.json](../config/life-areas-default.json); editable labels |
+| Insights config | [insights-rules.json](../config/insights-rules.json) — rules, thresholds, sample goals |
 | Analysis | Time allocation by area; meeting count/hours; open/unscheduled time; **no event titles in UI** |
-| Insights | Rule/template-based interpretation (not LLM) |
+| Insights | [insights-rules.json](../config/insights-rules.json) — rules + templates (not LLM); max 3 cards/week |
 | Output | Week at a glance, insight cards, weekly reflection page |
 | Journal | One optional text field per week (lite) |
 | Persistence | Calendar truth in `calendars/`; mapping/journal in browser local storage for v1 |
@@ -331,12 +332,25 @@ Explained in [tech.md §3](tech.md#3-re-import-modes-product--tech). **v1 intent
 |-------|--------|
 | Week boundary | **Mon–Sun** calendar week |
 | All-day events | **Not counted as hours**; separate day-level tracking |
-| Meeting detection | **ATTENDEE** = meeting (tune thresholds in config) |
-| Persistence | **localStorage** + seed `config/life-areas-default.json` |
-| Insights data | **`config/insights-rules.json`** — rules, templates, thresholds (co-edited with you) |
-| Stack | **pnpm** + **vanilla JS** first → **Vite** when bundling/HMR helps |
+| Meeting detection | **ATTENDEE** = meeting; heavy week **≥10h** |
+| Persistence | **localStorage** + seed configs in `config/` |
+| Insights | **[insights-rules.json](../config/insights-rules.json)** + [INSIGHTS.md](INSIGHTS.md) |
+| Colors | **[calendar-colors.json](../config/calendar-colors.json)** — ICS often has no colors; swatch onboarding in product |
+| Stack | **pnpm** + **vanilla JS** first → **Vite** later |
 
-**Scaffold:** documented in [tech.md §13](tech.md#13-scaffold-plan-next--no-code-until-you-say-go) — not started until you approve.
+### Insight thresholds & goals (your dogfood — May 2026)
+
+| Signal | Threshold / intention |
+|--------|------------------------|
+| Admin | Insight when **≥4h/week** (goal: stay **under 4h**) |
+| RBL | Crumbs **&lt;3h**; goal **2× 2–3h blocks**/week |
+| Job search | Thin week **&lt;2h**; aspiration **3–4h daily** (trimester/weekly) |
+| Exercise (sage) | Insight when **&lt;5h/week** |
+| Meals (basil) | Track in chart only |
+| Pets (banana / Lua) | **Always pets**, any calendar; keywords beach/park; track in chart |
+| Work calendar | Mapped, **no work insight cards** |
+
+**Scaffold:** [tech.md §13](tech.md#13-scaffold-plan-next--no-code-until-you-say-go) — say **go scaffold** when ready.
 
 ---
 

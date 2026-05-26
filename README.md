@@ -4,7 +4,7 @@ A reflective companion for finite humans — **make space for what matters.**
 
 Most calendar tools optimize; I'm Time helps you see where your time actually went and reflect on it with calm, honest interpretation.
 
-**Status:** Documentation + calendar data. **App scaffold planned** ([tech.md §13](docs/tech.md#13-scaffold-plan-next--no-code-until-you-say-go)) — vanilla JS + pnpm first, Vite later.
+**Status:** Documentation + calendar data + **insight/color config**. App scaffold next ([tech.md §13](docs/tech.md#13-scaffold-plan-next--no-code-until-you-say-go)).
 
 ## Documents
 
@@ -14,6 +14,8 @@ Most calendar tools optimize; I'm Time helps you see where your time actually we
 | [docs/mvp.md](docs/mvp.md) | v1 product spec, decisions, tone, metrics |
 | [docs/features.md](docs/features.md) | **What to build** — ordered feature list and acceptance |
 | [docs/tech.md](docs/tech.md) | **How to build** — data, parsing, insights, open tech choices |
+| [docs/INSIGHTS.md](docs/INSIGHTS.md) | How to edit insight rules, thresholds, and goals |
+| [config/](config/) | `insights-rules.json`, `calendar-colors.json`, `life-areas-default.json` |
 | [docs/plan.md](docs/plan.md) | Phases, milestones, decisions log |
 | [docs/case-study.md](docs/case-study.md) | PM portfolio narrative |
 

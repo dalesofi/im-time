@@ -1,0 +1,72 @@
+{
+  "$schema": "User-defined Google Calendar color → life area mapping. ICS exports often omit colors; used for onboarding swatches and Google sync (v1.1).",
+  "googleEventColors": {
+    "lavender": {
+      "id": "lavender",
+      "label": "Lavender",
+      "hex": "#7986CB",
+      "lifeAreaId": "rest",
+      "userNote": "Rest & unstructured"
+    },
+    "tangerine": {
+      "id": "tangerine",
+      "label": "Tangerine / Orange",
+      "hex": "#F4511E",
+      "lifeAreaId": "job_search",
+      "userNote": "Job-hunting & personal brand (personal + sometimes work calendar)"
+    },
+    "blueberry": {
+      "id": "blueberry",
+      "label": "Blueberry",
+      "hex": "#3F51B5",
+      "lifeAreaId": "passion_rbl",
+      "userNote": "RBL / passion project"
+    },
+    "basil": {
+      "id": "basil",
+      "label": "Basil (dark green)",
+      "hex": "#0B8043",
+      "lifeAreaId": "meals",
+      "userNote": "Lunch, dinner, supermarket, cooking — eating well & sustainable rhythms"
+    },
+    "banana": {
+      "id": "banana",
+      "label": "Banana (yellow)",
+      "hex": "#F6BF26",
+      "lifeAreaId": "pets",
+      "userNote": "Always Lua (dog) — any calendar. Special outings: keywords beach, park, etc."
+    },
+    "sage": {
+      "id": "sage",
+      "label": "Sage (light green)",
+      "hex": "#33B679",
+      "lifeAreaId": "health",
+      "userNote": "Exercise — yoga at home, gym; target 5h/week"
+    }
+  },
+  "keywordOverrides": [
+    {
+      "keywords": [
+        "beach",
+        "park"
+      ],
+      "lifeAreaId": "pets",
+      "note": "Special activities with Lua beyond neighbourhood walks"
+    }
+  ],
+  "exceptions": [
+    {
+      "rule": "banana_on_any_calendar",
+      "lifeAreaId": "pets",
+      "note": "Yellow is always pet care — booked wherever Lua needs care"
+    }
+  ],
+  "colorsActivelyUsed": [
+    "lavender",
+    "tangerine",
+    "blueberry",
+    "basil",
+    "banana",
+    "sage"
+  ]
+}

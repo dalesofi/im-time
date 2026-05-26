@@ -54,11 +54,12 @@ Load calendar data → map to life areas → show allocation + stats → show ru
 **What:** Roll events into meaningful categories.
 
 **How:**
-- **Default areas:** Work, Relationships, Rest, Admin, Other (+ Uncategorized).
-- **Seed mapping (dogfood):** `buttonschool` → Work (or user-defined); `rbl` → Passion/Project; `personal` → split by rules/keywords later.
-- User can **rename, add, delete** areas (e.g. Health, Fitness, Hobbies, Pets).
-- User can **edit auto-assigned labels** so names match their life.
-- Unmapped → Uncategorized.
+- Seed from [config/life-areas-default.json](../config/life-areas-default.json) and [config/calendar-colors.json](../config/calendar-colors.json).
+- **Source calendar:** `buttonschool` → Work (insights silent); `rbl` → Passion/RBL; `personal` → uncategorized until colored.
+- **Color onboarding (product):** Google-like swatches → life area (ICS exports usually **lack colors**; full value with Google sync v1.1).
+- **Your legend:** tangerine → job search; blueberry → RBL; lavender → rest; sage → exercise; basil → meals; banana → Lua/pets (any calendar); beach/park keywords → pets.
+- User can **rename, add, delete** areas; edit labels—no event titles in UI.
+- **Track-only chart areas:** Meals, Pets (no insight cards unless rules added later).
 
 **UI principle:** Show **category labels**, not raw event titles ([mvp.md §10](mvp.md#10-product-decisions)).
 
@@ -94,7 +95,7 @@ Load calendar data → map to life areas → show allocation + stats → show ru
 
 **How:**
 - **Rules + templates + data analysis** (no LLM in v1).
-- Config file: **`config/insights-rules.json`** — thresholds + template copy (you co-edit; agent helps structure).
+- Config: **[config/insights-rules.json](../config/insights-rules.json)** — see [INSIGHTS.md](INSIGHTS.md). Thresholds include: meetings ≥10h; admin ≥4h; RBL &lt;3h; job &lt;2h; exercise &lt;5h; mornings/evenings per tech.md.
 - Each rule: `when` clause on stats → fill template slots (`{meeting_percent}`, etc.).
 - Minimum 3 distinct insight types on a realistic week.
 - If nothing fits → fewer cards or a quiet-week message.
@@ -107,7 +108,7 @@ Load calendar data → map to life areas → show allocation + stats → show ru
 - Unstructured evenings present (or absent)
 - Heavy day clustered mid-week
 
-**Later (optional):** `sampleGoals` in same config — editable labels users can adopt (“protect two evenings”) — not required for first dogfood.
+**Sample goals** in config (intentions, not streaks): RBL 2× blocks; job search 3–4h daily (trimester); admin under 4h; exercise 5h/week; Lua quality time; meals/nourishment; free mornings; open evenings.
 
 ---
 
@@ -157,7 +158,7 @@ Load calendar data → map to life areas → show allocation + stats → show ru
 | Tasks, planning assistant, full journal | v2 |
 
 ---
-
+S
 ## Stretch (only if core loop ships early)
 
 Documented interest, **not committed:**

@@ -26,4 +26,4 @@ python3 scripts/merge-calendars.py
 
 ## Product note
 
-v1 **product** still speaks in terms of ICS upload for any user. For **your** solo build, the app can read `calendars/merged.ics` from the repo until upload UI exists. See [docs/tech.md](../docs/tech.md).
+v1 **product** still speaks in terms of ICS upload for any user. For **your** solo build, the app can read `calendars/merged.ics` from the repo until upload UI exists. Color mapping: [config/calendar-colors.json](../config/calendar-colors.json) (ICS exports usually lack colors). See [docs/tech.md](../docs/tech.md).

@@ -1,0 +1,72 @@
+{
+  "lifeAreas": [
+    {
+      "id": "work",
+      "label": "Work",
+      "insightCards": false,
+      "showInChart": true
+    },
+    {
+      "id": "passion_rbl",
+      "label": "Passion / RBL",
+      "insightCards": true,
+      "showInChart": true
+    },
+    {
+      "id": "job_search",
+      "label": "Job search & brand",
+      "insightCards": true,
+      "showInChart": true
+    },
+    {
+      "id": "relationships",
+      "label": "Relationships",
+      "insightCards": true,
+      "showInChart": true
+    },
+    {
+      "id": "rest",
+      "label": "Rest & unstructured",
+      "insightCards": true,
+      "showInChart": true
+    },
+    {
+      "id": "health",
+      "label": "Health / exercise",
+      "insightCards": true,
+      "showInChart": true
+    },
+    {
+      "id": "admin",
+      "label": "Admin / life upkeep",
+      "insightCards": true,
+      "showInChart": true
+    },
+    {
+      "id": "meals",
+      "label": "Meals & nourishment",
+      "insightCards": false,
+      "showInChart": true,
+      "trackOnly": true
+    },
+    {
+      "id": "pets",
+      "label": "Pets (Lua)",
+      "insightCards": false,
+      "showInChart": true,
+      "trackOnly": true
+    },
+    {
+      "id": "uncategorized",
+      "label": "Uncategorized",
+      "insightCards": false,
+      "showInChart": true
+    }
+  ],
+  "sourceCalendarDefaults": {
+    "buttonschool": "work",
+    "rbl": "passion_rbl",
+    "personal": "uncategorized"
+  },
+  "workCalendarInsightPolicy": "silent"
+}

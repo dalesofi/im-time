@@ -99,12 +99,17 @@ Filter events where `start` falls within range (define inclusive boundaries in c
 
 ## 6. Life-area mapping (logic)
 
-**Priority order (suggested):**
+**Priority order:**
 
-1. User override per label/area (if stored)
-2. `X-IMTIME-SOURCE-CALENDAR` → default area
-3. Keyword rules on **category labels** (derived, not raw titles—see below)
-4. Uncategorized
+1. User override (localStorage)
+2. **Color** → area from [calendar-colors.json](../config/calendar-colors.json) when `colorId`/color present
+3. **Keywords** (e.g. beach, park → pets/Lua)
+4. `X-IMTIME-SOURCE-CALENDAR` → default area ([life-areas-default.json](../config/life-areas-default.json))
+5. Uncategorized
+
+**ICS note:** Google `.ics` export usually **does not include event colors**. v1 dogfood uses source calendar + stored color legend for onboarding; colors apply fully with Google API (v1.1).
+
+**Exceptions:** Banana/yellow = **always** Pets (Lua), any calendar.
 
 **Category labels (forest, not trees):**
 
@@ -125,9 +130,9 @@ Filter events where `start` falls within range (define inclusive boundaries in c
 events in range → stats (F4) → rule evaluation → template fill → insight cards
 ```
 
-- Store rules as data (JSON/YAML) or code constants—your choice when scaffolding.
-- Templates use slots: `{meeting_percent}`, `{open_evenings}`, etc.
-- Copy review against [mvp.md §7](mvp.md#7-content--tone-guardrails).
+- Config: [config/insights-rules.json](../config/insights-rules.json) — edit guide: [INSIGHTS.md](INSIGHTS.md).
+- Max **3** cards/week; priority order in JSON.
+- Key thresholds: meetings **≥10h**; admin **≥4h** (ceiling goal: under 4h); RBL **&lt;3h**; job **&lt;2h** thin week; exercise **&lt;5h**; free mornings before **11:00** Mon–Fri; open evenings after **20:00**.
 
 ---
 
@@ -167,8 +172,11 @@ You noted calendar truth stays in **files in `calendars/`**; app state (mapping,
 im-time/
   calendars/              # source + merged.ics (gitignore if public)
   config/
-    life-areas-default.json   # seed mapping (source → area)
-    insights-rules.json       # rules + templates + thresholds (you co-edit)
+    life-areas-default.json   # life areas + source calendar defaults
+    calendar-colors.json      # Google swatch → area (+ keyword overrides)
+    insights-rules.json       # rules, thresholds, sample goals
+  docs/
+    INSIGHTS.md               # how to edit insight config
   docs/
   scripts/
     merge-calendars.py    # exists — regenerate merged.ics

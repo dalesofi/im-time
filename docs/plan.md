@@ -43,7 +43,7 @@
 **Goal:** Empty app shell per [tech.md §13 Phase A](tech.md#13-scaffold-plan-next--no-code-until-you-say-go).
 
 - [ ] `pnpm init`, `tokens.css`, `main.js` stub, load `merged.ics`
-- [ ] Placeholder `config/insights-rules.json` + `config/life-areas-default.json`
+- [x] `config/insights-rules.json` + `config/life-areas-default.json` + `config/calendar-colors.json` + [INSIGHTS.md](INSIGHTS.md)
 
 **Exit:** `pnpm dev` (or serve) opens a calm landing page; console shows parsed event count.
 
@@ -106,6 +106,7 @@
 ### Phase 0
 - [x] mvp.md §10 decisions
 - [x] merged.ics created
+- [x] insight + color + life-area configs
 - [ ] case-study.md updated post-dogfood
 - [ ] Calendar spot-check
 
@@ -192,7 +193,12 @@ Phase 2 polish
 | Default week boundary | **Mon–Sun** |
 | All-day events | **Not in hour totals**; separate day/all-day tracking |
 | Mapping persistence | **localStorage** + seed `config/life-areas-default.json` |
-| Insights config | **`config/insights-rules.json`** (co-authored) |
+| Insights config | **`config/insights-rules.json`** ✓ (see [INSIGHTS.md](INSIGHTS.md)) |
+| Color legend | **`config/calendar-colors.json`** ✓ + swatch onboarding in product |
+| Admin threshold | **≥4h/week** triggers insight (goal: under 4h) |
+| Exercise goal | **≥5h/week**; insight if below |
+| RBL goal | 2× **2–3h** blocks/week |
+| Job search | Thin **&lt;2h**; aspiration **3–4h daily** (trimester) |
 | Merge script | **`scripts/merge-calendars.py`** ✓ |
 | Hosting / public URL | ___ when portfolio needs a live URL |
 
