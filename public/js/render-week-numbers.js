@@ -32,7 +32,7 @@ function pmLifeHero(data) {
 
 export function renderWeekNumbers(data) {
   const copy = data.observeCopy || {};
-  const rblH = data.areaHoursSummary?.passion_rbl ?? 0;
+  const rblH = data.areaHoursSummary?.radio ?? 0;
   const djingH = data.areaHoursSummary?.djing_music ?? 0;
 
   const grid = `

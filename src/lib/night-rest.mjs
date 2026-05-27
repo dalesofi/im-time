@@ -28,6 +28,36 @@ function busyIntervalsInWindow(events, winStart, winEnd) {
   return mergeIntervals(intervals);
 }
 
+function titleOf(ev) {
+  return String(ev.summaryLower || ev.summary || "").toLowerCase();
+}
+
+function isSleepKeyword(summaryLower) {
+  return ["sleep", "dormir", "dormi", "bedtime", "to bed"].some((k) =>
+    summaryLower.includes(k)
+  );
+}
+
+function isRecoveryKeyword(summaryLower) {
+  return ["siesta", "nap", "naps", "recov", "recovery"].some((k) =>
+    summaryLower.includes(k)
+  );
+}
+
+function explicitSleepHours(events, winStart, winEnd) {
+  let h = 0;
+  for (const ev of events) {
+    if (ev.isAllDay) continue;
+    const txt = titleOf(ev);
+    if (!isSleepKeyword(txt)) continue;
+    if (ev.end <= winStart || ev.start >= winEnd) continue;
+    const s = ev.start < winStart ? winStart : ev.start;
+    const e = ev.end > winEnd ? winEnd : ev.end;
+    h += hoursBetween(s, e);
+  }
+  return h;
+}
+
 /** Sum gaps >= minBlockHours inside [winStart, winEnd] not covered by events. */
 function bigGapsHours(events, winStart, winEnd, minBlockHours) {
   const busy = busyIntervalsInWindow(events, winStart, winEnd);
@@ -54,7 +84,7 @@ export function computeNightRestHours(
   events,
   weekStart,
   weekEnd,
-  { nightStartHour = 21, nightEndHour = 8, minBlockHours = 3 } = {}
+  { nightStartHour = 0, nightEndHour = 8, minBlockHours = 3 } = {}
 ) {
   let total = 0;
   for (let d = new Date(weekStart); d <= weekEnd; d.setDate(d.getDate() + 1)) {
@@ -66,7 +96,50 @@ export function computeNightRestHours(
     const s = winStart < weekStart ? weekStart : winStart;
     const e = winEnd > weekEnd ? weekEnd : winEnd;
     if (e <= s) continue;
-    total += bigGapsHours(events, s, e, minBlockHours);
+    const nonSleep = events.filter((ev) => !isSleepKeyword(titleOf(ev)));
+    const inferred = bigGapsHours(nonSleep, s, e, minBlockHours);
+    const explicit = explicitSleepHours(events, s, e);
+    const windowCap = hoursBetween(s, e);
+    total += Math.min(windowCap, inferred + explicit);
+  }
+  return Math.round(total * 10) / 10;
+}
+
+/**
+ * Recovery outside the night-sleep window:
+ * - explicit sleep-labeled blocks outside 00:00-08:00
+ * - siesta/nap/recovery keywords (any time)
+ */
+export function computeRecoveryRestHours(
+  events,
+  weekStart,
+  weekEnd,
+  { nightStartHour = 0, nightEndHour = 8 } = {}
+) {
+  let total = 0;
+  for (const ev of events) {
+    if (ev.isAllDay) continue;
+    if (ev.end <= weekStart || ev.start >= weekEnd) continue;
+    const s = ev.start < weekStart ? weekStart : ev.start;
+    const e = ev.end > weekEnd ? weekEnd : ev.end;
+    if (e <= s) continue;
+    const txt = titleOf(ev);
+    const isSleep = isSleepKeyword(txt);
+    const isRecovery = isRecoveryKeyword(txt);
+    if (!isSleep && !isRecovery) continue;
+
+    if (isRecovery) {
+      total += hoursBetween(s, e);
+      continue;
+    }
+
+    // Sleep-labeled blocks only count as "recovery" when outside night window.
+    const startsInNight =
+      s.getHours() >= nightStartHour && s.getHours() < nightEndHour;
+    const endsInNight = e.getHours() >= nightStartHour && e.getHours() <= nightEndHour;
+    if (!(startsInNight && endsInNight)) {
+      total += hoursBetween(s, e);
+    }
   }
   return Math.round(total * 10) / 10;
 }

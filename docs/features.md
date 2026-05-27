@@ -64,12 +64,12 @@ Load calendar data → map to life areas → show allocation + stats → show ru
 
 **How (mapping):**
 - Seed from [config/life-areas-default.json](../config/life-areas-default.json) and [config/calendar-colors.json](../config/calendar-colors.json).
-- **Source calendar:** `buttonschool` → Work (insights silent); `rbl` → Passion/RBL; `personal` → uncategorized until colored.
+- **Source calendar:** `buttonschool` → Work (insights silent); `rbl` → **radio** (community radio); `personal` → uncategorized until colored.
 - **Color onboarding (product):** Google-like swatches → life area (ICS exports usually **lack colors**; full value with Google sync v1.1).
-- **Your legend:** tangerine → job search; blueberry → RBL; sage → exercise; basil → meals; banana → Lua/pets (any calendar).
+- **Your legend:** tangerine → job search; blueberry → radio vs DJing (keywords/onboarding); sage → exercise; basil → meals; banana → Lua/pets (any calendar).
 - **Lavender default → social life** (~10h/wk); person/event names. Keywords: **self-care** (shower, skin/hair), cleaning, laundry, siesta/podcast.
-- **Blueberry → RBL volunteer** *or* **DJing/music prep** (keywords + onboarding); DJ ~10h/wk, income goal note in goals.
-- **Related blocks:** CAPRIXXO → RBL + DJing; lavender errands → social + RBL; hours can count in both.
+- **Blueberry → radio volunteer** *or* **DJing/music prep** (keywords + onboarding); DJ ~10h/wk, income goal note in goals.
+- **Related blocks:** CAPRIXXO → radio + DJing; lavender errands → social + radio; hours can count in both.
 - **DJing keywords:** prep, sort, mix, … (verb subcategories = v2).
 - **Compound blocks (v1.1):** friend's name on banana or basil = social + pet/meal; insight = integration not hustle.
 - **Sleep:** not inferred; only explicit blocks.
@@ -111,7 +111,7 @@ Load calendar data → map to life areas → show allocation + stats → show ru
 
 **How:**
 - **Rules + templates + data analysis** (no LLM in v1).
-- Config: **[config/insights-rules.json](../config/insights-rules.json)** — see [INSIGHTS.md](INSIGHTS.md). Thresholds include: meetings ≥10h; admin ≥4h; RBL &lt;3h; job &lt;2h; exercise &lt;5h; mornings/evenings per tech.md.
+- Config: **[config/insights-rules.json](../config/insights-rules.json)** — see [INSIGHTS.md](INSIGHTS.md). Thresholds include: meetings ≥10h; admin ≥4h; radio (“crumbs”) **&lt;3h**; job **&lt;2h**; exercise **&lt;5h**; mornings/evenings per tech.md.
 - Each rule: `when` clause on stats → fill template slots (`{meeting_percent}`, etc.).
 - Minimum 3 distinct insight types on a realistic week.
 - If nothing fits → fewer cards or a quiet-week message.
@@ -124,7 +124,7 @@ Load calendar data → map to life areas → show allocation + stats → show ru
 - Unstructured evenings present (or absent)
 - Heavy day clustered mid-week
 
-**Sample goals** in config (intentions, not streaks): RBL 2× blocks; job search 3–4h daily (trimester); admin under 4h; exercise 5h/week; Lua quality time; meals/nourishment; free mornings; open evenings.
+**Sample goals** in config (intentions, not streaks): radio 2× blocks; job search 3–4h daily (trimester); admin under 4h; exercise 5h/week; Lua quality time; meals/nourishment; free mornings; open evenings.
 
 ---
 

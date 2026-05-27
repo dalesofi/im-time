@@ -53,7 +53,7 @@ export function buildMapper(config) {
       return { areaId: sourceDefaults.buttonschool || "work", alsoAreas: [], silentInsight: silentWork };
     }
     if (ev.sourceCalendar === "rbl") {
-      return { areaId: sourceDefaults.rbl || "passion_rbl", alsoAreas: [], silentInsight: false };
+      return { areaId: sourceDefaults.rbl || "radio", alsoAreas: [], silentInsight: false };
     }
     if (titleMatches(ev.summaryLower, ["cleaning", "limpiar", "limpieza"])) {
       return { areaId: "home_cleaning", alsoAreas: [], silentInsight: false };
@@ -70,17 +70,17 @@ export function buildMapper(config) {
     if (titleMatches(ev.summaryLower, DJING_KEYWORDS)) {
       const base = {
         areaId: "djing_music",
-        alsoAreas: titleMatches(ev.summaryLower, ["caprixxo"]) ? ["passion_rbl"] : [],
+        alsoAreas: titleMatches(ev.summaryLower, ["caprixxo"]) ? ["radio"] : [],
         silentInsight: false,
       };
       return applyRelatedBlocks(ev.summaryLower, colors, base);
     }
     if (titleMatches(ev.summaryLower, ["rbl", "fem barri", "mescladis", "volunteer"])) {
-      return { areaId: "passion_rbl", alsoAreas: [], silentInsight: false };
+      return { areaId: "radio", alsoAreas: [], silentInsight: false };
     }
     if (titleMatches(ev.summaryLower, ["errand", "recoger", "pick up", "pickup", "entrega"])) {
       return applyRelatedBlocks(ev.summaryLower, colors, {
-        areaId: "social_life", alsoAreas: ["passion_rbl"], silentInsight: false,
+        areaId: "social_life", alsoAreas: ["radio"], silentInsight: false,
       });
     }
     if (titleMatches(ev.summaryLower, ["beach", "park"])) {

@@ -89,7 +89,7 @@ export function buildMapper(config) {
       else if (ev.sourceCalendar === "buttonschool") {
         base = { areaId: sourceDefaults.buttonschool || "job_search", alsoAreas: [], silentInsight: silentWork };
       } else if (ev.sourceCalendar === "rbl") {
-        base = { areaId: sourceDefaults.rbl || "passion_rbl", alsoAreas: [], silentInsight: false };
+        base = { areaId: sourceDefaults.rbl || "radio", alsoAreas: [], silentInsight: false };
       } else if (titleMatches(s, ["cleaning", "limpiar", "limpieza"])) {
         base = { areaId: "home_cleaning", alsoAreas: [], silentInsight: false };
       } else if (titleMatches(s, ["ropa", "colada", "laundry"])) {
@@ -101,9 +101,9 @@ export function buildMapper(config) {
       } else if (titleMatches(s, ["shower", "ducha", "skincare", "skin care", "hair", "pelo", "self care", "self-care", "autocuidado", "bath", "baño"])) {
         base = { areaId: "self_care", alsoAreas: [], silentInsight: false };
       } else if (titleMatches(s, RADIO_LIFE_KEYWORDS)) {
-        base = { areaId: "passion_rbl", alsoAreas: titleMatches(s, ["isa enes", "isaenes"]) ? ["social_life"] : [], silentInsight: false };
-      } else if (titleMatches(s, ["siesta", "siest", "podcast"])) {
-        base = { areaId: "day_rest", alsoAreas: [], silentInsight: false };
+        base = { areaId: "radio", alsoAreas: titleMatches(s, ["isa enes", "isaenes"]) ? ["social_life"] : [], silentInsight: false };
+      } else if (titleMatches(s, ["siesta", "siest", "nap", "naps", "sleep", "dormir", "dormi"])) {
+        base = { areaId: "rest", alsoAreas: [], silentInsight: false };
       } else if (titleMatches(s, MEALS_KEYWORDS)) {
         base = { areaId: "meals", alsoAreas: [], silentInsight: false };
       } else if (titleMatches(s, PM_LIFE_KEYWORDS)) {
@@ -113,13 +113,13 @@ export function buildMapper(config) {
       } else if (titleMatches(s, DJING_KEYWORDS)) {
         base = {
           areaId: "djing_music",
-          alsoAreas: titleMatches(s, ["caprixxo"]) ? ["passion_rbl"] : [],
+          alsoAreas: titleMatches(s, ["caprixxo"]) ? ["radio"] : [],
           silentInsight: false,
         };
         base = applyRelatedBlocks(s, colors, base);
       } else if (titleMatches(s, ["errand", "recoger", "pick up", "pickup", "entrega"])) {
         base = applyRelatedBlocks(s, colors, {
-          areaId: "social_life", alsoAreas: ["passion_rbl"], silentInsight: false,
+          areaId: "social_life", alsoAreas: ["radio"], silentInsight: false,
         });
       } else if (titleMatches(s, ["beach", "park"])) {
         base = { areaId: "pets", alsoAreas: ["health"], silentInsight: false };

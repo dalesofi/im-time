@@ -1,5 +1,5 @@
 import { hoursBetween } from "./week-range.mjs";
-import { computeNightRestHours } from "./night-rest.mjs";
+import { computeNightRestHours, computeRecoveryRestHours } from "./night-rest.mjs";
 
 export function computeStats(mappedEvents, weekRange, allEventsForRolling, nightRestOpts = {}) {
   const { start, end } = weekRange;
@@ -52,12 +52,22 @@ export function computeStats(mappedEvents, weekRange, allEventsForRolling, night
     end,
     nightRestOpts
   );
+  const recoveryRestHours = computeRecoveryRestHours(
+    weekEvents,
+    start,
+    end,
+    nightRestOpts
+  );
+  if (recoveryRestHours > 0) {
+    areaHours.rest = Math.round(((areaHours.rest || 0) + recoveryRestHours) * 10) / 10;
+  }
 
   return {
     areaHours,
     meetingHours,
     scheduledTimedHours,
     nightRestHours,
+    recoveryRestHours,
     freeMorningsBefore11,
     openEveningsAfter20,
     homeCleaningRolling,

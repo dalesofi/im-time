@@ -45,18 +45,18 @@ Color legend: [calendar-colors.json](../config/calendar-colors.json)
 
 | Meaning | Area | Notes |
 |---------|------|--------|
-| RBL community radio | `passion_rbl` | Volunteer lead, Barcelona |
+| RBL community radio | `radio` | Volunteer lead, Barcelona |
 | DJing & music prep | `djing_music` | Paid; goal **€400/month**; labels = party, venue, friend/mix |
 
 **DJing title keywords:** `prep`, `sort`, `mix`, `dj`/`djing`, `gig`, `export`, `listen`, `ordenar`, `clasificar` — *subcategories by verb (prep vs sort) = v2 feature.*
 
-**CAPRIXXO** → counts as **both** `passion_rbl` and `djing_music` (related block).
+**CAPRIXXO** → counts as **both** `radio` and `djing_music` (related block).
 
 **~10h/week** on DJing for "worth investing" insights—not only "do more hustle."
 
 ### Lavender errands (social surface, RBL substance)
 
-Sometimes lavender is a **person's name** for a pickup or handoff (e.g. someone collecting something from your house for RBL). Looks social; also links to **`passion_rbl`**. Product: **related blocks**, not misclassification.
+Sometimes lavender is a **person's name** for a pickup or handoff (e.g. someone collecting something from your house for RBL). Looks social; also links to **`radio`**. Product: **related blocks**, not misclassification.
 
 Errand-ish keywords: `recoger`, `pickup`, `entrega` — or person names you flag in onboarding.
 

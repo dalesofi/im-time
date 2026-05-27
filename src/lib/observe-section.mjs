@@ -30,7 +30,7 @@ function pmLifeHeroHtml(result) {
 
 export function renderObserveSectionHtml(result) {
   const copy = result.observeCopy || {};
-  const rblH = result.areaHoursSummary?.passion_rbl ?? 0;
+  const rblH = result.areaHoursSummary?.radio ?? 0;
   const djingH = result.areaHoursSummary?.djing_music ?? 0;
 
   const gridCards = `

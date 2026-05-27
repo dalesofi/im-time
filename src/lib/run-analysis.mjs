@@ -29,9 +29,9 @@ export async function runAnalysis(weekRange, icsPath = PATHS.mergedIcs) {
     return { ...ev, areaId, alsoAreas, silentInsight };
   });
 
-  const nightRule = config.insights.thresholds?.nightRest || {};
+  const nightRule = config.insights.thresholds?.nightSleep || {};
   const stats = computeStats(mapped, weekRange, mapped, {
-    nightStartHour: nightRule.windowStartHour ?? 21,
+    nightStartHour: nightRule.windowStartHour ?? 0,
     nightEndHour: nightRule.windowEndHour ?? 8,
     minBlockHours: nightRule.minBlockHours ?? 3,
   });
@@ -46,7 +46,7 @@ export async function runAnalysis(weekRange, icsPath = PATHS.mergedIcs) {
   const unscheduledHours =
     Math.round((weekHours - stats.scheduledTimedHours) * 10) / 10;
   const sleepThresholdDefault =
-    config.insights.thresholds?.nightRest?.alarmIfWeekHoursLt ??
+    config.insights.thresholds?.nightSleep?.alarmIfWeekHoursLt ??
     config.insights.thresholds?.unscheduledSleepHoursLt ??
     50;
 
@@ -104,6 +104,7 @@ export async function runAnalysis(weekRange, icsPath = PATHS.mergedIcs) {
     eventCount: stats.eventCount,
     weekHours,
     nightRestHours,
+    recoveryRestHours: stats.recoveryRestHours,
     unscheduledHours,
     pmLifeHours,
     sleepThresholdDefault,

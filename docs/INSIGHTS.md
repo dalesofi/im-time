@@ -11,7 +11,11 @@
 
 ## Sleep
 
-Sleep is **not** generally scheduled. The app does **not** infer sleep from empty calendar gaps. Only explicit blocks count (rare).
+Night sleep is inferred from empty calendar gaps in a canonical window: **00:00–08:00**.
+
+- **Night sleep** = inferred empty gaps in `00:00–08:00` (plus explicit sleep-labeled blocks in that window).
+- **Daily recovery** (dedicated `rest` stat) = sleep-labeled blocks **outside** `00:00–08:00`, plus `siesta` / `nap`.
+- Big unscheduled daytime gaps are treated as **unscheduled time**, not sleep.
 
 ## Lavender — social first
 
@@ -27,15 +31,15 @@ Sleep is **not** generally scheduled. The app does **not** infer sleep from empt
 | Match | Life area |
 |-------|-----------|
 | `dj`, `djing`, `mix`, … | **DJing & music prep** (~10h/wk; €400/mo goal) |
-| `rbl`, `fem barri`, `volunteer`, … | **RBL volunteer** |
+| `rbl`, `fem barri`, `volunteer`, … | **Radio** (community radio / RBL volunteer) |
 | Ambiguous | Onboarding question |
 
 ## Related blocks (dual areas)
 
 | Keyword / pattern | Areas |
 |-------------------|--------|
-| **CAPRIXXO** | `passion_rbl` + `djing_music` |
-| Lavender errand (pickup, handoff) | `social_life` + `passion_rbl` |
+| **CAPRIXXO** | `radio` + `djing_music` |
+| Lavender errand (pickup, handoff) | `social_life` + `radio` |
 | Lavender shower / skin / hair | `self_care` (~10h/wk) |
 | Friend on banana/basil | compound — see onboarding doc |
 
@@ -67,6 +71,12 @@ See `keywordRoutes` on lavender in [calendar-colors.json](../config/calendar-col
 | `socialLifeWeeklyHoursLt` | 10 | Social (lavender) below target |
 | `djingMusicWeeklyHoursLt` | 10 | DJing below target |
 | `selfCareWeeklyHoursLt` | 10 | Self-care (lavender) below target |
+| `nightSleep.windowStartHour` | 0 | Night-sleep inference window start (00:00) |
+| `nightSleep.windowEndHour` | 8 | Night-sleep inference window end (08:00) |
+| `nightSleep.alarmIfWeekHoursLt` | 50 | Low night-sleep alarm |
+| `adminHeavyHoursGte` | 4 | Generic admin ceiling (separate from cleaning) |
+| `radioCrumbsHoursLt` | 3 | Radio area “crumbs” threshold (`rbl_crumbs` rule) |
+| `healthExerciseWeeklyHoursLt` | 5 | Exercise below goal |
 
 ## Week snapshot box (“mapped to your goals”)
 
@@ -89,9 +99,6 @@ See [priorities.md](priorities.md). Rules with `requiresPriority` only fire if t
 ## Targets tension
 
 See [targets-audit.md](targets-audit.md). Job search **3–4h/day** is trimester-scale; weekly thin insight stays **&lt;2h**. Many **10h floors** together are ambitious—use **1–2 priorities** instead of guilting every floor.
-| `adminHeavyHoursGte` | 4 | Generic admin ceiling (separate from cleaning) |
-| `passionRblCrumbsHoursLt` | 3 | RBL crumbs |
-| `healthExerciseWeeklyHoursLt` | 5 | Exercise below goal |
 
 ## New rules (v2)
 
@@ -109,7 +116,7 @@ See [targets-audit.md](targets-audit.md). Job search **3–4h/day** is trimester
 |-------|----------------|
 | Lavender | **Split** — see table above |
 | Tangerine | Job search & brand |
-| Blueberry | Passion / RBL |
+| Blueberry | **Radio** (volunteer) / **DJing** — same color, route by keywords |
 | Sage | Health / exercise |
 | Basil | Meals & nourishment |
 | Banana | Pets (Lua) — any calendar |

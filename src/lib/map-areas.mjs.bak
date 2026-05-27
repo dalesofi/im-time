@@ -27,7 +27,7 @@ export function buildMapper(config) {
       return { areaId: sourceDefaults.buttonschool || "work", silentInsight: silentWork };
     }
     if (ev.sourceCalendar === "rbl") {
-      return { areaId: sourceDefaults.rbl || "passion_rbl", silentInsight: false };
+      return { areaId: sourceDefaults.rbl || "radio", silentInsight: false };
     }
     // lavender-style: if we had color we'd use it; keyword routing on summary for dogfood
     const fromLav = routeLavender(ev.summaryLower, colors);

@@ -113,9 +113,9 @@ Filter events where `start` falls within range (define inclusive boundaries in c
 
 **Lavender:** default → `social_life`; keywords → `home_cleaning`, `laundry`, `day_rest` (siesta/podcast only—not RBL).
 
-**Blueberry:** `dj|djing|mix` → `djing_music`; `rbl|fem barri|volunteer` → `passion_rbl`; **onboarding required** when ambiguous.
+**Blueberry:** `dj|djing|mix` → `djing_music`; `rbl|fem barri|volunteer` → `radio`; **onboarding required** when ambiguous.
 
-**Related blocks:** `config/calendar-colors.json` → `relatedBlocks.rules` — e.g. CAPRIXXO → `passion_rbl` + `djing_music`; lavender errand → `social_life` + `passion_rbl`. Mapper returns `alsoAreas[]`; stats count hours in both.
+**Related blocks:** `config/calendar-colors.json` → `relatedBlocks.rules` — e.g. CAPRIXXO → `radio` + `djing_music`; lavender errand → `social_life` + `radio`. Mapper returns `alsoAreas[]`; stats count hours in both.
 
 **DJing keywords:** prep, sort, mix, caprixxo, … — subcategories by verb deferred to v2.
 
@@ -146,7 +146,7 @@ events in range → stats (F4) → rule evaluation → template fill → insight
 
 - Config: [config/insights-rules.json](../config/insights-rules.json) — edit guide: [INSIGHTS.md](INSIGHTS.md).
 - Max **3** cards/week; priority order in JSON.
-- Key thresholds: meetings **≥10h**; admin **≥4h** (ceiling goal: under 4h); RBL **&lt;3h**; job **&lt;2h** thin week; exercise **&lt;5h**; free mornings before **11:00** Mon–Fri; open evenings after **20:00**.
+- Key thresholds: meetings **≥10h**; admin **≥4h** (ceiling goal: under 4h); radio **&lt;3h** (“crumbs” card); job **&lt;2h** thin week; exercise **&lt;5h**; free mornings before **11:00** Mon–Fri; open evenings after **20:00**.
 
 ---
 

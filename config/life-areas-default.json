@@ -13,7 +13,7 @@
       "userNote": "Counted inside PM Life 💼 on charts"
     },
     {
-      "id": "passion_rbl",
+      "id": "radio",
       "label": "Radio Life",
       "emoji": "📻",
       "googleColor": "blueberry",
@@ -21,7 +21,7 @@
       "chartOrder": 12,
       "insightCards": true,
       "showInChart": true,
-      "userNote": "RBL nonprofit — radio, equipment, volunteer blocks"
+      "userNote": "Community radio (RBL) — volunteer, equipment, comms"
     },
     {
       "id": "job_search",
@@ -167,7 +167,7 @@
   },
   "sourceCalendarDefaults": {
     "buttonschool": "job_search",
-    "rbl": "passion_rbl",
+    "rbl": "radio",
     "personal": "social_life"
   },
   "workCalendarInsightPolicy": "silent",

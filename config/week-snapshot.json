@@ -58,12 +58,12 @@
   ],
   "alerts": [
     {
-      "areaId": "passion_rbl",
+      "areaId": "radio",
       "label": "Radio Life",
       "emoji": "📻",
       "hoursGte": 6,
       "percentOfScheduledGte": 12,
-      "detailAlert": "RBL / radio is using a lot of your scheduled week — notice if it crowded PM Life."
+      "detailAlert": "Radio (community radio) is using a lot of your scheduled week — notice if it crowded PM Life."
     }
   ],
   "rhythm": [

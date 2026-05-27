@@ -10,7 +10,7 @@
     "maxSelectable": 2,
     "productPrinciple": "Only 1–2 areas get hard threshold nudges. Everything else is OK at a lighter rhythm—not failure.",
     "defaultForSofia": ["job_search", "djing_music"],
-    "careerAreas": ["job_search", "djing_music", "passion_rbl"],
+    "careerAreas": ["job_search", "djing_music", "radio"],
     "personalCareAreas": [
       "social_life",
       "self_care",
@@ -36,10 +36,10 @@
     "weekdayEveningOpenMinCount": 3,
     "weekdayEveningOpenMaxCount": 1,
     "busyWeekScheduledHoursGt": 20,
-    "passionRblCrumbsHoursLt": 3,
-    "passionRblGoalBlocksPerWeek": 2,
-    "passionRblGoalBlockHoursMin": 2,
-    "passionRblGoalBlockHoursMax": 3,
+    "radioCrumbsHoursLt": 3,
+    "radioGoalBlocksPerWeek": 2,
+    "radioGoalBlockHoursMin": 2,
+    "radioGoalBlockHoursMax": 3,
     "jobSearchThinHoursLt": 2,
     "jobSearchDailyGoalHoursMin": 3,
     "jobSearchDailyGoalHoursMax": 4,
@@ -80,8 +80,8 @@
     "selfCareWeeklyHoursLt": 10,
     "selfCareWeeklyHoursTarget": 10,
     "unscheduledSleepHoursLt": 50,
-    "nightRest": {
-      "windowStartHour": 21,
+    "nightSleep": {
+      "windowStartHour": 0,
       "windowEndHour": 8,
       "minBlockHours": 3,
       "alarmIfWeekHoursLt": 50
@@ -112,7 +112,7 @@
         }
       },
       "templates": [
-        "Night rest looks thin — about {night_rest_hours}h from long off-calendar blocks between 9pm and 8am, under your {sleep_threshold_hours}h margin. Worth protecting sleep before adding more blocks.",
+        "Night sleep looks thin — about {night_rest_hours}h from long off-calendar gaps between 00:00 and 08:00, under your {sleep_threshold_hours}h margin. Worth protecting sleep before adding more blocks.",
         "Estimated night rest: {night_rest_hours}h this week (big off-calendar gaps at night). Below your {sleep_threshold_hours}h line — notice, don't panic."
       ]
     },
@@ -146,23 +146,24 @@
         "personalCareHighCareerLow": true
       },
       "templates": [
-        "Personal life & care (social, rest, meals, body…) logged about {personal_care_hours}h this week; career-focused blocks (job search, DJing, RBL) about {career_hours}h. You're prioritizing {priority_labels} this season—worth noticing if the calendar matches that, without guilt.",
+        "Personal life & care (social, rest, meals, body…) logged about {personal_care_hours}h this week; career-focused blocks (job search, DJing, radio) about {career_hours}h. You're prioritizing {priority_labels} this season—worth noticing if the calendar matches that, without guilt.",
         "A lot of lavender-shaped time, lighter on the career colors you said matter most. Observation, not a verdict."
       ]
     },
     {
       "id": "rbl_crumbs",
       "priority": 3,
-      "requiresPriority": "passion_rbl",
+      "requiresPriority": "radio",
       "when": {
         "hoursAreaLt": {
-          "area": "passion_rbl",
-          "hours": 3
+          "area": "radio",
+          "useConfigThreshold": true,
+          "thresholdKey": "radioCrumbsHoursLt"
         }
       },
       "templates": [
-        "Passion / RBL had about {rbl_hours}h on the calendar\u2014crumbs, not the two 2\u20133h blocks you're aiming for.",
-        "RBL showed up as fragments. You wanted real blocks this week, not leftovers."
+        "Radio Life had about {rbl_hours}h on the calendar\u2014crumbs, not the two 2\u20133h blocks you're aiming for.",
+        "Radio showed up as fragments. You wanted real blocks this week, not leftovers."
       ]
     },
     {
@@ -410,7 +411,7 @@
     },
     {
       "id": "rbl_blocks",
-      "label": "Two RBL blocks per week (2\u20133 hours each)",
+      "label": "Two radio blocks per week (2\u20133 hours each)",
       "editable": true
     },
     {
@@ -501,12 +502,12 @@
     },
     {
       "id": "caprixxo_dual",
-      "label": "CAPRIXXO \u2014 counts as both RBL and DJing",
+      "label": "CAPRIXXO \u2014 counts as both radio and DJing",
       "editable": true
     },
     {
       "id": "lavender_rbl_errands",
-      "label": "Lavender errands tied to RBL (pickups, handoffs)",
+      "label": "Lavender errands tied to radio (pickups, handoffs)",
       "editable": true,
       "note": "May look social; also volunteer logistics"
     },
@@ -524,13 +525,13 @@
       "self_care": 10,
       "health": 5,
       "meals": 14,
-      "passion_rbl": "4-6 (2 blocks)",
+      "radio": "4-6 (2 blocks)",
       "laundry": 2,
       "admin": "ceiling 4 max"
     },
     "tensions": [
       "job_search_daily_3-4h is ~21-28h/week if taken literally \u2014 trimester aspiration, not weekly budget",
-      "social + djing + self_care = 30h/week before work, meals, RBL, job search",
+      "social + djing + self_care = 30h/week before work, meals, radio, job search",
       "relatedBlocks may double-count hours in chart (intentional)"
     ]
   }

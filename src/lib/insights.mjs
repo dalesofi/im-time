@@ -20,7 +20,7 @@ function priorityLabels(config) {
 
 export function evaluateInsights(config, stats, thresholds) {
   const priorities = config.priorities?.defaultForSofia || [];
-  const careerAreas = config.priorities?.careerAreas || ["job_search", "djing_music", "passion_rbl"];
+  const careerAreas = config.priorities?.careerAreas || ["job_search", "djing_music", "radio"];
   const personalCareAreas = config.priorities?.personalCareAreas || [];
 
   const careerHours = sumAreas(stats, careerAreas);
@@ -29,7 +29,7 @@ export function evaluateInsights(config, stats, thresholds) {
   const vars = {
     meeting_hours: Math.round(stats.meetingHours * 10) / 10,
     free_mornings_before_11: stats.freeMorningsBefore11,
-    rbl_hours: Math.round(areaH(stats, "passion_rbl") * 10) / 10,
+    rbl_hours: Math.round(areaH(stats, "radio") * 10) / 10,
     job_hours: Math.round(areaH(stats, "job_search") * 10) / 10,
     admin_hours: Math.round(areaH(stats, "admin") * 10) / 10,
     health_hours: Math.round(areaH(stats, "health") * 10) / 10,
@@ -49,7 +49,7 @@ export function evaluateInsights(config, stats, thresholds) {
     window_weeks: thresholds.monthlyEvaluationWindowWeeks || 4,
     night_rest_hours: Math.round((stats.nightRestHours ?? 0) * 10) / 10,
     sleep_threshold_hours:
-      thresholds.nightRest?.alarmIfWeekHoursLt ??
+      thresholds.nightSleep?.alarmIfWeekHoursLt ??
       thresholds.unscheduledSleepHoursLt ??
       50,
     week_hours: Math.round((stats.weekHours ?? 168) * 10) / 10,
@@ -88,7 +88,7 @@ function matches(when, stats, t, ctx) {
     const pcMin = bal.personalCareHoursGte ?? 30;
     const carMax = bal.careerHoursLt ?? 18;
     const hasCareerPriority = (ctx.priorities || []).some((p) =>
-      ["job_search", "djing_music", "passion_rbl"].includes(p)
+      ["job_search", "djing_music", "radio"].includes(p)
     );
     if (!hasCareerPriority) return false;
     if (ctx.personalCareHours < pcMin) return false;
@@ -107,14 +107,18 @@ function matches(when, stats, t, ctx) {
     const u = stats.nightRestHours ?? stats.unscheduledHours ?? 0;
     const whenClause = when.nightRestHoursLt || when.unscheduledHoursLt;
     const threshold = whenClause.useConfigThreshold
-      ? (t.nightRest?.alarmIfWeekHoursLt ?? t.unscheduledSleepHoursLt ?? 50)
+      ? (t.nightSleep?.alarmIfWeekHoursLt ?? t.unscheduledSleepHoursLt ?? 50)
       : whenClause.hours;
     if (u >= threshold) return false;
   }
 
   if (when.hoursAreaLt) {
     const h = areaH(stats, when.hoursAreaLt.area);
-    if (h >= when.hoursAreaLt.hours) return false;
+    const minH =
+      when.hoursAreaLt.useConfigThreshold && when.hoursAreaLt.thresholdKey
+        ? t[when.hoursAreaLt.thresholdKey]
+        : when.hoursAreaLt.hours;
+    if (minH == null || h >= minH) return false;
   }
   if (when.hoursAreaGte) {
     const h = areaH(stats, when.hoursAreaGte.area);
